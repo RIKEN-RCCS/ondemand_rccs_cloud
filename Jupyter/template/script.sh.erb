@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+
+cd "${HOME}"
+
+export LANG=C
+DIR=""
+for d in /run /var/run/munge /var/spool/slurm /cloud_opt /lvs0 /hs /usr/lib/locale/locale-archive; do
+  if [ -e $d ]; then
+      DIR=$DIR,$d
+  fi
+done
+export SINGULARITY_BINDPATH=${DIR#,}
+
+IMAGE="/cloud_opt/ondemand/rocky95_`arch`.sif"
+
+# https://qiita.com/ronin_gw/items/cdf8112b61649ca455f5
+BASE_BINARY_DIR=${HOME}/ondemand/jupyter
+PYTHONUSERBASE=${BASE_BINARY_DIR%/}/`arch`
+PIP_VERSION=`singularity exec ${IMAGE} pip --version | awk -F/ '{print $4}'`
+PYTHONPATH=${PYTHONUSERBASE}/lib/${PIP_VERSION}/site-packages:${PYTHONPATH}
+
+mkdir -p $PYTHONUSERBASE
+export SINGULARITYENV_PYTHONUSERBASE=${PYTHONUSERBASE}
+export SINGULARITYENV_JUPYTER_DATA_DIR=${PYTHONUSERBASE}/share/jupyter
+export SINGULARITYENV_PYTHONPATH=${PYTHONPATH}
+mkdir -p $SINGULARITYENV_JUPYTER_DATA_DIR
+
+OPTION=""
+if [ -e /usr/local/cuda ]; then
+  for d in `ls -d1 /usr/local/cuda*`; do
+    export SINGULARITY_BINDPATH=$SINGULARITY_BINDPATH,$d
+  done
+  export SINGULARITY_BINDPATH=$SINGULARITY_BINDPATH,/opt/nvidia
+  OPTION="--nv"
+elif [ -e /opt/rocm ]; then
+  for d in `ls -d1 /opt/rocm*`; do
+    export SINGULARITY_BINDPATH=$SINGULARITY_BINDPATH,$d
+  done
+  for f in `ls -1 /usr/share/Modules/modulefiles/rocm`; do
+    path=/usr/share/Modules/modulefiles/rocm/$f
+    r=`realpath $path`
+    SINGULARITY_BINDPATH=$SINGULARITY_BINDPATH,$r:$path
+  done
+  OPTION="--rocm"
+fi
+
+if [ -e /etc/openmpi-x86_64/openmpi-mca-params.conf ]; then
+    export SINGULARITY_BINDPATH=$SINGULARITY_BINDPATH,/etc/openmpi-x86_64/openmpi-mca-params.conf
+fi
+
+singularity exec --env PS1='\u@\h:\w\$ ' ${OPTION} ${IMAGE} jupyter-lab --config="${CONFIG_FILE}"

@@ -1,0 +1,38 @@
+Bootstrap: docker
+From: rockylinux/rockylinux:9.4
+
+%post
+        dnf -y install gcc gcc-gfortran gcc-c++ perl java vim emacs zsh git cmake numactl boost boost-devel epel-release dnf-plugins-core wget rdma-core-devel librdmacm libibverbs
+	dnf -y install mesa-libGLU hwloc-libs lm_sensors-libs libXp ghostscript gedit gedit-plugins pcre2-utf16 ncurses-compat-libs rclone
+	dnf config-manager --set-enabled crb
+        dnf -y install gnuplot ImageMagick ncview
+        dnf -y install evince glx-utils systemd-libs sssd Lmod xdg-user-dirs dbus-x11
+        dnf -y groupinstall 'Development Tools' 'Infiniband Support' 'base-x' 'Internet Browser' 'Base' 'Xfce'
+        dnf -y install https://yum.osc.edu/ondemand/latest/compute/el9Server/aarch64/python3-websockify-0.11.0-1.el9.noarch.rpm
+        dnf -y install https://yum.osc.edu/ondemand/latest/compute/el9Server/aarch64/turbovnc-3.1.1-1.el9.aarch64.rpm
+        dnf -y remove xfce4-screensaver
+	#
+	# For VSCode
+        dnf -y install https://github.com/coder/code-server/releases/download/v4.93.1/code-server-4.93.1-arm64.rpm
+        #
+	# For JupyterLab
+        dnf -y install python3.11-pip python3.11-devel python3.11-numpy python3.11-scipy python3-matplotlib
+        pip3.11 install jupyterlab
+        #
+	# For Rstudio
+        # From https://dailies.rstudio.com
+        #dnf -y install R
+	#dnf -y install https://s3.amazonaws.com/rstudio-ide-build/server/rhel9/arm64/rstudio-server-rhel-2024.11.0-daily-266-aarch64.rpm
+        #
+        # For Paraview
+        dnf -y install paraview-devel
+	rm -f /usr/bin/python /usr/bin/pip /usr/bin/pip3
+        update-alternatives --install /usr/bin/python  python /usr/bin/python3.11  1
+        update-alternatives --install /usr/bin/pip     pip    /usr/bin/pip3.11     1
+        update-alternatives --install /usr/bin/pip3    pip3   /usr/bin/pip3.11     1
+	# /usr/bin/python3 (-> 3.9) depends on python3-websockify-0.11.0-1.el9.noarch.rpm
+	#
+	# For Terminal (ttyd)
+	dnf -y install ttyd tmux screen libuv-devel libwebsockets-devel
+	#
+        dnf clean all

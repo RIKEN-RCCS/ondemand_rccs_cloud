@@ -1,0 +1,11 @@
+---
+name: 2VSCode
+category: Interactive Apps
+role: batch_connect
+subcategory: Servers
+description: |
+  This app will launch a [VS Code].
+
+  [VS Code]: https://code.visualstudio.com/
+tile:
+  sub_caption: |

@@ -1,0 +1,7 @@
+---
+name: User Config
+icon: fa://user-cog
+url: https://portal.cloud.r-ccs.riken.jp/pwm/private/login
+category: Passenger Apps
+tile:
+  sub_caption: |

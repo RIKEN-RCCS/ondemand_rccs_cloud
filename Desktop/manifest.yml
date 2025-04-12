@@ -1,0 +1,12 @@
+---
+name: 1Desktop
+icon: fa://desktop
+category: Interactive Apps
+role: batch_connect
+subcategory: Desktops
+description: |
+  This app will launch a Remote Desktop.
+new_window: true
+tile:
+  sub_caption: |
+  

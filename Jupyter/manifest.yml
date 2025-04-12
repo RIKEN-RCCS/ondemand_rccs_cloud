@@ -1,0 +1,11 @@
+---
+name: 2Jupyter
+category: Interactive Apps
+role: batch_connect
+subcategory: Servers
+new_window: true
+description: |
+  This app will launch a JupyterLab.
+tile:
+  sub_caption: |
+  

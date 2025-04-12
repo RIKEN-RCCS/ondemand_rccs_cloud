@@ -1,0 +1,13 @@
+---
+title: VSCode
+form:
+  - cluster
+  - custom_queue
+  - bc_num_hours
+  - gpus
+
+attributes:
+  cluster: "rccs-cloud"
+  <%= custom_queue() %>
+  <%= bc_num_hours() %>
+  <%= gpus() %>

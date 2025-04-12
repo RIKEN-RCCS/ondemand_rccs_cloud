@@ -1,0 +1,23 @@
+---
+title: Terminal
+form:
+  - cluster
+  - custom_queue
+  - bc_num_hours
+  - gpus
+  - font_size
+
+attributes:
+  cluster: "rccs-cloud"
+  <%= custom_queue() %>
+  <%= bc_num_hours() %>
+  <%= gpus() %>
+    
+  font_size:
+    id: font_size
+    label: Font Size
+    widget: number_field
+    max: 30
+    min: 10
+    step: 1
+    value: 16

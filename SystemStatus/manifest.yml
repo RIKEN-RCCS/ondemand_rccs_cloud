@@ -1,0 +1,7 @@
+---
+name: System Status
+icon: fa://tachometer-alt
+url: https://portal.cloud.r-ccs.riken.jp/grafana/d/YcZEQk77k/
+category: Passenger Apps
+tile:
+  sub_caption: |
