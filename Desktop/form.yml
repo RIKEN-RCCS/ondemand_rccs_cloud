@@ -1,0 +1,11 @@
+---
+title: Desktop
+form:
+  - global_queue
+  - global_hours
+  - global_gpus
+  - cluster
+  - desktop
+attributes:
+  cluster: "rccs-cloud"
+  desktop: "xfce"

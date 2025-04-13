@@ -1,18 +1,13 @@
 ---
 title: Terminal
 form:
+  - global_queue
+  - global_hours
+  - global_gpus
   - cluster
-  - custom_queue
-  - bc_num_hours
-  - gpus
   - font_size
-
 attributes:
   cluster: "rccs-cloud"
-  <%= custom_queue() %>
-  <%= bc_num_hours() %>
-  <%= gpus() %>
-    
   font_size:
     id: font_size
     label: Font Size

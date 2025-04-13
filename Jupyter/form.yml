@@ -1,0 +1,9 @@
+---
+title: Jupyter
+form:
+  - global_queue
+  - global_hours
+  - global_gpus
+  - cluster
+attributes:
+  cluster: "rccs-cloud"

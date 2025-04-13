@@ -48,4 +48,4 @@ batch_connect:
     singularity run ${OPTION} ${IMAGE} bash ./container.sh
 
 script:
-  <%= script("ood_desktop", custom_queue, gpus) %>
+  <%= script("ood_desktop", global_queue, global_hours, global_gpus) %>

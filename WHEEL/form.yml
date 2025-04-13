@@ -1,18 +1,13 @@
 ---
 title: WHEEL
 form:
+  - global_queue_x86
+  - global_hours
+  - global_gpus
   - cluster
-  - custom_queue
-  - bc_num_hours
-  - gpus
   - key_mode
-
 attributes:
   cluster: "rccs-cloud"
-  <%= custom_queue_only_x86() %>
-  <%= bc_num_hours() %>
-  <%= gpus() %>
-  
   key_mode:
     kabel: Key Mode
     widget: select

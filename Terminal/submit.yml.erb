@@ -3,5 +3,4 @@ batch_connect:
   template: "basic"
 
 script:
-  <%= script("ood_terminal", custom_queue, gpus) %>
-
+  <%= script("ood_desktop", global_queue, global_hours, global_gpus) %>
