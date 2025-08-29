@@ -1,7 +1,0 @@
----
-name: Portal
-icon: fa://book
-url: https://portal.cloud.r-ccs.riken.jp/redmine
-category: Passenger Apps
-tile:
-  sub_caption: |
