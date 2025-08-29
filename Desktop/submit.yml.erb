@@ -11,7 +11,6 @@ batch_connect:
     %s
     CTRSCRIPT
 
-    module load singularity
     export LANG=C
     DIR=""
     for d in /run /var/run/munge /var/spool/slurm /cloud_opt /lvs0 /hs /usr/lib/locale/locale-archive; do
@@ -31,6 +30,7 @@ batch_connect:
       for d in `ls -d1 /opt/rocm*`; do
         export SINGULARITY_BINDPATH=$SINGULARITY_BINDPATH,$d
       done
+      [ -e /opt/amdgpu ] && export SINGULARITY_BINDPATH=$SINGULARITY_BINDPATH,/opt/amdgpu
       for f in `ls -1 /usr/share/Modules/modulefiles/rocm`; do
         path=/usr/share/Modules/modulefiles/rocm/$f
         r=`realpath $path`
@@ -48,4 +48,4 @@ batch_connect:
     singularity run ${OPTION} ${IMAGE} bash ./container.sh
 
 script:
-  <%= script("ood_desktop", global_queue, global_hours, global_gpus) %>
+  <%= script("ood_desktop", global_queue, global_hours, global_gpus, global_email) %>

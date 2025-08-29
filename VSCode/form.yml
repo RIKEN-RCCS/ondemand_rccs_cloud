@@ -4,6 +4,7 @@ form:
   - global_queue
   - global_hours
   - global_gpus
+  - global_email
   - cluster
 attributes:
   cluster: "rccs-cloud"

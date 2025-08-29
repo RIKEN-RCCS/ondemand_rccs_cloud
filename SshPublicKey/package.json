@@ -1,0 +1,14 @@
+{
+  "name": "sshpublickey",
+  "version": "1.0.0",
+  "description": "Show and register SSH public key",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Masahiro Nakao",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

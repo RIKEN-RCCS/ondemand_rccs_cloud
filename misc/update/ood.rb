@@ -29,7 +29,7 @@ Rails.application.config.after_initialize do
   end
 end
 
-def script(name, queue, hours, gpus = "")
+def script(name, queue, hours, gpus = "", email = "")
   yaml =  "  job_name: #{name}\n"
   yaml << "    queue_name: #{queue}\n"
   yaml << "    native:\n"
@@ -44,6 +44,11 @@ def script(name, queue, hours, gpus = "")
     yaml << "      - \"--gpus=1 -t 8:00:00\"\n"
   else
     yaml << "      - \"-t #{hours}:00:00\"\n"
+  end
+
+  unless email.blank?
+    yaml << "    email: #{email}\n"
+    yaml << "    email_on_started: true\n"
   end
 
   yaml

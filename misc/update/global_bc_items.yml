@@ -18,6 +18,8 @@ global_bc_form_items:
       - [ "ai-h100l",    data-hide-global-gpus: true ]
       - [ "ai-h100l-pu", data-hide-global-gpus: true, data-hide-global-hours: true ]
       - [ "ai-h200-brc", data-hide-global-gpus: true, data-hide-global-hours: true ]
+      - [ "fs-mi300a",   data-hide-global-gpus: true ]
+      - [ "fs-mi300x",   data-hide-global-gpus: true ]
     help: The maximum run times for the ai-h100l-pu or ai-h200-brc are 30 minutes and 8 hours, respectively.
 
   global_queue_x86:
@@ -34,6 +36,23 @@ global_bc_form_items:
       - [ "qc-mi210",    data-hide-global-gpus: true ]
       - [ "qc-mi250",    data-hide-global-gpus: true ]
       - [ "qc-pvc",      data-hide-global-gpus: true ]
+      - [ "ai-h100l",    data-hide-global-gpus: true ]
+      - [ "ai-h100l-pu", data-hide-global-gpus: true, data-hide-global-hours: true ]
+      - [ "ai-h200-brc", data-hide-global-gpus: true, data-hide-global-hours: true ]
+      - [ "fs-mi300a",   data-hide-global-gpus: true ]
+      - [ "fs-mi300x",   data-hide-global-gpus: true ]
+    help: The maximum run times for the ai-h100l-pu or ai-h200-brc are 30 minutes and 8 hours, respectively.
+
+  global_queue_nvidia_x86:
+    widget: select
+    label: Partition
+    options:
+      - [ "a100",        data-hide-global-gpus: true ]
+      - [ "r340",        data-hide-global-gpus: true ]
+      - [ "genoa",       data-hide-global-gpus: true ]
+      - [ "genoa-m",     data-hide-global-gpus: true ]
+      - [ "qc-a100"                                  ]
+      - [ "qc-h100",     data-hide-global-gpus: true ]
       - [ "ai-h100l",    data-hide-global-gpus: true ]
       - [ "ai-h100l-pu", data-hide-global-gpus: true, data-hide-global-hours: true ]
       - [ "ai-h200-brc", data-hide-global-gpus: true, data-hide-global-hours: true ]
@@ -57,3 +76,7 @@ global_bc_form_items:
     max: 8
     step: 1
 
+  global_email:
+    label: "Email address (You will receive an email when it starts)"
+
+    

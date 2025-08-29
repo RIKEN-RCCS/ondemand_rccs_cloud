@@ -1,0 +1,8 @@
+---
+name: SSH Public Key
+category: Passenger Apps
+description: Show and register SSH Public Key
+icon: fa://key
+tile:
+  sub_caption: |
+  
