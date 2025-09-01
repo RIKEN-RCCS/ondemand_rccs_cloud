@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>R-CCS Cloud User Manual</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container-fluid">
+    <nav class="sidebar bg-body-secondary">
+      <h5 class="ps-3 pe-1 d-inline">Contents</h5><a href="resource_ja.html" style="font-size: 0.75rem;" class="text-decoration-none ms-0">[Japanese]</a>
+      <ul class="nav flex-column px-3 py-2">
+        <li class="nav-item"><a href="index.html" class="nav-link">1. Introduction</a></li>
+        <li class="nav-item"><a href="resource.html" class="nav-link">2. Computational Resources</a></li>
+        <li class="nav-item"><a href="ood.html" class="nav-link">3. Open OnDemand</a></li>
+        <li class="nav-item"><a href="terminal.html" class="nav-link">4. Terminal</a></li>
+        <li class="nav-item"><a href="storage.html" class="nav-link">5. Storage</a></li>
+        <li class="nav-item"><a href="other.html" class="nav-link">6. Others</a></li>
+      </ul>
+    </nav>
+
+    <main class="main-content">
+      <h2>2. Computational Resources</h2>
+      <p>You can use the computational resources listed in the table below. The maximum execution time per job is 24 hours.</p>
+      <table class="table table-sm fs-6">
+        <tr><th>Partition</th><th class="text-nowrap">Nodes</th><th>CPU + GPU</th><th>Memory</th><th>Network</th><th>Remarks</th></tr>
+        <tr><td class="text-nowrap">fx700</td><td class="text-end">31</td><td>Fujitsu A64FX</td><td class="text-end">32GB</td><td>InfiniBand EDR 100Gbps</td><td></td></tr>
+        <tr><td class="text-nowrap">a100</td><td class="text-end">2</td><td>AMD EPYC 7763 x 2 + NVIDIA A100 x 8</td><td class="text-end">2,048GB</td><td>InfiniBand HDR 200Gbps x 8</td><td></td></tr>
+        <tr><td class="text-nowrap">mi100</td><td class="text-end">1</td><td>AMD EPYC 7713 x 2 + AMD MI100 x 8</td><td class="text-end">1,024GB</td><td>Ethernet 1Gbps</td><td></td></tr>
+        <tr><td class="text-nowrap">r340</td><td class="text-end">2</td><td>Intel Xeon E-2134</td><td class="text-end">64GB</td><td>Ethernet 1Gbps</td><td>Multiple users can use simultaneously. Please use it for cross-compilation environment for FX700.</td></tr>
+        <tr><td class="text-nowrap">genoa</td><td class="text-end">16</td><td>AMD EPYC 9684X</td><td class="text-end">768GB</td><td>Ethernet 1Gbps</td><td></td></tr>
+        <tr><td class="text-nowrap">genoa-m</td><td class="text-end">1</td><td>AMD EPYC 9684X x 2</td><td class="text-end">3,072GB</td><td>Ethernet 1Gbps</td><td></td></tr>
+        <tr><td class="text-nowrap">ai-h100l</td><td class="text-end">2</td><td>Intel Xeon Gold 5515+ x 2 + H100 NVL x 1</td><td class="text-end">256GB</td><td>Ethernet 1Gbps</td><td>Exclusive for AI team</td></tr>
+        <tr><td class="text-nowrap">ai-h100l-pu</td><td class="text-end">2</td><td>Intel Xeon Gold 5515+ x 2 + H100 NVL x 1</td><td class="text-end">256GB</td><td>Ethernet 1Gbps</td><td>Shared with ai-h100l nodes. Non-AI team users can use it but limited to 30 minutes max execution time.</td></tr>
+        <tr><td class="text-nowrap">ai-h200-brc</td><td class="text-end">1</td><td>Intel Xeon Platinum 8592+ x 2 + NVIDIA H200 x 8</td><td class="text-end">1,536GB</td><td>Ethernet 1Gbps</td><td>If using GPUs, specify Slurm option --gpus=&lt;number of GPUs&gt;. InfiniBand NDR 200Gbps under preparation.</td></tr>
+        <tr><td class="text-nowrap">ai-l40s</td><td class="text-end">7</td><td>AMD EPYC 9554 x 2 + NVIDIA L40S x 8</td><td class="text-end">1,536GB</td><td>Ethernet 1Gbps</td><td>If using GPUs, specify Slurm option --gpus=&lt;number of GPUs&gt;. InfiniBand NDR 200Gbps under preparation.</td></tr>
+        <tr><td class="text-nowrap">qc-a100</td><td class="text-end">2</td><td>AMD EPYC 7713 x 2 + NVIDIA A100 x 8</td><td class="text-end">4,096GB</td><td>InfiniBand HDR 200Gbps</td><td>If using GPUs, specify Slurm option --gpus=&lt;number of GPUs&gt;.</td></tr>
+        <tr><td class="text-nowrap">qc-h100</td><td class="text-end">1</td><td>AMD EPYC 9534 x 2 + NVIDIA H100 x 4</td><td class="text-end">1,536GB</td><td>InfiniBand HDR 200Gbps</td><td></td></tr>
+        <tr><td class="text-nowrap">qc-gh200</td><td class="text-end">8</td><td>NVIDIA GH200 Grace Hopper Superchip</td><td class="text-end">512GB</td><td>InfiniBand HDR 200Gbps</td><td></td></tr>
+        <tr><td class="text-nowrap">qc-mi210</td><td class="text-end">2</td><td>AMD EPYC 9554 x 2 + AMD MI210 x 1</td><td class="text-end">1,536GB</td><td>InfiniBand HDR 200Gbps</td><td>GPU preparation in progress</td></tr>
+        <tr><td class="text-nowrap">qc-mi250</td><td class="text-end">4</td><td>AMD EPYC 7713 x 2 + AMD MI250 x 8</td><td class="text-end">1,024GB</td><td>InfiniBand HDR 200Gbps</td><td></td></tr>
+        <tr><td class="text-nowrap">qc-pvc</td><td class="text-end">2</td><td>Intel Xeon Platinum 8470 x 2 + Intel Data Center GPU Max 1550 x 8</td><td class="text-end">2,048GB</td><td>InfiniBand HDR 200Gbps</td><td></td></tr>
+        <tr><td class="text-nowrap">fs-mi300a</td><td class="text-end">1</td><td>AMD MI300A x 4</td><td class="text-end">512GB</td><td>InfiniBand HDR 200Gbps</td><td></td></tr>
+        <tr><td class="text-nowrap">fs-mi300x</td><td class="text-end">1</td><td>AMD EPYC 9534 x 2 + AMD MI300X x 8</td><td class="text-end">1,536GB</td><td>InfiniBand HDR 200Gbps</td><td></td></tr>
+      </table>
+
+      <p>
+        Please set the environment variables of the compute nodes in each partition using the <code>module</code> command shown in the table below. For r340, no specific settings are required.
+      </p>
+      <table class="table table-sm fs-6">
+        <tr><th>Partition</th><th>Command</th></tr>
+        <tr><td class="text-nowrap">fx700</td><td><code>module load system/fx700 FJSVstclanga</code></td></tr>
+        <tr><td class="text-nowrap">a100</td><td><code>module load system/a100 nvhpc</code></td></tr>
+        <tr><td class="text-nowrap">mi100</td><td><code>module load system/mi100 rocm</code></td></tr>
+        <tr><td class="text-nowrap">genoa, genoa-m</td><td><code>module load system/genoa mpi/openmpi-x86_64</code></td></tr>
+        <tr><td class="text-nowrap">ai-h100l, ai-h100l-pu</td><td><code>module load system/ai-h100l nvhpc</code></td></tr>
+        <tr><td class="text-nowrap">ai-h200-brc</td><td><code>module load system/ai-h200-brc nvhpc</code></td></tr>
+        <tr><td class="text-nowrap">ai-l40s</td><td><code>module load system/ai-l40s nvhpc</code></td></tr>
+        <tr><td class="text-nowrap">qc-a100</td><td><code>module load system/qc-a100 nvhpc</code></td></tr>
+        <tr><td class="text-nowrap">qc-h100</td><td><code>module load system/qc-h100 nvhpc</code></td></tr>
+        <tr><td class="text-nowrap">qc-gh200</td><td><code>module load system/qc-gh200 nvhpc</code></td></tr>
+        <tr><td class="text-nowrap">qc-mi210</td><td><code>module load qc-mi210 rocm</code></td></tr>
+        <tr><td class="text-nowrap">qc-mi250</td><td><code>module load system/qc-mi250 rocm</code></td></tr>
+        <tr><td class="text-nowrap">qc-pvc</td><td><code>module load system/qc-pvc</code> or <code>source /opt/intel/oneapi/setvars.sh</code></td></tr>
+        <tr><td class="text-nowrap">fs-mi300a</td><td><code>module load system/fs-mi300a rocm</code></td></tr>
+        <tr><td class="text-nowrap">fs-mi300x</td><td><code>module load system/fs-mi300x rocm</code></td></tr>
+      </table>
+    </main>
+  </div>
+
+  <footer class="bg-purple d-flex justify-content-center align-items-center">
+    <p class="mb-0 text-white">&copy; RIKEN Center for Computational Science</p>
+  </footer>
+</body>
+</html>

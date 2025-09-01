@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>R-CCSクラウド利用マニュアル</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container-fluid">
+    <nav class="sidebar bg-body-secondary">
+      <h5 class="ps-3 pe-1 d-inline">目次</h5><a href="storage.html" style="font-size: 0.75rem;" class="text-decoration-none ms-0">[English]</a>
+      <ul class="nav flex-column px-3 py-2">
+        <li class="nav-item"><a href="index_ja.html" class="nav-link">1. はじめに</a></li>
+        <li class="nav-item"><a href="resource_ja.html" class="nav-link">2. 計算資源</a></li>
+        <li class="nav-item"><a href="ood_ja.html" class="nav-link">3. Open OnDemand</a></li>
+        <li class="nav-item"><a href="terminal_ja.html" class="nav-link">4. ターミナル</a></li>
+        <li class="nav-item"><a href="storage_ja.html" class="nav-link">5. ストレージ</a></li>
+        <li class="nav-item"><a href="other_ja.html" class="nav-link">6. その他</a></li>
+      </ul>
+    </nav>
+
+    <main class="main-content">
+      <h2>5. ストレージ</h2>
+      <ul>
+        <li>R-CCSクラウドのストレージは、各ユーザが利用できる「ホームディレクトリ」と各チーム・ユニット内で共同利用できる「グループディレクトリ」があります。</li>
+        <li>ホームディレクトリの容量は最大1TBで、利用状況を取得するコマンドは<code>lfs quota -h -u `whoami` /hs/work0</code>です。</li>
+        <li>グループディレクトリの容量はデフォルトは5TBで、利用状況を取得するコマンドは<code>lfs quota -hp [Project ID] /lvs0</code>です（例：<code>lfs quota -hp 11020 /lvs0</code>）。</li>
+        <li>グループディレクトリは申請により段階的（5TB &rarr; 10TB &rarr; 50TB &rarr; 100TB &rarr; 200TB &rarr; 400TB）に増量可能です。段階を飛ばすことはできません。希望する増量が承認されてから、次の申請を提出ください。</li>
+        <li>400TBまでは無条件で承認されますが、それを超えるものについては、申請理由に基づき部会で審議します。</li>
+        <li>グループディレクトリのi-node最大数はデフォルトで10,000,000個ですが、申請により無条件で増量できます。</li>
+        <li>増量を申請する方は、所属長の許可を得てから<a href="https://portal.cloud.r-ccs.riken.jp/redmine/projects/helpdesk/issues">コチラ</a>から申請ください。</li>
+      </ul>
+      <p>
+      グループディレクトリのPATHとProject IDは下記の表の通りです。自分が所属するグループを確認したい場合は、ターミナルから<code>id</code>コマンドを実行ください。下記の表にチーム・ユニット名がない場合は、<a href="https://portal.cloud.r-ccs.riken.jp/redmine/projects/helpdesk/issues">コチラ</a>から申請ください。
+      </p>
+      <table class="table table-sm fs-6">
+        <tr><th>チーム・ユニット名</th><th>Project ID</th><th>グループ名</th><th>グループディレクトリのPATH</th></tr>
+        <tr><td>プロセッサ研究チーム</td><td class="text-end">11001</td><td>rccs-prt</td><td><code>/lvs0/rccs-prt</code></td></tr>
+        <tr><td>大規模並列数値計算技術研究チーム</td><td class="text-end">11002</td><td>rccs-lpnctrt</td><td><code>/lvs0/rccs-lpnctrt</code></td></tr>
+        <tr><td>次世代高性能アーキテクチャ研究チーム</td><td class="text-end">11003</td><td>rccs-nghpart</td><td><code>/lvs0/rccs-nghpart</code></td></tr>
+        <tr><td>高性能ビッグデータ研究チーム</td><td class="text-end">11004</td><td>rccs-hpbdrt</td><td><code>/lvs0/rccs-hpbdrt</code></td></tr>
+        <tr><td>高性能人工知能システム研究チーム</td><td class="text-end">11005</td><td>rccs-hpaisrt</td><td><code>/lvs0/rccs-hpaisrt</code></td></tr>
+        <tr><td>連続系場の理論研究チーム</td><td class="text-end">11006</td><td>rccs-ftrt</td><td><code>/lvs0/rccs-ftrt</code></td></tr>
+        <tr><td>離散事象シミュレーション研究チーム</td><td class="text-end">11007</td><td>rccs-desrt</td><td><code>/lvs0/rccs-desrt</code></td></tr>
+        <tr><td>量子系分子科学研究チーム</td><td class="text-end">11008</td><td>rccs-cmsrt</td><td><code>/lvs0/rccs-cmsrt</code></td></tr>
+        <tr><td>量子系物質科学研究チーム</td><td class="text-end">11009</td><td>rccs-cmasrt</td><td><code>/lvs0/rccs-cmasrt</code></td></tr>
+        <tr><td>粒子系生物物理研究チーム</td><td class="text-end">11010</td><td>rccs-cbrt</td><td><code>/lvs0/rccs-cbrt</code></td></tr>
+        <tr><td>複合系気候科学研究チーム</td><td class="text-end">11011</td><td>rccs-ccsrt</td><td><code>/lvs0/rccs-ccsrt</code></td></tr>
+        <tr><td>複雑現象統一的解法研究チーム</td><td class="text-end">11012</td><td>rccs-cpusrt</td><td><code>/lvs0/rccs-cpusrt</code></td></tr>
+        <tr><td>データ同化研究チーム</td><td class="text-end">11013</td><td>rccs-dart</td><td><code>/lvs0/rccs-dart</code></td></tr>
+        <tr><td>計算構造生物学研究チーム</td><td class="text-end">11014</td><td>rccs-csbrt</td><td><code>/lvs0/rccs-csbrt</code></td></tr>
+        <tr><td>総合防災・減災研究チーム</td><td class="text-end">11015</td><td>rccs-cdmrrt</td><td><code>/lvs0/rccs-cdmrrt</code></td></tr>
+        <tr><td>施設運転技術ユニット</td><td class="text-end">11016</td><td>rccs-fodt</td><td><code>/lvs0/rccs-fodt</code></td></tr>
+        <tr><td>システム運転技術ユニット</td><td class="text-end">11017</td><td>rccs-sodt</td><td><code>/lvs0/rccs-sodt</code></td></tr>
+        <tr><td>ソフトウェア開発技術ユニット</td><td class="text-end">11018</td><td>rccs-sdt</td><td><code>/lvs0/rccs-sdt</code></td></tr>
+        <tr><td>先端運用技術ユニット</td><td class="text-end">11020</td><td>rccs-aot</td><td><code>/lvs0/rccs-aot</code></td></tr>
+        <tr><td>分⼦デザイン計算知能ユニット</td><td class="text-end">11021</td><td>rccs-mdciu</td><td><code>/lvs0/rccs-mdciu</code></td></tr>
+        <tr><td>バイオメディカル計算知能ユニット</td><td class="text-end">11022</td><td>rccs-bciu</td><td><code>/lvs0/rccs-bciu</code></td></tr>
+        <tr><td>高性能計算モデリング研究チーム</td><td class="text-end">11023</td><td>rccs-sprt</td><td><code>/lvs0/rccs-sprt</code></td></tr>
+        <tr><td>実現可能性調査システムチーム</td><td class="text-end">11024</td><td>rccs-fs-sys</td><td><code>/lvs0/rccs-fs-sys</code></td></tr>
+        <tr><td>量子HPC連携プラットフォーム部門</td><td class="text-end">11027</td><td>rccs-qhpc</td><td><code>/lvs0/rccs-qhpc</code></td></tr>
+        <tr><td>次世代AIデバイス開発研究ユニット</td><td class="text-end">11028</td><td>rccs-aaid</td><td><code>/lvs0/rccs-aaid</code></td></tr>
+        <tr><td>生命・医科学アプリインターフェース基盤開発ユニット</td><td class="text-end">11029</td><td>rccs-lmsaip</td><td><code>/lvs0/rccs-lmaip</code></td></tr>
+        <tr><td>材料・物性アプリインターフェース基盤開発ユニット</td><td class="text-end">11030</td><td>rccs-msaip</td><td><code>/lvs0/rccs-msaip</code></td></tr>
+        <tr><td>AI学習最適化基盤開発ユニット</td><td class="text-end">11031</td><td>rccs-lop</td><td><code>/lvs0/rccs-lop</code></td></tr>
+        <tr><td>AI学習・推論データ管理基盤開発ユニット</td><td class="text-end">11032</td><td>rccs-dmp</td><td><code>/lvs0/rccs-dmp</code></td></tr>
+        <tr><td>AI開発計算環境運用技術ユニット</td><td class="text-end">11033</td><td>rccs-aidceo</td><td><code>/lvs0/rccs-aidceo</code></td></tr>
+        <tr><td>高性能クラウドシステム・セキュアソフトウェア研究チーム</td><td class="text-end">11034</td><td>rccs-hpcsssrt</td><td><code>/lvs0/rccs-hpcsssrt</code></td></tr>
+        <tr><td>AI for Science基盤モデル研究チーム</td><td class="text-end">11035</td><td>rccs-asfm</td><td><code>/lvs0/rccs-asfm</code></td></tr>
+        <tr><td>TRIP-AGIS 材料・物性分野モデル開発プロジェクト</td><td class="text-end">11036</td><td>agis-fmms</td><td><code>/lvs0/agis-fmms</code></td></tr>
+        <tr><td>TRIP-AGIS 生命・医科学分野モデル開発プロジェクト</td><td class="text-end">11037</td><td>agis-fmlms</td><td><code>/lvs0/agis-fmlms</code></td></tr>
+        <tr><td>TRIP-AGIS 共通基盤開発・整備プロジェクト</td><td class="text-end">11038</td><td>agis-cit</td><td><code>/lvs0/agis-cit</code></td></tr>
+	<tr><td>AI創薬連携基盤ユニット</td><td class="text-end">11039</td><td>rccs-aiddcu</td><td><code>/lvs0/rccs-aiddcu</code></td></tr>
+	<tr><td>次世代計算基盤システム開発ユニット</td><td class="text-end">11040</td><td>rccs-nghpcisdu</td><td><code>/lvs0/rccs-nghpcisdu</code></td></tr>
+	<tr><td>次世代計算基盤アプリケーション開発ユニット</td><td class="text-end">11041</td><td>rccs-nghpcadu</td><td><code>/lvs0/rccs-nghpcadu</code></td></tr>
+	<tr><td>次世代計算基盤運用技術ユニット</td><td class="text-end">11042</td><td>rccs-nghpcotu</td><td><code>/lvs0/rccs-nghpcotu</code></td></tr>
+	<tr><td>先進的計算基盤技術開発ユニット</td><td class="text-end">11043</td><td>rccs-ahpctdu</td><td><code>/lvs0/rccs-ahpctdu</code></td></tr>
+      </table>
+    </main>
+  </div>
+  <footer class="bg-purple d-flex justify-content-center align-items-center">
+    <p class="mb-0 text-white">&copy; RIKEN Center for Computational Science</p>
+  </footer>
+</body>
+</html>

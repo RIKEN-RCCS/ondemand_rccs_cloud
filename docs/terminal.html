@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>R-CCS Cloud User Manual</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container-fluid">
+    <nav class="sidebar bg-body-secondary">
+      <h5 class="ps-3 pe-1 d-inline">Contents</h5><a href="terminal_ja.html" style="font-size: 0.75rem;" class="text-decoration-none ms-0">[Japanese]</a>
+      <ul class="nav flex-column px-3 py-2">
+        <li class="nav-item"><a href="index.html" class="nav-link">1. Introduction</a></li>
+        <li class="nav-item"><a href="resource.html" class="nav-link">2. Computational Resources</a></li>
+        <li class="nav-item"><a href="ood.html" class="nav-link">3. Open OnDemand</a></li>
+        <li class="nav-item"><a href="terminal.html" class="nav-link">4. Terminal</a></li>
+        <li class="nav-item"><a href="storage.html" class="nav-link">5. Storage</a></li>
+        <li class="nav-item"><a href="other.html" class="nav-link">6. Others</a></li>
+      </ul>
+    </nav>
+
+    <main class="main-content">
+      <h2>4. Terminal</h2>
+      <p>
+        This chapter explains how to submit batch jobs via the command line using terminal software.  
+        The R-CCS Cloud uses Slurm as its job scheduler.  
+        For details on how to use Slurm, see <a href="https://slurm.schedmd.com">https://slurm.schedmd.com</a>.
+      </p>
+
+      <h3>4.1. Using Batch Jobs</h3>
+      <p>
+        As an example, save the following job script as <code>sample.sh</code>.  
+        For available partitions specified with <code>-p</code>, see <a href="resource.html">2. Computational Resources</a>.
+      </p>
+      <div class="card shadow-sm ms-3">
+        <div class="card-body p-0">
+          <pre class="m-0 p-2 bg-light text-dark">
+#!/bin/bash
+#SBATCH --job-name=jobname # Job name
+#SBATCH -p fx700 # Partition name
+#SBATCH -N 1 # Number of nodes
+#SBATCH -t 01:00:00 # Time
+
+module load system/fx700 FJSVstclanga
+hostname # Command to execute</pre>
+        </div>
+      </div>
+      <p>
+        Use the <code>sbatch</code> command to register <code>sample.sh</code> with the scheduler.  
+        When resources become available in the specified partition, the job will start automatically.
+      </p>
+      <div class="card shadow-sm ms-3">
+        <div class="card-body p-0">
+          <pre class="m-0 p-2 bg-light text-dark">
+$ sbatch ./sample.sh</pre>
+        </div>
+      </div>
+
+      <h3>4.2. Interactive Use</h3>
+      <p>
+        To use a compute node interactively from the command line, run the <code>srun</code> command with the <code>--pty</code> option specifying the shell:
+      </p>
+      <div class="card shadow-sm ms-3">
+        <div class="card-body p-0">
+          <pre class="m-0 p-2 bg-light text-dark">
+$ srun -N 1 -p fx700 --pty bash</pre>
+        </div>
+      </div>
+      <p>
+        To end an interactive session, run the <code>exit</code> command.
+      </p>
+      <div class="card shadow-sm ms-3">
+        <div class="card-body p-0">
+          <pre class="m-0 p-2 bg-light text-dark">
+$ exit</pre>
+        </div>
+      </div>
+
+      <h3>4.3. Checking Computational Resources</h3>
+      <p>
+        Use the <code>sinfo</code> command to check resource availability.  
+        Nodes where <code>STATE</code> is <code>idle</code> are available.
+      </p>
+      <div class="card shadow-sm ms-3">
+        <div class="card-body p-0">
+          <pre class="m-0 p-2 bg-light text-dark">
+$sinfo
+PARTITION    AVAIL  TIMELIMIT  NODES  STATE NODELIST
+fx700           up 1-00:00:00     31   idle fx[00-30]
+a100            up 1-00:00:00      1  alloc a100-0
+a100            up 1-00:00:00      1   idle a100-1
+mi100           up 1-00:00:00      1   idle mi100
+r340            up 1-00:00:00      2   idle r340-[03-04]
+genoa           up 1-00:00:00     13  alloc genoa[00-11,13]
+genoa           up 1-00:00:00      3   idle genoa[12,14-15]
+genoa-m         up 1-00:00:00      1  alloc genoa-m
+qc-a100         up 1-00:00:00      1    mix qc-a100-00
+qc-a100         up 1-00:00:00      1  alloc qc-a100-01
+qc-h100         up 1-00:00:00      1   idle qc-h100-00
+qc-gh200        up 1-00:00:00      5  alloc qc-gh200-[00-04]
+qc-gh200        up 1-00:00:00      2   idle qc-gh200-[05-06]
+qc-gh200-mig    up 1-00:00:00      1   idle qc-gh200-07
+qc-mi250        up 1-00:00:00      4   idle qc-mi250-[00-03]
+qc-pvc          up 1-00:00:00      1  alloc qc-pvc-01
+qc-pvc          up 1-00:00:00      1   idle qc-pvc-00
+qc-mi210        up 1-00:00:00      1  alloc qc-mi210-01
+qc-mi210        up 1-00:00:00      1   idle qc-mi210-00
+ai-h100l-pu     up      30:00      2   idle ai-h100l-[00-01]
+ai-h100l        up 1-00:00:00      2   idle ai-h100l-[00-01]
+ai-h200-brc     up 1-00:00:00      1   idle ai-h200-brc-00
+ai-l40s         up 1-00:00:00      3   idle ai-l40s-[00-02]
+fs-mi300a       up 1-00:00:00      1   idle fs-mi300a-00
+fs-mi300x       up 1-00:00:00      1   idle fs-mi300x-00</pre>
+        </div>
+      </div>
+
+      <h3>4.4. Checking Jobs</h3>
+      <p>
+        Use the <code>squeue</code> command to check job status.  
+        To check a specific job, use the <code>-j</code> option with the job ID.
+      </p>
+      <div class="card shadow-sm ms-3">
+        <div class="card-body p-0">
+          <pre class="m-0 p-2 bg-light text-dark">
+$ squeue -j 77780
+JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+77780     fx700  jobname masahiro  R       0:04      2 fx[00-01]</pre>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <footer class="bg-purple d-flex justify-content-center align-items-center">
+    <p class="mb-0 text-white">&copy; RIKEN Center for Computational Science</p>
+  </footer>
+</body>
+</html>

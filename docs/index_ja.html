@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>R-CCSクラウド利用マニュアル</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container-fluid">
+    <nav class="sidebar bg-body-secondary">
+      <h5 class="ps-3 pe-1 d-inline">目次</h5><a href="index.html" style="font-size: 0.75rem;" class="text-decoration-none ms-0">[English]</a>
+      <ul class="nav flex-column px-3 py-2">
+        <li class="nav-item"><a href="index_ja.html" class="nav-link">1. はじめに</a></li>
+        <li class="nav-item"><a href="resource_ja.html" class="nav-link">2. 計算資源</a></li>
+        <li class="nav-item"><a href="ood_ja.html" class="nav-link">3. Open OnDemand</a></li>
+        <li class="nav-item"><a href="terminal_ja.html" class="nav-link">4. ターミナル</a></li>
+        <li class="nav-item"><a href="storage_ja.html" class="nav-link">5. ストレージ</a></li>
+        <li class="nav-item"><a href="other_ja.html" class="nav-link">6. その他</a></li>
+      </ul>
+    </nav>
+
+    <main class="main-content">
+      <h2>1. はじめに</h2>
+      <p>
+        R-CCSクラウドを利用するには、「WebブラウザからOpen OnDemandを利用する方法」と「ターミナルソフトウェアからログインノードにSSH接続する方法」があります。
+      </p>
+      <h3>1.1. Open OnDemandの利用</h3>
+      <p>
+        <a target="_blank" href="https://ondemand.cloud.r-ccs.riken.jp">https://ondemand.cloud.r-ccs.riken.jp</a>からログインください。Open OnDemandは、Webブラウザからスーパーコンピュータを利用できるWebポータルです。下記の機能を提供しています。
+      </p>
+      <ul>
+        <li>ファイルの送受信・編集</li>
+        <li>ターミナルの利用</li>
+        <li>対話アプリケーション（リモートデスクトップなど）の実行と管理</li>
+        <li>バッチジョブの実行と管理</li>
+      </ul>
+      <p>
+        Open OnDemandは、Google Chrome、Mozilla Firefox、Microsoft Edgeなどの主要なWebブラウザに対応しています（注：Internet Explorer 11は対応していません）。中でもChromeは、リモートデスクトップなどにおいて、文字列のコピー & ペースト機能をネイティブにサポートしていますので、Chromeのご利用をお勧めします。
+      </p>
+
+      <h3 id="ssh">1.2. ターミナルソフトウェアの利用</h3>
+      <p>
+        SSHの公開鍵の登録を行うために、R-CCSクラウドのOpen OnDemandの「SSH Public Key」を起動してください。「Add Key」の入力欄にご自身の公開鍵を入力してください。
+      </p>
+      <img width="600" alt="SSH Public Key" src="img/SshPublicKey.png">
+      <p>
+      次にターミナルソフトで<code>ssh xxx@login.cloud.r-ccs.riken.jp</code>と入力ください。<code>xxx</code>はユーザ名です。
+      </p>
+    </main>
+  </div>
+  <footer class="bg-purple d-flex justify-content-center align-items-center">
+    <p class="mb-0 text-white">&copy; RIKEN Center for Computational Science</p>
+  </footer>
+</body>
+</html>

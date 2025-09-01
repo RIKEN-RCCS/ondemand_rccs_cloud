@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>R-CCS Cloud User Manual</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container-fluid">
+    <nav class="sidebar bg-body-secondary">
+      <h5 class="ps-3 pe-1 d-inline">Contents</h5><a href="other_ja.html" style="font-size: 0.75rem;" class="text-decoration-none ms-0">[日本語]</a>
+      <ul class="nav flex-column px-3 py-2">
+        <li class="nav-item"><a href="index.html" class="nav-link">1. Introduction</a></li>
+        <li class="nav-item"><a href="resource.html" class="nav-link">2. Computational Resources</a></li>
+        <li class="nav-item"><a href="ood.html" class="nav-link">3. Open OnDemand</a></li>
+        <li class="nav-item"><a href="terminal.html" class="nav-link">4. Terminal</a></li>
+        <li class="nav-item"><a href="storage.html" class="nav-link">5. Storage</a></li>
+        <li class="nav-item"><a href="other.html" class="nav-link">6. Others</a></li>
+      </ul>
+    </nav>
+
+    <main class="main-content">
+      <h2>6. Others</h2>
+
+      <h3>6.1. If You Have Questions</h3>
+      <p>
+        Please submit your questions from <a href="https://portal.cloud.r-ccs.riken.jp/redmine/projects/helpdesk/issues/new">this link</a>.
+      </p>
+
+      <h3>6.2. FX700 Cross-Compilation Environment</h3>
+      <p>
+        The cross-compilation environment is provided as a Singularity container image. Acquire an x86_64 compute node via Slurm and compile using the container image (the example below uses the <code>r340</code> partition).
+      </p>
+      <div class="card shadow-sm ms-3">
+        <div class="card-body p-0">
+          <pre class="m-0 p-2 bg-light text-dark">
+$ srun -p r340 --pty bash
+$ singularity shell /cloud_opt/singularity/x86_64/fx700xos_v1.0.30.sif
+$ FCCpx test.c -o test.x</pre>
+        </div>
+      </div>
+
+      <h3>6.3. Scratch Area</h3>
+      <p>
+        A temporary scratch area on compute nodes is available. The scratch directory is dynamically allocated by the scheduler, and its path is stored in the environment variable <code>USER_SCRATCH_DIR</code>. This directory is deleted when the job finishes.
+      </p>
+
+      <h3>6.4. S3 File Access</h3>
+      <p>
+        A service is available to access R-CCS Cloud files via the AWS S3 protocol. Because this enables external access, it is disabled by default. Administrator setup is required to use it. If you wish to use this service, please apply via <a href="https://portal.cloud.r-ccs.riken.jp/redmine/projects/helpdesk/issues/new">this link</a>.
+      </p>
+      <p>
+        Follow the steps below to enable S3 access. These settings can be configured at
+        <a href="https://lens3.cloud.r-ccs.riken.jp/lens3.sts/">https://lens3.cloud.r-ccs.riken.jp/lens3.sts/</a>.
+      </p>
+      <ol class="ms-3">
+        <li>Register the directory where the bucket will be created.</li>
+        <li>Create the bucket.</li>
+        <li>Generate access keys.</li>
+      </ol>
+      <p>
+        This service is powered by Lenticularis-S3. For details, see
+        <a href="https://github.com/riken-rccs/lens3/">https://github.com/riken-rccs/lens3/</a>.
+      </p>
+
+      <h3>6.5. Notes</h3>
+      <ul class="mt-2 ms-3">
+        <li>Do not run jobs on the login node. For long compilations, acquire a compute node and run them there.</li>
+      </ul>
+
+      <h3>6.5. FAQ</h3>
+      <p>
+        Please see <a href="https://portal.cloud.r-ccs.riken.jp/redmine/projects/helpdesk/wiki">this page</a>.
+      </p>
+    </main>
+  </div>
+
+  <footer class="bg-purple d-flex justify-content-center align-items-center">
+    <p class="mb-0 text-white">&copy; RIKEN Center for Computational Science</p>
+  </footer>
+</body>
+</html>

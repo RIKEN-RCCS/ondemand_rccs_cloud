@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>R-CCSクラウド利用マニュアル</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container-fluid">
+    <nav class="sidebar bg-body-secondary">
+      <h5 class="ps-3 pe-1 d-inline">目次</h5><a href="resource.html" style="font-size: 0.75rem;" class="text-decoration-none ms-0">[English]</a>
+      <ul class="nav flex-column px-3 py-2">
+        <li class="nav-item"><a href="index_ja.html" class="nav-link">1. はじめに</a></li>
+        <li class="nav-item"><a href="resource_ja.html" class="nav-link">2. 計算資源</a></li>
+        <li class="nav-item"><a href="ood_ja.html" class="nav-link">3. Open OnDemand</a></li>
+        <li class="nav-item"><a href="terminal_ja.html" class="nav-link">4. ターミナル</a></li>
+        <li class="nav-item"><a href="storage_ja.html" class="nav-link">5. ストレージ</a></li>
+        <li class="nav-item"><a href="other_ja.html" class="nav-link">6. その他</a></li>
+      </ul>
+    </nav>
+
+    <main class="main-content">
+      <h2>2. 計算資源</h2>
+      <p>下表の計算資源を利用できます。1ジョブ当たりの最大実行時間は24時間です。</p>
+      <table class="table table-sm fs-6">
+        <tr><th>Partition</th><th class="text-nowrap">ノード数</th><th>CPU + GPU</th><th>Memory</th><th>Network</th><th>備考</th></tr>
+        <tr><td class="text-nowrap">fx700</td><td class="text-end">31</td><td>Fujitsu A64FX</td><td class="text-end">32GB</td><td>Infiniband EDR 100Gbpbs</td><td></td></tr>
+        <tr><td class="text-nowrap">a100</td><td class="text-end">2</td><td>AMD EPYC 7763 x 2 + NVIDIA A100 x 8</td><td class="text-end">2,048GB</td><td>InfiniBand HDR 200Gbps x 8</td><td></td></tr>
+        <tr><td class="text-nowrap">mi100</td><td class="text-end">1</td><td>AMD EPYC 7713 x 2 + AMD MI100 x 8</td><td class="text-end">1,024GB</td><td>Ethernet 1Gbps</td><td></td></tr>
+        <tr><td class="text-nowrap">r340</td><td class="text-end">2</td><td>Intel Xeon E-2134</td><td class="text-end">64GB</td><td>Ethernet 1Gbps</td><td>複数ユーザ同時利用可能。FX700のクロスコンパイル環境用としてご利用ください。</td></tr>
+        <tr><td class="text-nowrap">genoa</td><td class="text-end">16</td><td>AMD EPYC 9684X</td><td class="text-end">768GB</td><td>Ethernet 1Gbps</td><td></td></tr>
+        <tr><td class="text-nowrap">genoa-m</td><td class="text-end">1</td><td>AMD EPYC 9684X x 2</td><td class="text-end">3,072GB</td><td>Ethernet 1Gbps</td><td></td></tr>
+        <tr><td class="text-nowrap">ai-h100l</td><td class="text-end">2</td><td>Intel Xeon Gold 5515+ x 2 + H100 NVL x 1</td><td class="text-end">256GB</td><td>Ethernet 1Gbps</td><td>AIチーム専用</td></tr>
+        <tr><td class="text-nowrap">ai-h100l-pu</td><td class="text-end">2</td><td>Intel Xeon Gold 5515+ x 2 + H100 NVL x 1</td><td class="text-end">256GB</td><td>Ethernet 1Gbps</td><td>ai-h100lとノード共用。AIチーム以外の人も利用できるが最大実行時間30分に制限。</td></tr>
+ 	<tr><td class="text-nowrap">ai-h200-brc</td><td class="text-end">1</td><td>Intel Xeon Platinum 8592+ x 2 + NVIDIA H200 x 8</td><td class="text-end">1,536GB</td><td>Ethernet 1Gbps</td><td>GPUを使用する場合はSlurmのオプションで --gpus=&lt;使用するGPU数&gt; を指定ください。InfiniBand NDR 200Gbps準備中。</td></tr>
+        <tr><td class="text-nowrap">ai-l40s</td><td class="text-end">7</td><td>AMD EPYC 9554 x 2 + NVIDIA L40S x 8</td><td class="text-end">1,536GB</td><td>Ethernet 1Gbps</td><td>GPUを使用する場合はSlurmのオプションで --gpus=&lt;使用するGPU数&gt; を指定ください。InfiniBand NDR 200Gbps準備中。</td></tr>
+        <tr><td class="text-nowrap">qc-a100</td><td class="text-end">2</td><td>AMD EPYC 7713 x 2 + NVIDIA A100 x 8</td><td class="text-end">4,096GB</td><td>InfiniBand HDR 200Gbps</td><td>GPUを使用する場合はSlurmのオプションで --gpus=&lt;使用するGPU数&gt; を指定ください。</td></tr>
+        <tr><td class="text-nowrap">qc-h100</td><td class="text-end">1</td><td>AMD EPYC 9534 x 2 + NVIDIA H100 x 4</td><td class="text-end">1,536GB</td><td>InfiniBand HDR 200Gbps</td><td></td></tr>
+        <tr><td class="text-nowrap">qc-gh200</td><td class="text-end">8</td><td>NVIDIA GH200 Grace Hopper Superchip</td><td class="text-end">512GB</td><td>InfiniBand HDR 200Gbps</td><td></td></tr>
+        <tr><td class="text-nowrap">qc-mi210</td><td class="text-end">2</td><td>AMD EPYC 9554 x 2 + AMD MI210 x 1</td><td class="text-end">1,536GB</td><td>InfiniBand HDR 200Gbps</td><td>GPUは準備中</td></tr>
+        <tr><td class="text-nowrap">qc-mi250</td><td class="text-end">4</td><td>AMD EPYC 7713 x 2 + AMD MI250 x 8</td><td class="text-end">1,024GB</td><td>InfiniBand HDR 200Gbps</td><td></td></tr>
+        <tr><td class="text-nowrap">qc-pvc</td><td class="text-end">2</td><td>Intel Xeon Platinum 8470 x 2 + Intel Data Center GPU Max 1550 x 8</td><td class="text-end">2,048GB</td><td>InfiniBand HDR 200Gbps</td><td></td></tr>
+  	<tr><td class="text-nowrap">fs-mi300a</td><td class="text-end">1</td><td>AMD MI300A x 4</td><td class="text-end">512GB</td><td>InfiniBand HDR 200Gbps</td><td></td></tr>
+        <tr><td class="text-nowrap">fs-mi300x</td><td class="text-end">1</td><td>AMD EPYC 9534 x 2 + AMD MI300X x 8</td><td class="text-end">1,536GB</td><td>InfiniBand HDR 200Gbps</td><td></td></tr>
+      </table>
+
+      <p>
+        各パーティションにおける計算ノードの環境変数は、下表の<code>module</code>コマンドを用いて設定してください。r340については、特に設定は必要ありません。
+      </p>
+      <table class="table table-sm fs-6">
+        <tr><th>Partition</th><th>コマンド</th></tr>
+        <tr><td class="text-nowrap">fx700</td><td><code>module load system/fx700 FJSVstclanga</code></td></tr>
+        <tr><td class="text-nowrap">a100</td><td><code>module load system/a100 nvhpc</code></td></tr>
+        <tr><td class="text-nowrap">mi100</td><td><code>module load system/mi100 rocm</code></td></tr>
+        <tr><td class="text-nowrap">genoa, genoa-m</td><td><code>module load system/genoa mpi/openmpi-x86_64</code></td></tr>
+        <tr><td class="text-nowrap">ai-h100l, ai-h100l-pu</td><td><code>module load system/ai-h100l nvhpc</code></td></tr>
+        <tr><td class="text-nowrap">ai-h200-brc</td><td><code>module load system/ai-h200-brc nvhpc</code></td></tr>
+        <tr><td class="text-nowrap">ai-l40s</td><td><code>module load system/ai-l40s nvhpc</code></td></tr>
+        <tr><td class="text-nowrap">qc-a100</td><td><code>module load system/qc-a100 nvhpc</code></td></tr>
+        <tr><td class="text-nowrap">qc-h100</td><td><code>module load system/qc-h100 nvhpc</code></td></tr>
+        <tr><td class="text-nowrap">qc-gh200</td><td><code>module load system/qc-gh200 nvhpc</code></td></tr>
+        <tr><td class="text-nowrap">qc-mi210</td><td><code>module load qc-mi210 rocm</code></td></tr>
+        <tr><td class="text-nowrap">qc-mi250</td><td><code>module load system/qc-mi250 rocm</code></td></tr>
+        <tr><td class="text-nowrap">qc-pvc</td><td><code>module load system/qc-pvc</code> or <code>source /opt/intel/oneapi/setvars.sh</code></td></tr>
+        <tr><td class="text-nowrap">fs-mi300a</td><td><code>module load system/fs-mi300a rocm</code></td></tr>
+        <tr><td class="text-nowrap">fs-mi300x</td><td><code>module load system/fs-mi300x rocm</code></td></tr>
+      </table>
+    </main>
+  </div>
+  <footer class="bg-purple d-flex justify-content-center align-items-center">
+    <p class="mb-0 text-white">&copy; RIKEN Center for Computational Science</p>
+  </footer>
+</body>
+</html>

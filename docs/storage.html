@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>R-CCS Cloud User Manual</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container-fluid">
+    <nav class="sidebar bg-body-secondary">
+      <h5 class="ps-3 pe-1 d-inline">Contents</h5><a href="storage_ja.html" style="font-size: 0.75rem;" class="text-decoration-none ms-0">[Japanese]</a>
+      <ul class="nav flex-column px-3 py-2">
+        <li class="nav-item"><a href="index.html" class="nav-link">1. Introduction</a></li>
+        <li class="nav-item"><a href="resource.html" class="nav-link">2. Computational Resources</a></li>
+        <li class="nav-item"><a href="ood.html" class="nav-link">3. Open OnDemand</a></li>
+        <li class="nav-item"><a href="terminal.html" class="nav-link">4. Terminal</a></li>
+        <li class="nav-item"><a href="storage.html" class="nav-link">5. Storage</a></li>
+        <li class="nav-item"><a href="other.html" class="nav-link">6. Others</a></li>
+      </ul>
+    </nav>
+
+    <main class="main-content">
+      <h2>5. Storage</h2>
+      <ul>
+        <li>R-CCS Cloud storage consists of a "Home Directory" available to each user and a "Group Directory" shared within each team/unit.</li>
+        <li>The Home Directory capacity is up to 1TB. To check usage: <code>lfs quota -h -u `whoami` /hs/work0</code>.</li>
+        <li>The Group Directory capacity is 5TB by default. To check usage: <code>lfs quota -hp [Project ID] /lvs0</code> (e.g., <code>lfs quota -hp 11020 /lvs0</code>).</li>
+        <li>Group Directory capacity can be increased step by step (5TB → 10TB → 50TB → 100TB → 200TB → 400TB) upon request. You cannot skip steps. Submit the next request only after the previous increase has been approved.</li>
+        <li>Up to 400TB will be approved unconditionally. Requests exceeding 400TB will be reviewed by a committee based on the reason provided.</li>
+        <li>The maximum number of i-nodes in the Group Directory is 10,000,000 by default, but can be increased unconditionally upon request.</li>
+        <li>To apply for an increase, obtain approval from your supervisor and submit the request via <a href="https://portal.cloud.r-ccs.riken.jp/redmine/projects/helpdesk/issues">this link</a>.</li>
+      </ul>
+      <p>
+        The PATH and Project ID of the Group Directory are listed in the table below.  
+        To check your group, run the <code>id</code> command in the terminal.  
+        If your team/unit is not listed in the table, please apply via <a href="https://portal.cloud.r-ccs.riken.jp/redmine/projects/helpdesk/issues">this link</a>.
+      </p>
+      <table class="table table-sm fs-6">
+        <tr><th>Team/Unit Name</th><th>Project ID</th><th>Group Name</th><th>Group Directory PATH</th></tr>
+        <tr><td>Processor Research Team</td><td class="text-end">11001</td><td>rccs-prt</td><td><code>/lvs0/rccs-prt</code></td></tr>
+        <tr><td>Large-Scale Parallel Numerical Computing Technology Research Team</td><td class="text-end">11002</td><td>rccs-lpnctrt</td><td><code>/lvs0/rccs-lpnctrt</code></td></tr>
+        <tr><td>Next Generation High Performance Architecture Research Team</td><td class="text-end">11003</td><td>rccs-nghpart</td><td><code>/lvs0/rccs-nghpart</code></td></tr>
+        <tr><td>High Performance Big Data Research Team</td><td class="text-end">11004</td><td>rccs-hpbdrt</td><td><code>/lvs0/rccs-hpbdrt</code></td></tr>
+        <tr><td>High Performance Artificial Intelligence Systems Research Team</td><td class="text-end">11005</td><td>rccs-hpaisrt</td><td><code>/lvs0/rccs-hpaisrt</code></td></tr>
+        <tr><td>Field Theory Research Team</td><td class="text-end">11006</td><td>rccs-ftrt</td><td><code>/lvs0/rccs-ftrt</code></td></tr>
+        <tr><td>Discrete Event Simulation Research Team</td><td class="text-end">11007</td><td>rccs-desrt</td><td><code>/lvs0/rccs-desrt</code></td></tr>
+        <tr><td>Computational Molecular Science Research Team</td><td class="text-end">11008</td><td>rccs-cmsrt</td><td><code>/lvs0/rccs-cmsrt</code></td></tr>
+        <tr><td>Computational Materials Science Research Team</td><td class="text-end">11009</td><td>rccs-cmasrt</td><td><code>/lvs0/rccs-cmasrt</code></td></tr>
+        <tr><td>Computational Biophysics Research Team</td><td class="text-end">11010</td><td>rccs-cbrt</td><td><code>/lvs0/rccs-cbrt</code></td></tr>
+        <tr><td>Computational Climate Science Research Team</td><td class="text-end">11011</td><td>rccs-ccsrt</td><td><code>/lvs0/rccs-ccsrt</code></td></tr>
+        <tr><td>Complex Phenomena Unified Simulation Research Team</td><td class="text-end">11012</td><td>rccs-cpusrt</td><td><code>/lvs0/rccs-cpusrt</code></td></tr>
+        <tr><td>Data Assimilation Research Team</td><td class="text-end">11013</td><td>rccs-dart</td><td><code>/lvs0/rccs-dart</code></td></tr>
+        <tr><td>Computational Structural Biology Research Team</td><td class="text-end">11014</td><td>rccs-csbrt</td><td><code>/lvs0/rccs-csbrt</code></td></tr>
+        <tr><td>Computational Disaster Mitigation and Reduction Research Team</td><td class="text-end">11015</td><td>rccs-cdmrrt</td><td><code>/lvs0/rccs-cdmrrt</code></td></tr>
+        <tr><td>Facility Operations and Development Unit</td><td class="text-end">11016</td><td>rccs-fodt</td><td><code>/lvs0/rccs-fodt</code></td></tr>
+        <tr><td>System Operations and Development Unit</td><td class="text-end">11017</td><td>rccs-sodt</td><td><code>/lvs0/rccs-sodt</code></td></tr>
+        <tr><td>Software Development Technology Unit</td><td class="text-end">11018</td><td>rccs-sdt</td><td><code>/lvs0/rccs-sdt</code></td></tr>
+        <tr><td>Advanced Operation Technologies Unit</td><td class="text-end">11020</td><td>rccs-aot</td><td><code>/lvs0/rccs-aot</code></td></tr>
+        <tr><td>Molecular Design Computational Intelligence Unit</td><td class="text-end">11021</td><td>rccs-mdciu</td><td><code>/lvs0/rccs-mdciu</code></td></tr>
+        <tr><td>Biomedical Computational Intelligence Unit</td><td class="text-end">11022</td><td>rccs-bciu</td><td><code>/lvs0/rccs-bciu</code></td></tr>
+        <tr><td>Supercomputing Performance Research Team</td><td class="text-end">11023</td><td>rccs-sprt</td><td><code>/lvs0/rccs-sprt</code></td></tr>
+        <tr><td>Feasibility Study System Team</td><td class="text-end">11024</td><td>rccs-fs-sys</td><td><code>/lvs0/rccs-fs-sys</code></td></tr>
+        <tr><td>Quantum-HPC Hybrid Platform Division</td><td class="text-end">11027</td><td>rccs-qhpc</td><td><code>/lvs0/rccs-qhpc</code></td></tr>
+        <tr><td>Advanced AI Device Development Unit</td><td class="text-end">11028</td><td>rccs-aaid</td><td><code>/lvs0/rccs-aaid</code></td></tr>
+        <tr><td>Life and Medical Science Application Interface Platform Development Unit</td><td class="text-end">11029</td><td>rccs-lmsaip</td><td><code>/lvs0/rccs-lmaip</code></td></tr>
+        <tr><td>Material Science Application Interface Platform Development Unit</td><td class="text-end">11030</td><td>rccs-msaip</td><td><code>/lvs0/rccs-msaip</code></td></tr>
+        <tr><td>Learning Optimization Platform Development Unit</td><td class="text-end">11031</td><td>rccs-lop</td><td><code>/lvs0/rccs-lop</code></td></tr>
+        <tr><td>Data Management Platform Development Unit</td><td class="text-end">11032</td><td>rccs-dmp</td><td><code>/lvs0/rccs-dmp</code></td></tr>
+        <tr><td>AI Development Computing Environment Operation Technologies Unit</td><td class="text-end">11033</td><td>rccs-aidceo</td><td><code>/lvs0/rccs-aidceo</code></td></tr>
+        <tr><td>High Performance Cloud Systems and Secure Software Research Team</td><td class="text-end">11034</td><td>rccs-hpcsssrt</td><td><code>/lvs0/rccs-hpcsssrt</code></td></tr>
+        <tr><td>AI for Science Foundation Model Research Team</td><td class="text-end">11035</td><td>rccs-asfm</td><td><code>/lvs0/rccs-asfm</code></td></tr>
+        <tr><td>TRIP-AGIS Foundation models in materials science project</td><td class="text-end">11036</td><td>agis-fmms</td><td><code>/lvs0/agis-fmms</code></td></tr>
+        <tr><td>TRIP-AGIS Foundation models of life and medical science project</td><td class="text-end">11037</td><td>agis-fmlms</td><td><code>/lvs0/agis-fmlms</code></td></tr>
+        <tr><td>TRIP-AGIS Common Infrastructure and Technology project</td><td class="text-end">11038</td><td>agis-cit</td><td><code>/lvs0/agis-cit</code></td></tr>
+        <tr><td>AI-driven Drug Discovery Collaborative Unit</td><td class="text-end">11039</td><td>rccs-aiddcu</td><td><code>/lvs0/rccs-aiddcu</code></td></tr>
+        <tr><td>Next-Generation HPC Infrastructure System Development Unit</td><td class="text-end">11040</td><td>rccs-nghpcisdu</td><td><code>/lvs0/rccs-nghpcisdu</code></td></tr>
+        <tr><td>Next-Generation HPC Application Development Unit</td><td class="text-end">11041</td><td>rccs-nghpcadu</td><td><code>/lvs0/rccs-nghpcadu</code></td></tr>
+        <tr><td>Next-Generation HPC Operation Technologies Unit</td><td class="text-end">11042</td><td>rccs-nghpcotu</td><td><code>/lvs0/rccs-nghpcotu</code></td></tr>
+        <tr><td>Advanced HPC Technologies Development Unit</td><td class="text-end">11043</td><td>rccs-ahpctdu</td><td><code>/lvs0/rccs-ahpctdu</code></td></tr>
+      </table>
+    </main>
+  </div>
+
+  <footer class="bg-purple d-flex justify-content-center align-items-center">
+    <p class="mb-0 text-white">&copy; RIKEN Center for Computational Science</p>
+  </footer>
+</body>
+</html>

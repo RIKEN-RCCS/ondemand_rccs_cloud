@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>R-CCSクラウド利用マニュアル</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container-fluid">
+    <nav class="sidebar bg-body-secondary">
+      <h5 class="ps-3 pe-1 d-inline">目次</h5><a href="other.html" style="font-size: 0.75rem;" class="text-decoration-none ms-0">[English]</a>
+      <ul class="nav flex-column px-3 py-2">
+        <li class="nav-item"><a href="index_ja.html" class="nav-link">1. はじめに</a></li>
+        <li class="nav-item"><a href="resource_ja.html" class="nav-link">2. 計算資源</a></li>
+        <li class="nav-item"><a href="ood_ja.html" class="nav-link">3. Open OnDemand</a></li>
+        <li class="nav-item"><a href="terminal_ja.html" class="nav-link">4. ターミナル</a></li>
+        <li class="nav-item"><a href="storage_ja.html" class="nav-link">5. ストレージ</a></li>
+        <li class="nav-item"><a href="other_ja.html" class="nav-link">6. その他</a></li>
+      </ul>
+    </nav>
+
+    <main class="main-content">
+      <h2>6. その他</h2>
+      <h3>6.1. 質問がある場合</h3>
+      <p>
+      <a href="https://portal.cloud.r-ccs.riken.jp/redmine/projects/helpdesk/issues/new">コチラ</a>から質問を行って下さい。
+      </p>
+
+      <h3>6.2. FX700のクロスコンパイル環境</h3>
+      <p>クロスコンパイル環境はSingularityのコンテナイメージで提供しています。x86_64環境の計算ノードをSlurmを用いて確保し、コンテナイメージを用いてコンパイルを行います（例では r340パーティションを利用）。</p>
+      <div class="card shadow-sm ms-3">
+        <div class="card-body p-0">
+          <pre class="m-0 p-2 bg-light text-dark">
+$ srun -p r340 --pty bash
+$ singularity shell /cloud_opt/singularity/x86_64/fx700xos_v1.0.30.sif
+$ FCCpx test.c -o test.x</pre>
+        </div>
+      </div>
+
+      <h3>6.3. スクラッチ領域</h3>
+      <p>
+      計算ノードの一時的なスクラッチ領域が利用可能です。スクラッチ領域はジョブスケジューラによって動的に確保され、そのディレクトリパスは環境変数<code>USER_SCRATCH_DIR</code>に格納されています。このディレクトリはジョブが終了した際に削除されます。
+      </p>
+
+      <h3>6.4. S3 File Access</h3>
+      <p>
+      R-CCS Cloud のファイルを AWS S3プロトコルでアクセスするサービスを提供しています。このサービスでは外部からのアクセスが可能になるので、初期設定では利用不可になっています。利用には管理者による設定が必要です。希望者は<a href="https://portal.cloud.r-ccs.riken.jp/redmine/projects/helpdesk/issues/new">コチラ</a>から申請を行って下さい。
+      </p>
+      <p>
+      S3によるアクセスには以下のステップが必要です。これらの設定は<a href="https://lens3.cloud.r-ccs.riken.jp/lens3.sts/">https://lens3.cloud.r-ccs.riken.jp/lens3.sts/</a>から行います。
+      </p>
+      <ol class="ms-3">
+        <li>バケツを作るディレクトリを登録する。</li>
+        <li>バケツを作る。</li>
+        <li>アクセス・キーを生成する。</li>
+      </ol>
+      <p>
+      このサービスの提供にはLenticularis-S3を使っています。詳細は<a href="https://github.com/riken-rccs/lens3/">https://github.com/riken-rccs/lens3/</a>を参照して下さい。
+      </p>
+
+      <h3>6.5. 注意点</h3>
+      <ul class="mt-2 ms-3">
+        <li>ログインノードではジョブを実行しないでください。長時間のコンパイル等は計算ノードを確保して実行してください。</li>
+      </ul>
+
+      <h3>6.5. FAQ</h3>
+      <p><a href="https://portal.cloud.r-ccs.riken.jp/redmine/projects/helpdesk/wiki">コチラ</a>を参照ください。</p>
+    </main>
+  </div>
+  <footer class="bg-purple d-flex justify-content-center align-items-center">
+    <p class="mb-0 text-white">&copy; RIKEN Center for Computational Science</p>
+  </footer>
+</body>
+</html>

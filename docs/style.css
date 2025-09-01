@@ -1,0 +1,76 @@
+.sidebar {
+  width: 270px;
+  min-height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  padding-top: 1rem;
+  padding-left: 0px;
+}
+.sidebar .nav-link {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+.main-content {
+  margin-left: 270px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.table {
+  width: auto;
+  text-align: left;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-left: 1rem;
+  display: inline-table;
+}
+.table th,
+.table td {
+  padding: 3px 10px;
+  border: solid 1px black;
+  font-size: 0.9rem; 
+}
+.table th {
+  background: purple;
+  color: #ffffff;
+}
+.supplement-list li {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+h2 {
+  font-size: 1.5rem;
+  color: purple;
+  border-left: 6px solid purple;
+  padding-left: 0.75rem;
+  margin: 1rem 0;
+  font-weight: bold;
+}
+h3 {
+  font-size: 1.25rem;
+  color: black;
+  border-bottom: 2px solid black;
+  padding-left: 0rem;
+  margin: 1rem 0 0 1rem;
+  font-weight: 600;
+}
+p {
+  padding-left: 1rem;
+  margin: 0.5rem 0;
+  text-align: justify;
+}
+img {
+  margin: 0rem 1rem;
+  border: 1px black solid;
+}
+footer {
+  background-color: purple;
+  margin-left: 270px;
+  margin-top: 1rem;
+}
+footer p {
+  color: white;
+  padding: 0;
+  margin: 0;
+}
