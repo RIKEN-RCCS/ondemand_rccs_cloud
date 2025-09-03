@@ -63,7 +63,7 @@
 
       <h3>3.2. バッチジョブ</h3>
       <p>
-        バッチジョブとは、ジョブスケジューラによって非対話的に実行される計算タスクのことです。バッチジョブはシェルスクリプトで記述され、必要な計算資源（たとえばノード数や最大実行時間など）は、ジョブスケジューラのディレクティブ（例：<code>#SBATCH -N 4</code>）を用いて指定します。R-CCSクラウドOpen OnDemandでは、Open OnDemand上で動作するアプリケーションである<a href="https://github.com/RIKEN-RCCS/OpenComposer/">Open Composer</a>を利用しており、簡易にバッチジョブの投入と管理を行うことができます。
+        バッチジョブとは、ジョブスケジューラによって非対話的に実行される計算タスクのことです。バッチジョブはシェルスクリプトで記述され、必要な計算資源（たとえばノード数や最大実行時間など）は、ジョブスケジューラのディレクティブ（例：<code>#SBATCH -N 4</code>）を用いて指定します。R-CCSクラウドOpen OnDemandでは、Open OnDemand上で動作するアプリケーションである<a target="_blank" href="https://github.com/RIKEN-RCCS/OpenComposer/">Open Composer</a>を利用しており、簡易にバッチジョブの投入と管理を行うことができます。
       </p>
       <p>
         Slurmのアイコンをクリックください。ジョブスクリプトを生成するためのWebフォームが表示されます。右上の「Script Location」はジョブスクリプトの保存場所、「Script Name」はジョブスクリプトのファイル名、「Job Name」はジョブの名前（省略可能）を指定します。左下はジョブに関する入力項目であり、入力すると右下のジョブスクリプトが自動更新されます。入力後に「Submit」をクリックすると、R-CCSクラウドにジョブが投入されます。
@@ -127,7 +127,7 @@
       <p>メニューバーの「Passenger Apps」にあるパスをクリックすると、そのパスを起点としたHome Directoryが起動します。</p>
       <img width="200" alt="Click to Home Directory" src="img/home_directory_click.png">
       <p>
-      <a href="https://rclone.org">Rclone</a>を用いたクラウドストレージに対するファイルの操作も可能です。Rcloneの設定を行うには、リモートデスクトップを起動し、そのターミナルから<code>rclone</code>もしくは<code>rclone-browser</code>を実行します。設定後にOpen OnDemandのメニューバーの「Help」&rarr; 「Restart Web Server」をクリックし、Home Directoryを起動すると、設定されたクラウドストレージにアクセスできます。なお、R-CCSクラウドヘルプデスクではRcloneの設定のサポートは行っておりませんのでご了承ください。
+      <a target="_blank" href="https://rclone.org">Rclone</a>を用いたクラウドストレージに対するファイルの操作も可能です。Rcloneの設定を行うには、リモートデスクトップを起動し、そのターミナルから<code>rclone</code>もしくは<code>rclone-browser</code>を実行します。設定後にOpen OnDemandのメニューバーの「Help」&rarr; 「Restart Web Server」をクリックし、Home Directoryを起動すると、設定されたクラウドストレージにアクセスできます。なお、R-CCSクラウドヘルプデスクではRcloneの設定のサポートは行っておりませんのでご了承ください。
       </p>
 
       <!--
@@ -137,7 +137,7 @@
       <p>「HPCI ID」にはJWT-SERVERでパスフレーズを生成したときに表示される<code>hpcixxxxxx</code>という文字列（<code>xxxxxx</code>は数字）を、「Passphrase」には生成されたパスフレーズを入力した後、「mount」ボタンをクリックください。</p>
 
       <h3>3.5. GakuNin RDM（準備中）</h3>
-      <p>GakuNin RDMのアイコンをクリックください。国立情報学研究所が提供する研究データ管理基盤である<a href="https://rdm.nii.ac.jp">GakuNin RDM</a>に対するファイル操作を行えます。本アプリケーションを利用するためには、GakuNin RDMのプロジェクトを事前に作成しておく必要があります。</p>
+      <p>GakuNin RDMのアイコンをクリックください。国立情報学研究所が提供する研究データ管理基盤である<a target="_blank" href="https://rdm.nii.ac.jp">GakuNin RDM</a>に対するファイル操作を行えます。本アプリケーションを利用するためには、GakuNin RDMのプロジェクトを事前に作成しておく必要があります。</p>
       <img width="600" alt="GakuNin RDM" src="img/grdm.png">
       <p>「Mount Path」にはR-CCSクラウド側のファイルシステムのマウントパス（例：<code>/home/rccs-aot/a00000/abc</code>）を、「RDM Node ID」はGakuNin RDMのプロジェクトのURL（<code>https://rdm.nii.ac.jp/xxx/</code>）の<code>xxx</code>の箇所を、「ROM Token」はGakuNin RDMのパーソナルアクセストークンを入力した後、「mount」ボタンをクリックください。</p>
      -->
