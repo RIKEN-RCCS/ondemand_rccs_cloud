@@ -16,15 +16,15 @@
       <ul class="nav flex-column px-3 py-2">
         <li class="nav-item"><a href="index_ja.html" class="nav-link">1. はじめに</a></li>
         <li class="nav-item"><a href="resource_ja.html" class="nav-link">2. 計算資源</a></li>
-        <li class="nav-item"><a href="ood_ja.html" class="nav-link">3. Open OnDemand</a></li>
-        <li class="nav-item"><a href="terminal_ja.html" class="nav-link">4. ターミナル</a></li>
-        <li class="nav-item"><a href="storage_ja.html" class="nav-link">5. ストレージ</a></li>
+        <li class="nav-item"><a href="storage_ja.html" class="nav-link">3. ストレージ</a></li>
+        <li class="nav-item"><a href="ood_ja.html" class="nav-link">4. Open OnDemand</a></li>
+        <li class="nav-item"><a href="terminal_ja.html" class="nav-link">5. ターミナル</a></li>
         <li class="nav-item"><a href="other_ja.html" class="nav-link">6. その他</a></li>
       </ul>
     </nav>
 
     <main class="main-content">
-      <h2>3. Open OnDemand</h2>
+      <h2>4. Open OnDemand</h2>
       <img width="600" alt="Open OnDemand" src="img/ood.png">
       <p>
         上図はR-CCSクラウドのOpen OnDemandのダッシュボードです。R-CCSクラウドのロゴの右側にある表は、各パーティションにおける利用可能なノード数を示しています。ロゴの上側にあるメニューバーの意味は下記の通りです（ブラウザの幅が狭くなると、アイコン表示に変わるものもあります）。
@@ -39,7 +39,7 @@
         <tr><td>Log Out</td><td>ログアウトする</td></tr>
       </table>
 
-      <h3>3.1. 対話アプリケーション</h3>
+      <h3>4.1. 対話アプリケーション</h3>
       <p>
         対話アプリケーションとは、計算ノード上で実行されるアプリケーションをユーザが対話的に操作できるアプリケーションです。
       </p>
@@ -61,7 +61,7 @@
         <li>リモートデスクトップの左上の「Applications」から「Log Out」をクリックする。</li>
       </ul>
 
-      <h3>3.2. バッチジョブ</h3>
+      <h3>4.2. バッチジョブ</h3>
       <p>
         バッチジョブとは、ジョブスケジューラによって非対話的に実行される計算タスクのことです。バッチジョブはシェルスクリプトで記述され、必要な計算資源（たとえばノード数や最大実行時間など）は、ジョブスケジューラのディレクティブ（例：<code>#SBATCH -N 4</code>）を用いて指定します。R-CCSクラウドOpen OnDemandでは、Open OnDemand上で動作するアプリケーションである<a target="_blank" href="https://github.com/RIKEN-RCCS/OpenComposer/">Open Composer</a>を利用しており、簡易にバッチジョブの投入と管理を行うことができます。
       </p>
@@ -94,7 +94,7 @@
       </p>
       <img width="400" alt="Load Parameters" src="img/history_load_parameters.png">
 
-      <h3 id="file">3.3. ファイル操作</h3>
+      <h3 id="file">4.3. ファイル操作</h3>
       <p>Home Directoryのアイコンをクリックしてください。ファイルの送受信・編集などを行えます。送受信可能な最大サイズは10GBです。</p>
       <img width="600" alt="Home Directory" src="img/home_directory.png">
       <p>Home Directoryの各機能は下記の通りです。個別のファイルやディレクトリに対する操作は「3点＋下三角」のメニューから行えます。</p>
@@ -141,19 +141,19 @@
       <img width="600" alt="GakuNin RDM" src="img/grdm.png">
       <p>「Mount Path」にはR-CCSクラウド側のファイルシステムのマウントパス（例：<code>/home/rccs-aot/a00000/abc</code>）を、「RDM Node ID」はGakuNin RDMのプロジェクトのURL（<code>https://rdm.nii.ac.jp/xxx/</code>）の<code>xxx</code>の箇所を、「ROM Token」はGakuNin RDMのパーソナルアクセストークンを入力した後、「mount」ボタンをクリックください。</p>
      -->
-      <h3 id="shell">3.4. シェルアクセス</h3>
+      <h3 id="shell">4.4. シェルアクセス</h3>
       <p>R-CCS Cloud Shell Accessのアイコンをクリックください。WebブラウザからログインノードにSSHアクセスし、コマンドラインインタフェースを用いた操作を行うことができます。</p>
       <img width="600" alt="Shell Access" src="img/shell_access.png">
 
-      <h3>3.5. ジョブのモニタリング</h3>
+      <h3>4.5. ジョブのモニタリング</h3>
       <p>Active Jobsのアイコンをクリックください。ジョブの情報を閲覧や削除を行うことができます。「ID」の列の左側のボタンをクリックすると、ジョブ詳細情報を表示できます。「Actions」の列のボタンをクリックすると、ジョブの削除を行えます。</p>
       <img width="600" alt="Active Jobs" src="img/activejobs.png">
 
-      <h3>3.6. クラスタの利用状況</h3>
+      <h3>4.6. クラスタの利用状況</h3>
       <p>System Statusのアイコンをクリックください。各パーティションの利用状況を閲覧できます。</p>
       <img width="600" alt="Grafana" src="img/grafana.png">
 
-      <h3>3.9. SSH公開鍵の登録</h3>
+      <h3>4.7. SSH公開鍵の登録</h3>
       <p>SSH Public Keyのアイコンをクリックください。詳細は、<a href="index_ja.html#ssh">1.2. ターミナルソフトウェアの利用</a>を参照ください。</p>
     </main>
   </div>

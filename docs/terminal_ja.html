@@ -16,18 +16,18 @@
       <ul class="nav flex-column px-3 py-2">
         <li class="nav-item"><a href="index_ja.html" class="nav-link">1. はじめに</a></li>
         <li class="nav-item"><a href="resource_ja.html" class="nav-link">2. 計算資源</a></li>
-        <li class="nav-item"><a href="ood_ja.html" class="nav-link">3. Open OnDemand</a></li>
-        <li class="nav-item"><a href="terminal_ja.html" class="nav-link">4. ターミナル</a></li>
-        <li class="nav-item"><a href="storage_ja.html" class="nav-link">5. ストレージ</a></li>
+        <li class="nav-item"><a href="storage_ja.html" class="nav-link">3. ストレージ</a></li>
+        <li class="nav-item"><a href="ood_ja.html" class="nav-link">4. Open OnDemand</a></li>
+        <li class="nav-item"><a href="terminal_ja.html" class="nav-link">5. ターミナル</a></li>
         <li class="nav-item"><a href="other_ja.html" class="nav-link">6. その他</a></li>
       </ul>
     </nav>
 
     <main class="main-content">
-      <h2>4. ターミナル</h2>
+      <h2>5. ターミナル</h2>
       <p>本章では、ターミナルソフトウェアを用いたコマンドラインによるバッチジョブの投入方法について説明します。R-CCSクラウドではジョブスケジューラにSlurmを用いています。Slurmの利用方法の詳細は<a target="_blank" href="https://slurm.schedmd.com">https://slurm.schedmd.com</a>を参照ください。</p>
 
-      <h3>4.1. バッチジョブの利用</h3>
+      <h3>5.1. バッチジョブの利用</h3>
       <p>例として、以下のジョブスクリプトを<code>sample.sh</code>という名前で保存します。<code>-p</code>で指定する利用可能なパーティションは<a href="resource_ja.html">2. 計算資源</a>を参照してください。
       <div class="card shadow-sm ms-3">
         <div class="card-body p-0">
@@ -51,7 +51,7 @@ $ sbatch ./sample.sh</pre>
         </div>
       </div>
 
-      <h3>4.2. 対話的利用</h3>
+      <h3>5.2. 対話的利用</h3>
       <p>計算ノードをコマンドラインで対話的に利用する場合、以下のように<code>srun</code>コマンドに<code>--pty</code>オプションに利用するシェルを指定して実行します。</p>
       <div class="card shadow-sm ms-3">
         <div class="card-body p-0">
@@ -67,7 +67,7 @@ $ exit</pre>
         </div>
       </div>
 
-     <h3>4.3. 計算資源の確認</h3>
+     <h3>5.3. 計算資源の確認</h3>
      <p><code>sinfo</code>コマンドを用いると、計算資源の空き状況を確認できます。<code>STATE</code>が<code>idle</code>である<code>NODELIST</code>が空いている計算ノードです。
       <div class="card shadow-sm ms-3">
         <div class="card-body p-0">
@@ -102,7 +102,7 @@ fs-mi300x       up 1-00:00:00      1   idle fs-mi300x-00</pre>
         </div>
       </div>
 
-     <h3>4.4. ジョブの確認</h3>
+     <h3>5.4. ジョブの確認</h3>
      <p><code>squeue</code>コマンドを用いると、ジョブの状況を確認できます。特定のジョブの状況を調べたい場合は、<code>-j</code>オプションでジョブIDを指定します。
       <div class="card shadow-sm ms-3">
         <div class="card-body p-0">

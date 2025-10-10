@@ -16,22 +16,22 @@
       <ul class="nav flex-column px-3 py-2">
         <li class="nav-item"><a href="index.html" class="nav-link">1. Introduction</a></li>
         <li class="nav-item"><a href="resource.html" class="nav-link">2. Computational Resources</a></li>
-        <li class="nav-item"><a href="ood.html" class="nav-link">3. Open OnDemand</a></li>
-        <li class="nav-item"><a href="terminal.html" class="nav-link">4. Terminal</a></li>
-        <li class="nav-item"><a href="storage.html" class="nav-link">5. Storage</a></li>
+        <li class="nav-item"><a href="storage.html" class="nav-link">3. Storage</a></li>
+        <li class="nav-item"><a href="ood.html" class="nav-link">4. Open OnDemand</a></li>
+        <li class="nav-item"><a href="terminal.html" class="nav-link">5. Terminal</a></li>
         <li class="nav-item"><a href="other.html" class="nav-link">6. Others</a></li>
       </ul>
     </nav>
 
     <main class="main-content">
-      <h2>4. Terminal</h2>
+      <h2>5. Terminal</h2>
       <p>
         This chapter explains how to submit batch jobs via the command line using terminal software.  
         The R-CCS Cloud uses Slurm as its job scheduler.  
         For details on how to use Slurm, see <a target="_blank" href="https://slurm.schedmd.com">https://slurm.schedmd.com</a>.
       </p>
 
-      <h3>4.1. Using Batch Jobs</h3>
+      <h3>5.1. Using Batch Jobs</h3>
       <p>
         As an example, save the following job script as <code>sample.sh</code>.  
         For available partitions specified with <code>-p</code>, see <a href="resource.html">2. Computational Resources</a>.
@@ -60,7 +60,7 @@ $ sbatch ./sample.sh</pre>
         </div>
       </div>
 
-      <h3>4.2. Interactive Use</h3>
+      <h3>5.2. Interactive Use</h3>
       <p>
         To use a compute node interactively from the command line, run the <code>srun</code> command with the <code>--pty</code> option specifying the shell:
       </p>
@@ -80,7 +80,7 @@ $ exit</pre>
         </div>
       </div>
 
-      <h3>4.3. Checking Computational Resources</h3>
+      <h3>5.3. Checking Computational Resources</h3>
       <p>
         Use the <code>sinfo</code> command to check resource availability.  
         Nodes where <code>STATE</code> is <code>idle</code> are available.
@@ -118,7 +118,7 @@ fs-mi300x       up 1-00:00:00      1   idle fs-mi300x-00</pre>
         </div>
       </div>
 
-      <h3>4.4. Checking Jobs</h3>
+      <h3>5.4. Checking Jobs</h3>
       <p>
         Use the <code>squeue</code> command to check job status.  
         To check a specific job, use the <code>-j</code> option with the job ID.
