@@ -13,7 +13,7 @@ From: rockylinux/rockylinux:9.4
 	dnf -y remove xfce4-screensaver
 	#
 	# For VSCode
-	dnf -y install https://github.com/coder/code-server/releases/download/v4.93.1/code-server-4.93.1-amd64.rpm
+	dnf -y install https://github.com/coder/code-server/releases/download/v4.106.2/code-server-4.106.2-amd64.rpm
         #
 	# For JuptyerLAb
         dnf -y install python3.11-pip python3.11-devel python3.11-numpy python3.11-scipy python3-matplotlib python3-pip

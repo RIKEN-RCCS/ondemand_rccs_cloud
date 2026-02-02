@@ -81,6 +81,9 @@ router.get('/', (req, res) => {
           <button type="submit" class="btn btn-primary">Submit</button>
         </div>
       </form>
+      <div class="mt-2">
+        <p>If the password is not accepted, start the <a target="_blank" href="/pun/sys/shell">Shell Access</a> and run the <code>kinit</code> command in it.</p>
+      </div>
     </div>
   </body>
 </html>`);
@@ -253,16 +256,21 @@ const handleKey = (action) => (req, res) => {
 
   const dn = `uid=${uid},cn=users,cn=accounts,dc=cloud,dc=r-ccs,dc=riken,dc=jp`;
   const uri = 'ldap://ds1.cloud.r-ccs.riken.jp';
-  const ldif =
-    `dn: ${dn}\nchangetype: modify\n${action}: ipaSshPubKey\nipaSshPubKey: ${key}\n`;
+  const ldif = `dn: ${dn}\nchangetype: modify\n${action}: ipaSshPubKey\nipaSshPubKey: ${key}\n`;
 
   const mod = spawnSync('/usr/bin/ldapmodify',
     ['-ZZ', '-Y', 'GSSAPI', '-H', uri],
-    { input: ldif, timeout: 15000 }
+    { input: ldif, timeout: 15000, encoding: 'utf8'}
   );
 
-  if (mod.status === 0) return res.send('ok');
-  return res.status(500).send((mod.stderr || '').toString());
+  if (mod.status === 0) {
+    console.log('[SshPublicKey] ' + mod.stdout);
+    return res.send('ok');
+  } else {
+    console.error('[SshPublicKey] status:', mod.status, 'signal:', mod.signal, 'error:', mod.error);
+    console.log('[SshPublicKey] ' + mod.stderr);
+    return res.status(500).send((mod.stderr || '').toString());
+  }
 };
 
 // API エンドポイント

@@ -56,7 +56,8 @@ cd "$HOME" || exit 7
 echo "TIMING - Starting ttyd at: $(date)"
 
 # launch ttyd
-singularity exec --env PS1='\u@\h:\w\$ ' ${OPTION} ${IMAGE} ttyd \
+#singularity exec --env PS1='\u@\h:\w\$ ' ${OPTION} ${IMAGE}
+ttyd \
 	-p "${PORT}" \
 	-b "/node/${HOST}/${PORT}" \
 	-t "fontSize=${OOD_FONT_SIZE}" \
@@ -66,3 +67,4 @@ singularity exec --env PS1='\u@\h:\w\$ ' ${OPTION} ${IMAGE} ttyd \
 	-c "ttyd:${PASSWORD}" \
 	-W -m 1 \
 	"$OOD_STAGED_ROOT/tmux.sh"
+

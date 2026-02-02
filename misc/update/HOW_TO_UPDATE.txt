@@ -12,8 +12,14 @@ rm -rf /var/www/ood/apps/sys/myjobs.bak
 mv /var/www/ood/apps/sys/myjobs /var/www/ood/apps/sys/myjobs.bak
 
 Set manifest.yml for files, activejobs and shell as follows.
----
+```
 category: Passenger Apps
 tile:
   sub_caption: |
----
+```
+
+For shell/manifest.yml, change the name to "Terminal for Login Node" and comment out the line of role.
+```
+name: Terminal for Login Node
+#role: shell
+```

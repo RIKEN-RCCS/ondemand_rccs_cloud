@@ -35,13 +35,11 @@ def script(name, queue, hours, gpus = "", email = "")
   yaml << "    native:\n"
 
   case queue
-  when "qc-a100"
+  when "qc-a100", "ai-l40s", "ai-h200-brc"
     gpus_option = gpus.to_s.strip.empty? ? "--gpus=1" : "--gpus=#{gpus}"
     yaml << "      - \"#{gpus_option}\ -t #{hours}:00:00\"\n"
   when "ai-h100l-pu"
     yaml << "      - \"-t 0:30:00\"\n"
-  when "ai-h200-brc"
-    yaml << "      - \"--gpus=1 -t 8:00:00\"\n"
   else
     yaml << "      - \"-t #{hours}:00:00\"\n"
   end

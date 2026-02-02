@@ -33,4 +33,7 @@ function tmux {
 export -f tmux
 
 # run app
-tmux -f "$TMUX_CONFIG_PATH" -L "$TMUX_SOCKET" new -A -s "$TMUX_SESSION"
+ARCH=`arch`
+VERSION=`rpm -E %{rhel}`
+TMUX=/cloud_opt/ondemand/tmux/${ARCH}/r${VERSION}/bin/tmux
+$TMUX -f "$TMUX_CONFIG_PATH" -L "$TMUX_SOCKET" new -A -s "$TMUX_SESSION"
