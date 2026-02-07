@@ -4,7 +4,6 @@
 [[ $(type -t module) == "function" ]] && export -f module
 
 # Export compute node the script is running on
-#host="$(hostname -s)-ib0.cluster.local"
 host="$(hostname -s).cloud.r-ccs.riken.jp"
 HOST="$host"
 export host HOST
@@ -33,17 +32,7 @@ export XDG_RUNTIME_DIR
 # Load Form Information
 OOD_SR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
 if [ -f "${OOD_SR}/form.sh" ]; then
-	# shellcheck disable=SC1090,SC1091
-	source "${OOD_SR}/form.sh"
+  # shellcheck disable=SC1090,SC1091
+  source "${OOD_SR}/form.sh"
 fi
 unset OOD_SR
-
-# Create Function for Slurm Cleanup
-function slurm_env_clean {
-	eval "$(printenv | grep -i ^slurm | sed 's/^SLURM/export OOD_SLURM/')"
-	# shellcheck disable=SC2046
-	unset $(compgen -v 'SLURM')
-	echo "All environment variables starting with 'SLURM' have been renamed to be prefixed with 'OOD_'."
-	printenv | grep -i '^OOD_SLURM'
-}
-export -f slurm_env_clean

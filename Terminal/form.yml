@@ -1,5 +1,5 @@
 ---
-title: Terminal for Compute Node
+title: Compute Node
 form:
   - global_queue
   - global_hours
