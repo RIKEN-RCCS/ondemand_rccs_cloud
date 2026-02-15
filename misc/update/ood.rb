@@ -29,6 +29,7 @@ Rails.application.config.after_initialize do
   end
 end
 
+# Generate YAML in submit.sh.erb
 def script(name, queue, hours, gpus = "", email = "")
   yaml =  "  job_name: #{name}\n"
   yaml << "    queue_name: #{queue}\n"
@@ -50,4 +51,40 @@ def script(name, queue, hours, gpus = "", email = "")
   end
 
   yaml
+end
+
+# Determine whether VGL is available for a given queue and GPU count.
+def is_vgl(queue, gpus)
+  always_true = %w[
+    a100
+    ai-h100l
+    ai-h100l-pu
+    qc-h100
+    qc-gh200
+  ]
+
+  gpu_dependent = %w[
+    ai-h200-brc
+    ai-l40s
+    qc-a100
+  ]
+
+  always_false = %w[
+    fx700
+    mi100
+    r340
+    genoa
+    genoa-m
+    qc-mi210
+    qc-mi250
+    qc-pvc
+    fs-mi300a
+    fs-mi300x
+  ]
+
+  return true  if always_true.include?(queue)
+  return gpus > 0 if gpu_dependent.include?(queue)
+  return false if always_false.include?(queue)
+
+  false
 end
