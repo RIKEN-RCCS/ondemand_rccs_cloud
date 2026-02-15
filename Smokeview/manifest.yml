@@ -1,0 +1,9 @@
+name: SmokeView
+category: Interactive Apps
+subcategory: Visualization
+role: batch_connect
+description: |
+  <a target="_blank" rel="noopener noreferrer" href="https://www.nist.gov/services-resources/software/fds-and-smokeview">Smokeview</a> is a visualization program that is used to display the output of <a target="_blank" rel="noopener noreferrer" href="https://pages.nist.gov/fds-smv/">FDS</a> and <a target="_blank" rel="noopener noreferrer" href="https://pages.nist.gov/cfast/index.html">CFAST</a> simulations.
+new_window: true
+tile:
+  sub_caption: |

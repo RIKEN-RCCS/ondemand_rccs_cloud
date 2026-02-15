@@ -1,0 +1,24 @@
+<%
+  require_relative "/var/www/ood/apps/sys/oodjp_apps/utils/config.rb"
+  XDG_DATA_HOME, CONTAINER_IMAGE = load_app_config
+  APP_NAME = "XCrySDen"
+%>
+---
+batch_connect:
+  template: vnc
+  websockify_cmd: '/usr/bin/websockify'
+  script_wrapper: |
+    cat << "CTRSCRIPT" > container.sh
+    export LANG=C
+    export PATH="$PATH:/opt/TurboVNC/bin"
+    %s
+    CTRSCRIPT
+
+    # Set SINGULARITY_BINDPATH and _OPTION
+    <%= set_bindpath %>
+
+    export SINGULARITYENV_XDG_DATA_HOME=<%= XDG_DATA_HOME["x86_64"] %>/<%= APP_NAME %>
+    singularity run ${_OPTION} <%= CONTAINER_IMAGE["x86_64"] %> bash ./container.sh
+
+script:
+  <%= script("ood_#{APP_NAME}", global_queue_x86, global_hours, global_gpus, global_email) %>

@@ -1,0 +1,34 @@
+<%
+  require_relative "/var/www/ood/apps/sys/oodjp_apps/utils/config.rb"
+  XDG_DATA_HOME, CONTAINER_IMAGE = load_app_config
+%>
+#!/usr/bin/env bash
+
+# set SINGULARITY_BINDPATH and _OPTION
+<%= set_bindpath %>
+
+# select image and set the installation destination when adding --user to pip
+# https://qiita.com/ronin_gw/items/cdf8112b61649ca455f5
+if [ `arch` = "x86_64" ]; then
+  CONTAINER_IMAGE=<%= CONTAINER_IMAGE["x86_64"] %>
+  PYTHONUSERBASE=<%= XDG_DATA_HOME["x86_64"] %>/JupyterLab
+else
+  PYTHONUSERBASE=<%= XDG_DATA_HOME["aarch64"] %>/JupyterLab
+  if [ "<%= global_queue %>" = "fx700" ]; then
+    CONTAINER_IMAGE="/cloud_opt/ondemand/rocky97_fx700_aarch64.sif"
+  else
+    CONTAINER_IMAGE=<%= CONTAINER_IMAGE["aarch64"] %>
+  fi
+fi
+PIP_VERSION=`singularity exec ${CONTAINER_IMAGE} pip --version | awk -F/ '{print $4}'`
+PYTHONPATH=${PYTHONUSERBASE}/lib/${PIP_VERSION}/site-packages:${PYTHONPATH}
+
+mkdir -p $PYTHONUSERBASE
+export SINGULARITYENV_PYTHONUSERBASE=${PYTHONUSERBASE}
+export SINGULARITYENV_JUPYTER_DATA_DIR=${PYTHONUSERBASE}/share
+export SINGULARITYENV_PYTHONPATH=${PYTHONPATH}
+mkdir -p $SINGULARITYENV_JUPYTER_DATA_DIR
+
+cd "${HOME}"
+export LANG=C
+singularity run --env PS1='\u@\h:\w\$ ' ${_OPTION} ${CONTAINER_IMAGE} jupyter-lab --config="${CONFIG_FILE}"

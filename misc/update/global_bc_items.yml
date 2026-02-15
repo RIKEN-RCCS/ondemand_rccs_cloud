@@ -1,7 +1,7 @@
 global_bc_form_items:
   global_queue:
     widget: select
-    label: Partition
+    label: "Partition*"
     options:
       - [ "fx700",       data-hide-global-gpus: true ]
       - [ "a100",        data-hide-global-gpus: true ]
@@ -25,7 +25,7 @@ global_bc_form_items:
 
   global_queue_x86:
     widget: select
-    label: Partition
+    label: "Partition*"
     options:
       - [ "a100",        data-hide-global-gpus: true ]
       - [ "mi100",       data-hide-global-gpus: true ]
@@ -47,7 +47,7 @@ global_bc_form_items:
 
   global_queue_nvidia_x86:
     widget: select
-    label: Partition
+    label: "Partition*"
     options:
       - [ "a100",        data-hide-global-gpus: true ]
       - [ "r340",        data-hide-global-gpus: true ]
@@ -61,7 +61,7 @@ global_bc_form_items:
   
   global_hours:
     widget: "number_field"
-    label: "Maximum run time (1 - 24 hours)"
+    label: "Maximum run time (1 - 24 hours)*"
     required: true
     value: 1
     min: 1
@@ -70,7 +70,7 @@ global_bc_form_items:
 
   global_gpus:
     widget: "number_field"
-    label: "Number of GPUs (1 - 8)"
+    label: "Number of GPUs (1 - 8)*"
     required: true
     value: 1
     min: 1
@@ -78,6 +78,16 @@ global_bc_form_items:
     step: 1
 
   global_email:
+    widget: "email_field"
     label: "Email address (You will receive an email when it starts)"
 
-    
+  global_input_file:
+    widget: "path_selector"
+    label: "Input file"
+    show_files: true
+
+  global_required_input_file:
+    widget: "path_selector"
+    label: "Input file*"
+    show_files: true
+    required: true

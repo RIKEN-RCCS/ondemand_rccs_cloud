@@ -1,0 +1,9 @@
+name: GrADS
+category: Interactive Apps
+subcategory: Visualization
+role: batch_connect
+description: |
+  <a target="_blank" rel="noopener noreferrer" href="http://opengrads.org/">Grid Analysis and Display System (GrADS)</a> is an interactive desktop tool for easy access, manipulation, and visualization of earth science data. 
+new_window: true
+tile:
+  sub_caption: |

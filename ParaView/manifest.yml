@@ -1,0 +1,9 @@
+name: Paraview
+category: Interactive Apps
+subcategory: Visualization
+role: batch_connect
+description: |
+  <a target="_blank" rel="noopener noreferrer" href="https://www.paraview.org">Paraview</a> is a scientific data visualization program.
+new_window: true
+tile:
+  sub_caption: |

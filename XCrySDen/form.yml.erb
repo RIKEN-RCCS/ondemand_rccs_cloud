@@ -1,0 +1,38 @@
+---
+cluster: rccs-cloud
+form:
+  - global_queue_x86
+  - global_hours
+  - global_gpus
+  - global_email
+  - file_format
+  - global_input_file
+
+attributes:
+  file_format:
+    widget: "select"
+    label: "File format*"
+    options:
+      - ["(No input)",                   "none", data-hide-input: true, data-set-input: ""]
+      - ["xsf",                          "--xsf"]
+      - ["animxsf/axsf",                 "--animxsf"]
+      - ["bxsf",                         "--bxsf"]
+      - ["xmol/xyz",                     "--xmol"]
+      - ["pdb",                          "--pdb"]
+      - ["gzmat",                        "--gzmat"]
+      - ["gaussian_out/gxx_out/g98_out", "--gaussian_out"]
+      - ["cube/gXX_cube/g98_cube",       "--cube"]
+      - ["orca_out",                     "--orca_out"]
+      - ["crystal_inp",                  "--crystal_inp"]
+      - ["crystal_f9",                   "--crystal_f9"]
+      - ["wien_struct",                  "--wien_struct"]
+      - ["wien_kpath",                   "--wien_kpath"]
+      - ["wien_renderdensity",           "--wien_renderdensity"]
+      - ["wien_density",                 "--wien_density"]
+      - ["wien_fermisurface",            "--wien_fermisurface"]
+      - ["fhi_inpini",                   "--fhi_inpini"]
+      - ["fhi_coord",                    "--fhi_coord"]
+      - ["pwi/pw_inp",                   "--pwi"]
+      - ["pwo/pw_out",                   "--pwo"]
+      - ["s/script",                     "-s"]
+      - ["os/oldscript",                 "--os"]

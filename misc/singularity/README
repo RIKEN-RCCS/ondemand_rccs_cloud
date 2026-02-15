@@ -1,1 +1,0 @@
-If pip is upgraded, please change PIP_VERSION=?? in Jupyter/template/script.sh.erb

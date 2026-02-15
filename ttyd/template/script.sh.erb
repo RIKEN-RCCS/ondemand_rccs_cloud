@@ -1,0 +1,61 @@
+<%
+  require_relative "/var/www/ood/apps/sys/oodjp_apps/utils/config.rb"
+  XDG_DATA_HOME, CONTAINER_IMAGE = load_app_config
+%>
+#!/usr/bin/env bash
+
+# benchmark info
+echo "TIMING - Starting main script at: $(date)"
+
+# set the TERM
+export TERM="xterm-256color"
+
+# set working directory
+cd "$HOME" || exit 7
+
+# set SINGULARITY_BINDPATH and _OPTION
+<%= set_bindpath %>
+
+# select image
+if [ `arch` = "x86_64" ]; then
+  CONTAINER_IMAGE=<%= CONTAINER_IMAGE["x86_64"] %>
+else
+  CONTAINER_IMAGE=<%= CONTAINER_IMAGE["aarch64"] %>
+fi
+
+# launch ttyd
+singularity run --env PS1='\u@\h:\w\$ ' ${_OPTION} ${CONTAINER_IMAGE} ttyd \
+  -p "${PORT}" \
+  -b "/node/${HOST}/${PORT}" \
+  -t "fontSize=${OOD_FONT_SIZE}" \
+  -t 'cursorStyle=bar' \
+  -t 'cursorBlink=true' \
+  -t 'theme={"background": "#282a36", "foreground": "#f8f8f2"}' \
+  -c "ttyd:${PASSWORD}" \
+  -W -m 1 \
+  "$OOD_STAGED_ROOT/tmux.sh"
+
+
+#!/usr/bin/env bash
+
+# benchmark info
+echo "TIMING - Starting main script at: $(date)"
+
+# set the TERM
+export TERM="xterm-256color"
+
+# set working directory
+cd "$HOME" || exit 7
+
+# launch ttyd
+TTYD_PATH="$(which --skip-alias --skip-functions ttyd)"
+$TTYD_PATH \
+  -p "${PORT}" \
+  -b "/node/${HOST}/${PORT}" \
+  -t "fontSize=${OOD_FONT_SIZE}" \
+  -t 'cursorStyle=bar' \
+  -t 'cursorBlink=true' \
+  -t 'theme={"background": "#282a36", "foreground": "#f8f8f2"}' \
+  -c "ttyd:${PASSWORD}" \
+  -W -m 1 \
+  "$OOD_STAGED_ROOT/tmux.sh"

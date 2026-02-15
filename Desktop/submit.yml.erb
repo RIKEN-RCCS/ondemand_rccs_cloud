@@ -1,51 +1,33 @@
+<%
+  require_relative "/var/www/ood/apps/sys/oodjp_apps/utils/config.rb"
+  XDG_DATA_HOME, CONTAINER_IMAGE = load_app_config
+  APP_NAME = "Desktop"
+%>
 ---
 batch_connect:
   template: vnc
   websockify_cmd: '/usr/bin/websockify'
   script_wrapper: |
     cat << "CTRSCRIPT" > container.sh
-    export PATH="$PATH:/opt/TurboVNC/bin"
-    export PATH="$PATH:/opt/ParaView/bin"
-    export PATH="$PATH:/opt/visit/bin"
     export LANG=C
+    export PATH="$PATH:/opt/TurboVNC/bin"
     %s
     CTRSCRIPT
 
-    export LANG=C
-    DIR=""
-    for d in /run /var/run/munge /var/spool/slurm /cloud_opt /lvs0 /hs /usr/lib/locale/locale-archive; do
-      if [ -e $d ]; then
-          DIR=$DIR,$d
-      fi
-    done
-    export SINGULARITY_BINDPATH=${DIR#,}
-    OPTION=""
-    if [ -e /usr/local/cuda ]; then
-      for d in `ls -d1 /usr/local/cuda*`; do
-        export SINGULARITY_BINDPATH=$SINGULARITY_BINDPATH,$d
-      done
-      export SINGULARITY_BINDPATH=$SINGULARITY_BINDPATH,/opt/nvidia
-      OPTION="--nv"
-    elif [ -e /opt/rocm ]; then
-      for d in `ls -d1 /opt/rocm*`; do
-        export SINGULARITY_BINDPATH=$SINGULARITY_BINDPATH,$d
-      done
-      [ -e /opt/amdgpu ] && export SINGULARITY_BINDPATH=$SINGULARITY_BINDPATH,/opt/amdgpu
-      for f in `ls -1 /usr/share/Modules/modulefiles/rocm`; do
-        path=/usr/share/Modules/modulefiles/rocm/$f
-        r=`realpath $path`
-        SINGULARITY_BINDPATH=$SINGULARITY_BINDPATH,$r:$path
-      done
-      OPTION="--rocm"
-    fi
-    
-    if [ -e /etc/openmpi-x86_64/openmpi-mca-params.conf ]; then
-        export SINGULARITY_BINDPATH=$SINGULARITY_BINDPATH,/etc/openmpi-x86_64/openmpi-mca-params.conf
-    fi
+    # Set SINGULARITY_BINDPATH and _OPTION
+    <%= set_bindpath %>
 
-    export SINGULARITYENV_XDG_DATA_HOME=${HOME}/ondemand/desktop/`arch`
-    IMAGE="/cloud_opt/ondemand/rocky95_`arch`.sif"
-    singularity run ${OPTION} ${IMAGE} bash ./container.sh
+    if [ `arch` = "x86_64" ]; then
+      export SINGULARITYENV_XDG_DATA_HOME=<%= XDG_DATA_HOME["x86_64"] %>/<%= APP_NAME %>
+      singularity run ${_OPTION} <%= CONTAINER_IMAGE["x86_64"] %> bash ./container.sh
+    else
+      export SINGULARITYENV_XDG_DATA_HOME=<%= XDG_DATA_HOME["aarch64"] %>/<%= APP_NAME %>
+      if [ "<%= global_queue %>" = "fx700" ]; then
+        singularity run ${_OPTION} /cloud_opt/ondemand/rocky97_fx700_aarch64.sif bash ./container.sh
+      else
+        singularity run ${_OPTION} <%= CONTAINER_IMAGE["aarch64"] %> bash ./container.sh
+      fi
+    fi
 
 script:
-  <%= script("ood_desktop", global_queue, global_hours, global_gpus, global_email) %>
+  <%= script("ood_#{APP_NAME}", global_queue, global_hours, global_gpus, global_email) %>

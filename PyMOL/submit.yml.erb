@@ -1,0 +1,33 @@
+<%
+  require_relative "/var/www/ood/apps/sys/oodjp_apps/utils/config.rb"
+  XDG_DATA_HOME, CONTAINER_IMAGE = load_app_config
+  APP_NAME = "PyMOL"
+%>
+---
+batch_connect:
+  template: vnc
+  websockify_cmd: '/usr/bin/websockify'
+  script_wrapper: |
+    cat << "CTRSCRIPT" > container.sh
+    export LANG=C
+    export PATH="$PATH:/opt/TurboVNC/bin"
+    %s
+    CTRSCRIPT
+
+    # Set SINGULARITY_BINDPATH and _OPTION
+    <%= set_bindpath %>
+
+    if [ `arch` = "x86_64" ]; then
+      export SINGULARITYENV_XDG_DATA_HOME=<%= XDG_DATA_HOME["x86_64"] %>/<%= APP_NAME %>
+      singularity run ${_OPTION} <%= CONTAINER_IMAGE["x86_64"] %> bash ./container.sh
+    else
+      export SINGULARITYENV_XDG_DATA_HOME=<%= XDG_DATA_HOME["aarch64"] %>/<%= APP_NAME %>
+      if [ "<%= global_queue %>" = "fx700" ]; then
+        singularity run ${_OPTION} /cloud_opt/ondemand/rocky97_fx700_aarch64.sif bash ./container.sh
+      else
+        singularity run ${_OPTION} <%= CONTAINER_IMAGE["aarch64"] %> bash ./container.sh
+      fi
+    fi
+
+script:
+  <%= script("ood_#{APP_NAME}", global_queue, global_hours, global_gpus, global_email) %>

@@ -1,0 +1,9 @@
+name: ImageJ
+category: Interactive Apps
+subcategory: Visualization
+role: batch_connect
+description: |
+  <a target="_blank" rel="noopener noreferrer" href="https://imagej.net/ij/">ImageJ</a> is an image processing and analysis in Java.
+new_window: true
+tile:
+  sub_caption: |

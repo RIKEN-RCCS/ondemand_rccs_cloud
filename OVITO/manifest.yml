@@ -1,0 +1,9 @@
+name: OVITO
+category: Interactive Apps
+subcategory: Visualization
+role: batch_connect
+description: |
+  <a target="_blank" rel="noopener noreferrer" href="https://www.ovito.org/">OVITO</a> is a scientific data visualization and analysis solution for particle-based simulations.
+new_window: true
+tile:
+  sub_caption: |

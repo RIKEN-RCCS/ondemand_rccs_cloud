@@ -1,11 +1,9 @@
----
 name: VSCode
 category: Interactive Apps
+subcategory: Development
 role: batch_connect
-subcategory: Servers
 description: |
-  This app will launch a [VS Code].
-
-  [VS Code]: https://code.visualstudio.com/
+  <a target="_blank" rel="noopener noreferrer" href="https://code.visualstudio.com/">Visual Studio Code (VSCode)</a> is a lightweight, extensible source-code editor developed by Microsoft for building and debugging modern web and cloud applications.
+new_window: true
 tile:
   sub_caption: |

@@ -1,0 +1,9 @@
+name: VisIt
+category: Interactive Apps
+subcategory: Visualization
+role: batch_connect
+description: |
+  <a target="_blank" rel="noopener noreferrer" href="https://visit-dav.github.io/visit-website/">VisIt</a> is an open source, interactive, scalable, visualization, animation and analysis tool.
+new_window: true
+tile:
+  sub_caption: |

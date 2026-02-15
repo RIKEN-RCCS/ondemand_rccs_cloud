@@ -1,56 +1,37 @@
-#!/usr/bin/bash -l
+<%
+  require_relative "/var/www/ood/apps/sys/oodjp_apps/utils/config.rb"
+  XDG_DATA_HOME, CONTAINER_IMAGE = load_app_config
+%>
+#!/usr/bin/env bash
 
-CODE_SERVER_DATAROOT="$HOME/ondemand/code-server/`arch`"
-mkdir -p "$CODE_SERVER_DATAROOT/extensions"
+# set SINGULARITY_BINDPATH and _OPTION
+<%= set_bindpath %>
+
+# select image and create a directory for extensions
+if [ `arch` = "x86_64" ]; then
+  CONTAINER_IMAGE=<%= CONTAINER_IMAGE["x86_64"] %>
+  CODE_SERVER_DATAROOT=<%= XDG_DATA_HOME["x86_64"] %>/VSCode
+else
+  CODE_SERVER_DATAROOT=<%= XDG_DATA_HOME["aarch64"] %>/VSCode
+  if [ "<%= context.global_queue %>" = "fx700" ]; then
+    CONTAINER_IMAGE="/cloud_opt/ondemand/rocky97_fx700_aarch64.sif"
+  else
+    CONTAINER_IMAGE=<%= CONTAINER_IMAGE["aarch64"] %>
+  fi
+fi
+
+mkdir -p ${CODE_SERVER_DATAROOT}/extensions
+
+cd "${HOME}"
+export LANG=C
 
 # Expose the password to the server.
 export PASSWORD="$password"
 
-# Print compute node.
-echo "$(date): Running on compute node ${compute_node}:$port"
-echo "$(date): Started code-server"
-echo ""
-
-module load singularity
-export LANG=C
-DIR=""
-for d in /run /var/run/munge /var/spool/slurm /cloud_opt /lvs0 /hs /usr/lib/locale/locale-archive; do
-  if [ -e $d ]; then
-      DIR=$DIR,$d
-  fi
-done
-export SINGULARITY_BINDPATH=${DIR#,}
-echo $SINGULARITY_BINDPATH
-export SINGULARITYENV_XDG_DATA_HOME=${CODE_SERVER_DATAROOT}
-
-OPTION=""
-if [ -e /usr/local/cuda ]; then
-  for d in `ls -d1 /usr/local/cuda*`; do
-    export SINGULARITY_BINDPATH=$SINGULARITY_BINDPATH,$d
-  done
-  export SINGULARITY_BINDPATH=$SINGULARITY_BINDPATH,/opt/nvidia
-  OPTION="--nv"
-elif [ -e /opt/rocm ]; then
-  for d in `ls -d1 /opt/rocm*`; do
-    export SINGULARITY_BINDPATH=$SINGULARITY_BINDPATH,$d
-  done
-  for f in `ls -1 /usr/share/Modules/modulefiles/rocm`; do
-    path=/usr/share/Modules/modulefiles/rocm/$f
-    r=`realpath $path`
-    SINGULARITY_BINDPATH=$SINGULARITY_BINDPATH,$r:$path
-  done
-  OPTION="--rocm"
-fi
-
-if [ -e /etc/openmpi-x86_64/openmpi-mca-params.conf ]; then
-    export SINGULARITY_BINDPATH=$SINGULARITY_BINDPATH,/etc/openmpi-x86_64/openmpi-mca-params.conf
-fi
-
-IMAGE="/cloud_opt/ondemand/rocky95_`arch`.sif"
-singularity exec --env PS1='\u@\h:\w\$ ' ${OPTION} ${IMAGE} code-server \
-    --auth="password" \
-    --bind-addr="0.0.0.0:${port}" \
-    --disable-telemetry \
-    --user-data-dir="$CODE_SERVER_DATAROOT" \
-    --extensions-dir="$CODE_SERVER_DATAROOT/extensions" \
-    --log debug --disable-update-check
+singularity run --env PS1='\u@\h:\w\$ ' ${_OPTION} ${CONTAINER_IMAGE} code-server \
+  --auth="password" \
+  --bind-addr="0.0.0.0:${port}" \
+  --disable-telemetry \
+  --user-data-dir="$CODE_SERVER_DATAROOT" \
+  --extensions-dir="$CODE_SERVER_DATAROOT/extensions" \
+  --log debug --disable-update-check

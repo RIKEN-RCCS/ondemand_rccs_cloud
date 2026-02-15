@@ -1,0 +1,8 @@
+# Set xfce environment and _VIRTUALGL
+<%= set_xfce(context.respond_to?(:gpus) && context.gpus.to_i > 0) %>
+
+# Start GrADS
+xfce4-terminal -e '/opt/grads/bin/grads' &
+
+# Start up xfce desktop (block until user logs out of desktop)
+${_VIRTUALGL} xfce4-session

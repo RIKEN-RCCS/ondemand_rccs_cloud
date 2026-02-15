@@ -1,0 +1,19 @@
+# Set xfce environment and _VIRTUALGL
+<%= set_xfce(context.respond_to?(:gpus) && context.gpus.to_i > 0) %>
+
+# Select Paraview
+if [ "$(arch)" = "x86_64" ]; then
+  PARAVIEW_PATH=/opt/ParaView/bin/paraview
+else
+  PARAVIEW_PATH=/usr/bin/paraview
+fi
+
+# Start Paraview
+<% if !context.global_input_file.to_s.empty? %>
+"$PARAVIEW_PATH" "<%= context.global_input_file %>" &
+<% else %>
+"$PARAVIEW_PATH" &
+<% end %>
+
+# Start up xfce desktop (block until user logs out of desktop)
+${_VIRTUALGL} xfce4-session

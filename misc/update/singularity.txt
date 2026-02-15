@@ -1,0 +1,6 @@
+Create container images from the following URL:
+https://github.com/OpenOnDemandJP/oodjp_apps/tree/main/containers
+
+When building a image for FX700, remove the nvidia-driver-libs pacakge.
+
+If pip is upgraded, please change PIP_VERSION=?? in Jupyter/template/script.sh.erb

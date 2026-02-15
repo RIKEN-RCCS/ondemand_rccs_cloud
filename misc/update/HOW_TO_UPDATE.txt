@@ -20,6 +20,6 @@ tile:
 
 For shell/manifest.yml, change the name to "Terminal for Login Node" and comment out the line of role.
 ```
-name: Terminal for Login Node
+name: Login Node
 #role: shell
 ```
