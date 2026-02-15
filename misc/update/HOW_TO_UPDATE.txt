@@ -1,7 +1,8 @@
-ln -s /var/www/ood/apps/sys/ondemand_rccs_cloud/misc/update/global_bc_items.yml /etc/ood/config/ondemand.d/global_bc_items.yml
-ln -s /var/www/ood/apps/sys/ondemand_rccs_cloud/misc/update/missing_home_directory.html /etc/ood/config/pun/html/missing_home_directory.html
-ln -s /var/www/ood/apps/sys/ondemand_rccs_cloud/misc/update/_welcome.html.erb /var/www/ood/apps/sys/dashboard/app/views/shared/_welcome.html.erb
-ln -s /var/www/ood/apps/sys/ondemand_rccs_cloud/misc/update/ood.rb /etc/ood/config/apps/dashboard/initializers/ood.rb
+ln -s global_bc_items.yml /etc/ood/config/ondemand.d/global_bc_items.yml
+ln -s missing_home_directory.html /etc/ood/config/pun/html/missing_home_directory.html
+ln -s _welcome.html.erb /var/www/ood/apps/sys/dashboard/app/views/shared/_welcome.html.erb
+ln -s ood.rb /etc/ood/config/apps/dashboard/initializers/ood.rb
+ln -s _recently_used_apps_wo_params.html.erb /var/www/ood/apps/sys/dashboard/app/views/widgets/_recently_used_apps_wo_params.html.erb
 
 Comment out the line dashboard.pinned_apps_title in /var/www/ood/apps/sys/dashboard/app/views/widgets/_pinned_apps.html.erb
 
