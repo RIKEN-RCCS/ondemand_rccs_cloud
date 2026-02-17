@@ -67,77 +67,50 @@
 	<tr><td><a target="_blank" rel="noopener noreferrer" href="http://www.xcrysden.org/">XCrySDen</a></td><td>Visualization program for crystal and molecular structures</td></tr>
       </table>
       <p>
-        For example, to use the remote desktop: click the "Desktop" in "Interactive Apps", a web form will appear to enter compute resources and other information. After entering the information, click "Launch" to submit a job to the R-CCS Cloud.
+        For example, to use the Desktop: click the "Desktop" in "Interactive Apps", a web form will appear to enter compute resources and other information. After entering the information, click "Launch" to submit a job to the R-CCS Cloud.
       </p>
-      <img width="400" alt="Webform of Remote Desktop" src="img/remote_desktop_webform.png">
+      <img width="400" alt="Webform of Desktop" src="img/remote_desktop_webform.png">
       <p>
         Immediately after job submission, a screen showing "Queued" will appear, meaning the job is waiting.  
         When the job starts on a compute node, the display changes to "Running" and a "Launch Desktop" button appears.  
-        Set appropriate values for "Compression" and "Image Quality", then click "Launch Desktop" to open the remote desktop in your browser.
+        Set appropriate values for "Compression" and "Image Quality", then click "Launch Desktop" to open the Desktop in your browser.
       </p>
       <p>
-        Clicking the "View Only (Share-able Link)" button opens a mirrored remote desktop in a new tab.  
+        Clicking the "View Only (Share-able Link)" button opens a mirrored desktop in a new tab.  
         The mirrored screen cannot be operated.  
         You can share the screen by sending the URL via email, but only among users who have an account on the R-CCS Cloud.
       </p>
       <img width="600" alt="Running Status" src="img/remote_desktop_running.png"><p></p>
       <img width="600" alt="Remote Desktop" src="img/remote_desktop.png">
       <p>
-        To terminate the remote desktop, do one of the following. Simply closing the browser will not terminate it:
+        To terminate the desktop, do one of the following. Simply closing the browser will not terminate it:
       </p>
       <ul>
         <li>Click the "Delete" button (as shown in the second previous image).</li>
         <li>Click "My Interactive Sessions" in the menu bar and then click "Delete" for the relevant job.</li>
-        <li>From "Applications" at the top left of the remote desktop, click "Log Out".</li>
+        <li>From "Applications" at the top left of the desktop, click "Log Out".</li>
       </ul>
 
-      <h3>4.2. Batch Jobs</h3>
+      <h3>4.2. Passenger Application</h3>
       <p>
-        A batch job is a compute task executed non-interactively by the job scheduler.  
-        Batch jobs are written as shell scripts, and required resources (e.g., number of nodes, maximum runtime) are specified with scheduler directives (e.g., <code>#SBATCH -N 4</code>).  
-        In R-CCS Cloud Open OnDemand, the application <a target="_blank" href="https://github.com/RIKEN-RCCS/OpenComposer/">Open Composer</a> is provided, making it easy to submit and manage batch jobs.
+	Passenger applications are applications that run on the Open OnDemand server. We provide the following applications.	
       </p>
-      <p>
-        Click the Slurm icon. A web form for generating job scripts will appear.  
-        At the top right, "Script Location" specifies where the script will be saved, "Script Name" is the filename, and "Job Name" is the job name (optional).  
-        At the bottom left are job input items; filling them updates the job script on the bottom right automatically.  
-        After entering, click "Submit" to submit the job to the R-CCS Cloud.
-      </p>
-      <img width="600" alt="Slurm" src="img/slurm.png">
-      <p>
-        Once the job is successfully submitted, click the link to the "History page" shown at the top.
-      </p>
-      <img width="400" alt="Link to History Page" src="img/link_to_history.png">
-      <p>
-        On the History page, you can view the history of submitted jobs. Each row shows information for one job.  
-        The "Cancel Job" button cancels a running job, and the "Delete Info" button removes job info from the table.  
-        To perform these actions, check the corresponding checkbox in the leftmost column.
-      </p>
-      <p>
-        The text area and radio buttons at the top right filter jobs displayed in the table.  
-        Entering a string in "Filter" shows only jobs related to that string.  
-        Radio buttons "All", "Running", "Queued", and "Completed" filter jobs by status.
-      </p>
-      <img width="600" alt="History Page" src="img/history.png">
-      <p>
-        Clicking a link in the "Job ID" column displays profiling information retrieved from the scheduler.
-      </p>
-      <img width="400" alt="Job ID in History Page" src="img/history_jobid.png">
-      <p>
-        Clicking a link in the "Application" column opens the application page.
-      </p>
-      <p>
-        Clicking a link in the "Script Location" column opens Open OnDemand’s <a href="#file">Home Directory</a>.  
-        Clicking the adjacent terminal icon opens <a href="#shell">Login Node</a>.
-      </p>
-      <p>
-        Clicking a link in the "Script Name" column opens a window showing the submitted script.  
-        Clicking the "Load Parameters" button in that window opens the application page with the parameters preloaded.
-      </p>
-      <img width="400" alt="Load Parameters" src="img/history_load_parameters.png">
-
-      <h3 id="file">4.3. File Operations</h3>
-      <p>Click the Home Directory icon to transfer and edit files. The maximum file size for transfer is 10GB.</p>
+      <table class="table">
+        <tr><th>Name</th><th>Description</th></tr>
+	<tr><td><a href="#active">Active Jobs</a></td><td>Monitoring Jobs</td></tr>
+	<tr><td><a href="#home">Home Directory</a></td><td>File Operations</td></tr>
+	<tr><td><a href="#login">Login Node</a></td><td>Terminal</td></tr>
+	<tr><td><a href="#ssh">SSH Public Key</a></td><td>Registering an SSH public key</td></tr>
+	<tr><td><a href="#slurm">Slurm</a></td><td>Creating and submitting a batch job</td></tr>
+	<tr><td><a href="#system">System Status</a></td><td>Check usage status</td></tr>
+      </table>
+ 
+      <h4 id="active">4.2.1. Active Jobs</h4>
+      <p>You can view and delete job information. Click the button left of "ID" to view details, and the "Actions" column button to cancel a job.</p>
+      <img width="600" alt="Active Jobs" src="img/activejobs.png">
+ 
+      <h4 id="home">4.2.2. Home Directory</h4>
+      <p>You can send, receive, and edit files. The maximum file size for transfer is 10GB.</p>
       <img width="600" alt="Home Directory" src="img/home_directory.png">
       <p>The functions of the Home Directory are as follows. Operations on individual files or directories can be performed from the "three-dot + triangle" menu.</p>
       <table class="table">
@@ -169,26 +142,67 @@
       <p>Clicking a path in "Passenger Apps" launches the Home Directory starting from that path.</p>
       <img width="200" alt="Click to Home Directory" src="img/home_directory_click.png">
       <p>
-        File operations with cloud storage via <a target="_blank" href="https://rclone.org">Rclone</a> are also supported.  
-        To configure Rclone, start a remote desktop, open a terminal, and run <code>rclone</code> or <code>rclone-browser</code>.  
+        File operations with cloud storage via <a target="_blank" rel="noopener noreferrer" href="https://rclone.org">Rclone</a> are also supported.  
+        To configure Rclone, start a Desktop, open a terminal, and run <code>rclone</code> or <code>rclone-browser</code>.  
         After configuration, click "Help → Restart Web Server" in Open OnDemand’s menu bar, then open the Home Directory to access the configured storage.  
         Note that the R-CCS Cloud Help Desk does not provide support for Rclone configuration.
       </p>
 
-      <h3 id="shell">4.4. Terminal for Login Node</h3>
-      <p>Click the Login Node icon. You can SSH into the login node via browser and operate with a command-line interface.</p>
+      <h4 id="login">4.2.3 Login Node</h4>
+      <p>You can SSH into the login node via browser and operate with a command-line interface.</p>
       <img width="600" alt="Terminal for Login Node" src="img/shell_access.png">
 
-      <h3>4.5. Job Monitoring</h3>
-      <p>Click the Active Jobs icon. You can view and delete job information. Click the button left of "ID" to view details, and the "Actions" column button to cancel a job.</p>
-      <img width="600" alt="Active Jobs" src="img/activejobs.png">
+      <h4 id="ssh">4.2.4. SSH Public Key</h4>
+      <p>See <a href="index.html#ssh">1.2. Using Terminal Software</a>.</p>
+      
+      <h4 id="slurm">4.2.5. Slurm</h4>
+      <p>
+	You can create and submit batch jobs.
+        A batch job is a compute task executed non-interactively by the job scheduler.  
+        Batch jobs are written as shell scripts, and required resources (e.g., number of nodes, maximum runtime) are specified with scheduler directives (e.g., <code>#SBATCH -N 4</code>).  
+        In R-CCS Cloud Open OnDemand, the application <a target="_blank" rel="noopener noreferrer" href="https://github.com/RIKEN-RCCS/OpenComposer/">Open Composer</a> is provided, making it easy to submit and manage batch jobs.
+      </p>
+      <p>
+        At the top right, "Script Location" specifies where the script will be saved, "Script Name" is the filename, and "Job Name" is the job name (optional).  
+        At the bottom left are job input items; filling them updates the job script on the bottom right automatically.  
+        After entering, click "Submit" to submit the job to the R-CCS Cloud.
+      </p>
+      <img width="600" alt="Slurm" src="img/slurm.png">
+      <p>
+        Once the job is successfully submitted, click the link to the "History page" shown at the top.
+      </p>
+      <img width="400" alt="Link to History Page" src="img/link_to_history.png">
+      <p>
+        On the History page, you can view the history of submitted jobs. Each row shows information for one job.  
+        The "Cancel Job" button cancels a running job, and the "Delete Info" button removes job info from the table.  
+        To perform these actions, check the corresponding checkbox in the leftmost column.
+      </p>
+      <p>
+        The text area and radio buttons at the top right filter jobs displayed in the table.  
+        Entering a string in "Filter" shows only jobs related to that string.  
+        Radio buttons "All", "Running", "Queued", "Completed", and "Failed" filter jobs by status.
+      </p>
+      <img width="600" alt="History Page" src="img/history.png">
+      <p>
+        Clicking a link in the "Job ID" column displays profiling information retrieved from the scheduler.
+      </p>
+      <img width="400" alt="Job ID in History Page" src="img/history_jobid.png">
+      <p>
+        Clicking a link in the "Application" column opens the application page.
+      </p>
+      <p>
+        Clicking a link in the "Script Location" column opens Open OnDemand’s <a href="#home">Home Directory</a>.  
+        Clicking the adjacent terminal icon opens <a href="#login">Login Node</a>.
+      </p>
+      <p>
+        Clicking a link in the "Script Name" column opens a window showing the submitted script.  
+        Clicking the "Load Parameters" button in that window opens the application page with the parameters preloaded.
+      </p>
+      <img width="400" alt="Load Parameters" src="img/history_load_parameters.png">
 
-      <h3>4.6. Cluster Usage</h3>
-      <p>Click the System Status icon to view the usage status of each partition.</p>
+      <h4 id="system">4.2.6. System Status</h4>
+      <p>You can view the usage status of each partition.</p>
       <img width="600" alt="Grafana" src="img/grafana.png">
-
-      <h3>4.7. SSH Public Key Registration</h3>
-      <p>Click the SSH Public Key icon. For details, see <a href="index.html#ssh">1.2. Using Terminal Software</a>.</p>
     </main>
   </div>
 

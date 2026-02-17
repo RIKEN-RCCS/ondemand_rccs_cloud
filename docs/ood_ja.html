@@ -65,58 +65,43 @@
 	<tr><td><a target="_blank" rel="noopener noreferrer" href="http://www.xcrysden.org/">XCrySDen</a></td><td>結晶構造や分子構造などの可視化プログラム</td></tr>
       </table>
       <p>
-        例として、リモートデスクトップの利用方法を説明します。メニューバーの「Interactive Apps」から「Desktop」をクリックすると、計算リソースなどを入力するためのWebフォームが表示されます。入力後に「Launch」をクリックすると、R-CCSクラウドにジョブが投入されます。
+        例として、Desktopの利用方法を説明します。メニューバーの「Interactive Apps」から「Desktop」をクリックすると、計算リソースなどを入力するためのWebフォームが表示されます。入力後に「Launch」をクリックすると、R-CCSクラウドにジョブが投入されます。
       </p>
       <img width="400" alt="Webform of Remote Desktop" src="img/remote_desktop_webform.png">
       <p>
-        ジョブ投入直後は、右上に「Queued」と記述された画面が表示されます。これは、ジョブは実行待ちであることを表しています。ジョブが計算ノードで起動すると「Running」という表示に変わり、「Launch Desktop」というボタンが表示されます。「Commpression（圧縮レベル）と「Image Quality（画質レベル）」に適当な値を設定して、「Launch Desktop」のボタンをクリックすると、リモートデスクトップがWebブラウザに表示されます。
+        ジョブ投入直後は、右上に「Queued」と記述された画面が表示されます。これは、ジョブは実行待ちであることを表しています。ジョブが計算ノードで起動すると「Running」という表示に変わり、「Launch Desktop」というボタンが表示されます。「Commpression（圧縮レベル）と「Image Quality（画質レベル）」に適当な値を設定して、「Launch Desktop」のボタンをクリックすると、DesktopがWebブラウザに表示されます。
       </p>
-      <p>「View Only (Share-able Link) 」ボタンをクリックすると、ミラーリングされたリモートデスクトップが新しいタブで開きます。ミラーリングされた画面は操作できません。このタブのURLをメール等で送信することで、画面共有を行うことができます（R-CCSクラウドにアカウントを持っているユーザ間でのみ画面共有が可能です）。
+      <p>「View Only (Share-able Link) 」ボタンをクリックすると、ミラーリングされたDesktopが新しいタブで開きます。ミラーリングされた画面は操作できません。このタブのURLをメール等で送信することで、画面共有を行うことができます（R-CCSクラウドにアカウントを持っているユーザ間でのみ画面共有が可能です）。
       </p>
       <img width="600" alt="Running Status" src="img/remote_desktop_running.png"><p></p>
       <img width="600" alt="Remote Desktop" src="img/remote_desktop.png">
-      <p>リモートデスクトップを終了させたい場合は、下記の手順のどれかを行ってください。Webブラウザを閉じるだけでは終了されないことに注意してください。</p>
+      <p>Desktopを終了させたい場合は、下記の手順のどれかを行ってください。Webブラウザを閉じるだけでは終了されないことに注意してください。</p>
       <ul>
         <li>2つ前の画像の「Delete」ボタンをクリックする。</li>
         <li>メニューバーの「My Interactive Sessions」をクリックし、該当のジョブの「Delete」ボタンをクリックする。</li>
-        <li>リモートデスクトップの左上の「Applications」から「Log Out」をクリックする。</li>
+        <li>Desktopの左上の「Applications」から「Log Out」をクリックする。</li>
       </ul>
 
-      <h3>4.2. バッチジョブ</h3>
+      <h3>4.2. Passengerアプリケーション</h3>
       <p>
-        バッチジョブとは、ジョブスケジューラによって非対話的に実行される計算タスクのことです。バッチジョブはシェルスクリプトで記述され、必要な計算資源（たとえばノード数や最大実行時間など）は、ジョブスケジューラのディレクティブ（例：<code>#SBATCH -N 4</code>）を用いて指定します。R-CCSクラウドOpen OnDemandでは、Open OnDemand上で動作するアプリケーションである<a target="_blank" href="https://github.com/RIKEN-RCCS/OpenComposer/">Open Composer</a>を利用しており、簡易にバッチジョブの投入と管理を行うことができます。
+	Passengerアプリケーションとは、Open OnDemandサーバで動作するアプリケーションです。下記のアプリケーションを提供しています。
       </p>
-      <p>
-        Slurmのアイコンをクリックください。ジョブスクリプトを生成するためのWebフォームが表示されます。右上の「Script Location」はジョブスクリプトの保存場所、「Script Name」はジョブスクリプトのファイル名、「Job Name」はジョブの名前（省略可能）を指定します。左下はジョブに関する入力項目であり、入力すると右下のジョブスクリプトが自動更新されます。入力後に「Submit」をクリックすると、R-CCSクラウドにジョブが投入されます。
-      </p>
-      <img width="600" alt="Slurm" src="img/slurm.png">
-      <p>
-      ジョブが正常に投入されると上の方に表示される「History page」へのリンクをクリックします。
-      </p>
-      <img width="400" alt="Link to Histroy Page" src="img/link_to_history.png">
-      <p>
-      History pageでは、これまでに投入したジョブの履歴を閲覧することができます。表の各行は1つのジョブの情報を示しています。左上にある「Cancel Job」と「Delete Info」のボタンは、それぞれ「実行中のジョブのキャンセル」と「表からジョブの情報を削除する」ことを行います。それらの動作を行うためには、表の左端の列にある対応するチェックボックスをオンにします。
-      </p>
-      <p>
-      右上にあるテキストエリアとラジオボタンは、表に表示されるジョブをフィルタリングするために使用します。「Filter」に文字列を入力すると、その文字列に関係するジョブだけが表示されます。「All」、「Running」、「Queued」、「Completed」のラジオボタンはジョブの状態を表しており、その状態のジョブだけが表示されます。
-      </p>
-      <img width="600" alt="Histroy Page" src="img/history.png">
-      <p>
-      「Job ID」列のリンクをクリックすると、ジョブスケジューラから取得されたプロファイリング情報が表示されます。
-      </p>
-      <img width="400" alt="Job ID in Histroy Page" src="img/history_jobid.png">
-      <p>
-     「Application」列のリンクをクリックすると、そのアプリケーションページが開きます。
-      <p>
-      「Script Location」列のリンクをクリックすると、Open OnDemandの<a href="#file">Home Directory</a>が起動します。また、その横のターミナルアイコンをクリックすると、Open OnDemandの<a href="#shell">Login Node</a>が起動します。
-      </p>
-      <p>
-      「Script Name」列のリンクをクリックすると、送信されたシェルスクリプトの内容を表示するウィンドウが開きます。そのウィンドウの「Load Parameters」ボタンをクリックすると、パラメータが読み込まれたアプリケーションのページが開きます。
-      </p>
-      <img width="400" alt="Load Parameters" src="img/history_load_parameters.png">
+      <table class="table">
+        <tr><th>名前</th><th>説明</th></tr>
+	<tr><td><a href="#active">Active Jobs</a></td><td>ジョブのモニタリング</td></tr>
+	<tr><td><a href="#home">Home Directory</a></td><td>ファイル操作</td></tr>
+	<tr><td><a href="#login">Login Node</a></td><td>ターミナル</td></tr>
+	<tr><td><a href="#ssh">SSH Public Key</a></td><td>SSH公開鍵の登録</td></tr>
+	<tr><td><a href="#slurm">Slurm</a></td><td>バッチジョブの作成と投入</td></tr>
+	<tr><td><a href="#system">System Status</a></td><td>クラスタの利用状況の確認</td></tr>
+      </table>
 
-      <h3 id="file">4.3. ファイル操作</h3>
-      <p>Home Directoryのアイコンをクリックしてください。ファイルの送受信・編集などを行えます。送受信可能な最大サイズは10GBです。</p>
+      <h4 id="active">4.2.1. Active Jobs</h4>
+      <p>ジョブの情報を閲覧や削除を行うことができます。「ID」の列の左側のボタンをクリックすると、ジョブ詳細情報を表示できます。「Actions」の列のボタンをクリックすると、ジョブの削除を行えます。</p>
+      <img width="600" alt="Active Jobs" src="img/activejobs.png">
+
+      <h4 id="home">4.2.2. Home Directory</h4>
+      <p>ファイルの送受信・編集などを行えます。送受信可能な最大サイズは10GBです。</p>
       <img width="600" alt="Home Directory" src="img/home_directory.png">
       <p>Home Directoryの各機能は下記の通りです。個別のファイルやディレクトリに対する操作は「3点＋下三角」のメニューから行えます。</p>
       <table class="table">
@@ -148,9 +133,52 @@
       <p>メニューバーの「Passenger Apps」にあるパスをクリックすると、そのパスを起点としたHome Directoryが起動します。</p>
       <img width="200" alt="Click to Home Directory" src="img/home_directory_click.png">
       <p>
-      <a target="_blank" href="https://rclone.org">Rclone</a>を用いたクラウドストレージに対するファイルの操作も可能です。Rcloneの設定を行うには、リモートデスクトップを起動し、そのターミナルから<code>rclone</code>もしくは<code>rclone-browser</code>を実行します。設定後にOpen OnDemandのメニューバーの「Help」&rarr; 「Restart Web Server」をクリックし、Home Directoryを起動すると、設定されたクラウドストレージにアクセスできます。なお、R-CCSクラウドヘルプデスクではRcloneの設定のサポートは行っておりませんのでご了承ください。
+      <a target="_blank" rel="noopener noreferrer" href="https://rclone.org">Rclone</a>を用いたクラウドストレージに対するファイルの操作も可能です。Rcloneの設定を行うには、対話アプリケーションのDesktopを起動し、そのターミナルから<code>rclone</code>もしくは<code>rclone-browser</code>を実行します。設定後にOpen OnDemandのメニューバーの「Help」&rarr; 「Restart Web Server」をクリックし、Home Directoryを起動すると、設定されたクラウドストレージにアクセスできます。なお、R-CCSクラウドヘルプデスクではRcloneの設定のサポートは行っておりませんのでご了承ください。
       </p>
+      
+      <h4 id="login">4.2.3. Login Node</h4>
+      <p>WebブラウザからログインノードにSSHアクセスし、コマンドラインインタフェースを用いた操作を行うことができます。</p>
+      <img width="600" alt="Terminal for Login Node" src="img/shell_access.png">
+      
+      <h4 id="ssh">4.2.4. SSH Public Key</h4>
+      <p><a target="_blank" rel="noopener noreferrer" href="index_ja.html#ssh">1.2. ターミナルソフトウェアの利用</a>を参照ください。</p>
+      
+      <h4 id="slurm">4.2.5. Slurm</h4>
+      <p>
+        バッチジョブの作成と投入を行えます。バッチジョブとは、ジョブスケジューラによって非対話的に実行される計算タスクのことです。バッチジョブはシェルスクリプトで記述され、必要な計算資源（たとえばノード数や最大実行時間など）は、ジョブスケジューラのディレクティブ（例：<code>#SBATCH -N 4</code>）を用いて指定します。R-CCSクラウドOpen OnDemandでは、Open OnDemand上で動作するアプリケーションである<a target="_blank" rel="noopener noreferrer" href="https://github.com/RIKEN-RCCS/OpenComposer/">Open Composer</a>を利用しており、簡易にバッチジョブの投入と管理を行うことができます。
+      </p>
+      <p>
+        右上の「Script Location」はジョブスクリプトの保存場所、「Script Name」はジョブスクリプトのファイル名、「Job Name」はジョブの名前（省略可能）を指定します。左下はジョブに関する入力項目であり、入力すると右下のジョブスクリプトが自動更新されます。入力後に「Submit」をクリックすると、R-CCSクラウドにジョブが投入されます。
+      </p>
+      <img width="600" alt="Slurm" src="img/slurm.png">
+      <p>
+      ジョブが正常に投入されると上の方に表示される「History page」へのリンクをクリックします。
+      </p>
+      <img width="400" alt="Link to Histroy Page" src="img/link_to_history.png">
+      <p>
+      History pageでは、これまでに投入したジョブの履歴を閲覧することができます。表の各行は1つのジョブの情報を示しています。左上にある「Cancel Job」と「Delete Info」のボタンは、それぞれ「実行中のジョブのキャンセル」と「表からジョブの情報を削除する」ことを行います。それらの動作を行うためには、表の左端の列にある対応するチェックボックスをオンにします。
+      </p>
+      <p>
+      右上にあるテキストエリアとラジオボタンは、表に表示されるジョブをフィルタリングするために使用します。「Filter」に文字列を入力すると、その文字列に関係するジョブだけが表示されます。「All」、「Running」、「Queued」、「Completed」、「Failed」のラジオボタンはジョブの状態を表しており、その状態のジョブだけが表示されます。
+      </p>
+      <img width="600" alt="Histroy Page" src="img/history.png">
+      <p>
+      「Job ID」列のリンクをクリックすると、ジョブスケジューラから取得されたプロファイリング情報が表示されます。
+      </p>
+      <img width="400" alt="Job ID in Histroy Page" src="img/history_jobid.png">
+      <p>
+     「Application」列のリンクをクリックすると、そのアプリケーションページが開きます。
+      <p>
+      「Script Location」列のリンクをクリックすると、Open OnDemandの<a href="#home">Home Directory</a>が起動します。また、その横のターミナルアイコンをクリックすると、Open OnDemandの<a href="#login">Login Node</a>が起動します。
+      </p>
+      <p>
+      「Script Name」列のリンクをクリックすると、送信されたシェルスクリプトの内容を表示するウィンドウが開きます。そのウィンドウの「Load Parameters」ボタンをクリックすると、パラメータが読み込まれたアプリケーションのページが開きます。
+      </p>
+      <img width="400" alt="Load Parameters" src="img/history_load_parameters.png">
 
+      <h4 id="system">4.2.6. System Status</h4>
+      <p>各パーティションの利用状況を閲覧できます。</p>
+      <img width="600" alt="Grafana" src="img/grafana.png">
       <!--
       <h3>3.4. HPCI共用ストレージ（準備中）</h3>
       <p>HPCI Shared Strageのアイコンをクリックください。<a href="https://www.hpci-office.jp">HPCI（High Performance Computing Infrastructure）</a>が提供するHPCI共用ストレージに対するファイル操作を行えます。本アプリケーションを利用するためには、<a href="https://elpis.hpci.nii.ac.jp/">JWT-SERVER</a>からパスフレーズを事前に発行しておく必要があります。</p>
@@ -162,20 +190,7 @@
       <img width="600" alt="GakuNin RDM" src="img/grdm.png">
       <p>「Mount Path」にはR-CCSクラウド側のファイルシステムのマウントパス（例：<code>/home/rccs-aot/a00000/abc</code>）を、「RDM Node ID」はGakuNin RDMのプロジェクトのURL（<code>https://rdm.nii.ac.jp/xxx/</code>）の<code>xxx</code>の箇所を、「ROM Token」はGakuNin RDMのパーソナルアクセストークンを入力した後、「mount」ボタンをクリックください。</p>
      -->
-      <h3 id="shell">4.4. ターミナル</h3>
-      <p>Login Nodeのアイコンをクリックください。WebブラウザからログインノードにSSHアクセスし、コマンドラインインタフェースを用いた操作を行うことができます。</p>
-      <img width="600" alt="Terminal for Login Node" src="img/shell_access.png">
 
-      <h3>4.5. ジョブのモニタリング</h3>
-      <p>Active Jobsのアイコンをクリックください。ジョブの情報を閲覧や削除を行うことができます。「ID」の列の左側のボタンをクリックすると、ジョブ詳細情報を表示できます。「Actions」の列のボタンをクリックすると、ジョブの削除を行えます。</p>
-      <img width="600" alt="Active Jobs" src="img/activejobs.png">
-
-      <h3>4.6. クラスタの利用状況</h3>
-      <p>System Statusのアイコンをクリックください。各パーティションの利用状況を閲覧できます。</p>
-      <img width="600" alt="Grafana" src="img/grafana.png">
-
-      <h3>4.7. SSH公開鍵の登録</h3>
-      <p>SSH Public Keyのアイコンをクリックください。詳細は、<a href="index_ja.html#ssh">1.2. ターミナルソフトウェアの利用</a>を参照ください。</p>
     </main>
   </div>
 
