@@ -6,6 +6,7 @@
 
 # set SINGULARITY_BINDPATH and _OPTION
 <%= set_bindpath %>
+export SINGULARITY_BINDPATH=${SINGULARITY_BINDPATH},/cloud_opt,/lvs0,/hs
 
 # select image and create a directory for extensions
 if [ `arch` = "x86_64" ]; then

@@ -16,6 +16,7 @@ batch_connect:
 
     # Set SINGULARITY_BINDPATH and _OPTION
     <%= set_bindpath %>
+    export SINGULARITY_BINDPATH=${SINGULARITY_BINDPATH},/cloud_opt,/lvs0,/hs
 
     export SINGULARITYENV_XDG_DATA_HOME=<%= XDG_DATA_HOME["x86_64"] %>/<%= APP_NAME %>
     singularity run ${_OPTION} <%= CONTAINER_IMAGE["x86_64"] %> bash ./container.sh

@@ -6,6 +6,7 @@
 
 # set SINGULARITY_BINDPATH and _OPTION
 <%= set_bindpath %>
+export SINGULARITY_BINDPATH=${SINGULARITY_BINDPATH},/cloud_opt,/lvs0,/hs
 
 # select image and set the installation destination when adding --user to pip
 # https://qiita.com/ronin_gw/items/cdf8112b61649ca455f5
