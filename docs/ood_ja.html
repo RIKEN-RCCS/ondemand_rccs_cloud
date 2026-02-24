@@ -13,18 +13,33 @@
   <div class="container-fluid">
     <nav class="sidebar bg-body-secondary">
       <h5 class="ps-3 pe-1 d-inline">目次</h5><a href="ood.html" style="font-size: 0.75rem;" class="text-decoration-none ms-0">[English]</a>
-      <ul class="nav flex-column px-3 py-2">
+      <ul class="nav flex-column ps-3 pe-1 py-2">
         <li class="nav-item"><a href="index_ja.html" class="nav-link">1. はじめに</a></li>
+        <li class="nav-item ms-3"><a href="index_ja.html#ood" class="nav-link">1.1. Open OnDemandの利用</a></li>
+        <li class="nav-item ms-3"><a href="index_ja.html#ssh" class="nav-link">1.2. 端末ソフトウェアの利用</a></li>
         <li class="nav-item"><a href="resource_ja.html" class="nav-link">2. 計算資源</a></li>
         <li class="nav-item"><a href="storage_ja.html" class="nav-link">3. ストレージ</a></li>
         <li class="nav-item"><a href="ood_ja.html" class="nav-link">4. Open OnDemand</a></li>
-        <li class="nav-item"><a href="terminal_ja.html" class="nav-link">5. ターミナル</a></li>
+	<li class="nav-item ms-3"><a href="ood_ja.html#overview" class="nav-link">4.1. 概要</a></li>
+	<li class="nav-item ms-3"><a href="ood_ja.html#interactive" class="nav-link">4.2. 対話アプリケーション</a></li>
+	<li class="nav-item ms-3"><a href="ood_ja.html#passenger" class="nav-link">4.3. Passengerアプリケーション</a></li>
+	<li class="nav-item ms-5"><a href="ood_ja.html#active" class="nav-link">4.3.1. Active Jobs</a></li>
+	<li class="nav-item ms-5"><a href="ood_ja.html#home" class="nav-link">4.3.2. Home Directory</a></li>
+	<li class="nav-item ms-5"><a href="ood_ja.html#login" class="nav-link">4.3.3. Login Node</a></li>
+	<li class="nav-item ms-5"><a href="ood_ja.html#ssh" class="nav-link">4.3.4. SSH Public Key</a></li>
+	<li class="nav-item ms-5"><a href="ood_ja.html#slurm" class="nav-link">4.3.5. Slurm</a></li>
+	<li class="nav-item ms-5"><a href="ood_ja.html#system" class="nav-link">4.3.6. System Status</a></li>
+	<li class="nav-item"><a href="terminal_ja.html" class="nav-link">5. ターミナル</a></li>
+	<li class="nav-item ms-3"><a href="terminal_ja.html#batch" class="nav-link">5.1. バッチジョブの利用</a></li>
+	<li class="nav-item ms-3"><a href="terminal_ja.html#interactive" class="nav-link">5.2. 対話的利用</a></li>
+	<li class="nav-item ms-3"><a href="terminal_ja.html#sinfo" class="nav-link">5.3. 計算資源の確認</a></li>
         <li class="nav-item"><a href="other_ja.html" class="nav-link">6. その他</a></li>
       </ul>
     </nav>
 
     <main class="main-content">
       <h2>4. Open OnDemand</h2>
+      <h3 id="overview">4.1. 概要</h3>
       <img width="600" alt="Open OnDemand" src="img/ood.png">
       <p>
         上図はR-CCSクラウドのOpen OnDemandのダッシュボードです。R-CCSクラウドのロゴの右側にある表は、各パーティションにおける利用可能なノード数を示しています。ロゴの上側にあるメニューバーの意味は下記の通りです（ブラウザの幅が狭くなると、アイコン表示に変わるものもあります）。
@@ -39,7 +54,7 @@
         <tr><td>Log Out</td><td>ログアウトする</td></tr>
       </table>
 
-      <h3>4.1. 対話アプリケーション</h3>
+      <h3 id="interactive">4.2. 対話アプリケーション</h3>
       <p>
         対話アプリケーションとは、計算ノード上で実行するアプリケーションをユーザが対話的に操作できるアプリケーションです。下記の「開発アプリケーション」と「可視化アプリケーション」に分類して提供しています。
       </p>
@@ -83,7 +98,7 @@
         <li>Desktopの左上の「Applications」から「Log Out」をクリックする。</li>
       </ul>
 
-      <h3>4.2. Passengerアプリケーション</h3>
+      <h3 id="passenger">4.3. Passengerアプリケーション</h3>
       <p>
 	Passengerアプリケーションとは、Open OnDemandサーバで動作するアプリケーションです。下記のアプリケーションを提供しています。
       </p>
@@ -97,11 +112,11 @@
 	<tr><td><a href="#system">System Status</a></td><td>クラスタの利用状況の確認</td></tr>
       </table>
 
-      <h4 id="active">4.2.1. Active Jobs</h4>
+      <h4 id="active">4.3.1. Active Jobs</h4>
       <p>ジョブの情報を閲覧や削除を行うことができます。「ID」の列の左側のボタンをクリックすると、ジョブ詳細情報を表示できます。「Actions」の列のボタンをクリックすると、ジョブの削除を行えます。</p>
       <img width="600" alt="Active Jobs" src="img/activejobs.png">
 
-      <h4 id="home">4.2.2. Home Directory</h4>
+      <h4 id="home">4.3.2. Home Directory</h4>
       <p>ファイルの送受信・編集などを行えます。送受信可能な最大サイズは10GBです。</p>
       <img width="600" alt="Home Directory" src="img/home_directory.png">
       <p>Home Directoryの各機能は下記の通りです。個別のファイルやディレクトリに対する操作は「3点＋下三角」のメニューから行えます。</p>
@@ -137,14 +152,14 @@
       <a target="_blank" rel="noopener noreferrer" href="https://rclone.org">Rclone</a>を用いたクラウドストレージに対するファイルの操作も可能です。Rcloneの設定を行うには、対話アプリケーションのDesktopを起動し、そのターミナルから<code>rclone</code>もしくは<code>rclone-browser</code>を実行します。設定後にOpen OnDemandのメニューバーの「Help」&rarr; 「Restart Web Server」をクリックし、Home Directoryを起動すると、設定されたクラウドストレージにアクセスできます。なお、R-CCSクラウドヘルプデスクではRcloneの設定のサポートは行っておりませんのでご了承ください。
       </p>
       
-      <h4 id="login">4.2.3. Login Node</h4>
+      <h4 id="login">4.3.3. Login Node</h4>
       <p>WebブラウザからログインノードにSSHアクセスし、コマンドラインインタフェースを用いた操作を行うことができます。</p>
       <img width="600" alt="Terminal for Login Node" src="img/shell_access.png">
       
-      <h4 id="ssh">4.2.4. SSH Public Key</h4>
+      <h4 id="ssh">4.3.4. SSH Public Key</h4>
       <p><a target="_blank" rel="noopener noreferrer" href="index_ja.html#ssh">1.2. ターミナルソフトウェアの利用</a>を参照ください。</p>
       
-      <h4 id="slurm">4.2.5. Slurm</h4>
+      <h4 id="slurm">4.3.5. Slurm</h4>
       <p>
         バッチジョブの作成と投入を行えます。バッチジョブとは、ジョブスケジューラによって非対話的に実行される計算タスクのことです。バッチジョブはシェルスクリプトで記述され、必要な計算資源（たとえばノード数や最大実行時間など）は、ジョブスケジューラのディレクティブ（例：<code>#SBATCH -N 4</code>）を用いて指定します。R-CCSクラウドOpen OnDemandでは、Open OnDemand上で動作するアプリケーションである<a target="_blank" rel="noopener noreferrer" href="https://github.com/RIKEN-RCCS/OpenComposer/">Open Composer</a>を利用しており、簡易にバッチジョブの投入と管理を行うことができます。
       </p>
@@ -177,7 +192,7 @@
       </p>
       <img width="400" alt="Load Parameters" src="img/history_load_parameters.png">
 
-      <h4 id="system">4.2.6. System Status</h4>
+      <h4 id="system">4.3.6. System Status</h4>
       <p>各パーティションの利用状況を閲覧できます。</p>
       <img width="600" alt="Grafana" src="img/grafana.png">
       <!--

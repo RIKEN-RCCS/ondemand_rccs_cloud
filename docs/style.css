@@ -1,5 +1,5 @@
 .sidebar {
-  width: 270px;
+  width: 294px;
   min-height: 100%;
   position: fixed;
   top: 0;
@@ -10,11 +10,11 @@
 }
 .sidebar .nav-link {
   padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
+  padding-bottom: 0rem;
 }
 .main-content {
-  margin-left: 270px;
-  padding-left: 1rem;
+  margin-left: 294px;
+  padding-left: 0.5rem;
   padding-right: 1rem;
 }
 .table {
@@ -52,7 +52,7 @@ h3 {
   color: black;
   border-bottom: 2px solid black;
   padding-left: 0rem;
-  margin: 1rem 0 0 1rem;
+  margin: 1rem 0 0.5rem 1rem;
   font-weight: 600;
 }
 h4 {
