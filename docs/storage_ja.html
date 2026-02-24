@@ -27,15 +27,23 @@
       <h2>3. ストレージ</h2>
       <ul>
         <li>R-CCSクラウドのストレージは、各ユーザが利用できる「ホームディレクトリ」と各チーム・ユニット内で共同利用できる「グループディレクトリ」があります。</li>
-        <li>ホームディレクトリの容量は最大1TBで、利用状況を取得するコマンドは<code>lfs quota -h -u `whoami` /hs/work0</code>です。</li>
-        <li>グループディレクトリの容量はデフォルトは5TBで、利用状況を取得するコマンドは<code>lfs quota -hp [Project ID] /lvs0</code>です（例：<code>lfs quota -hp 11020 /lvs0</code>）。</li>
-        <li>グループディレクトリは申請により段階的（5TB &rarr; 10TB &rarr; 50TB &rarr; 100TB &rarr; 200TB &rarr; 400TB）に増量可能です。段階を飛ばすことはできません。希望する増量が承認されてから、次の申請を提出ください。</li>
-        <li>400TBまでは無条件で承認されますが、それを超えるものについては、申請理由に基づき部会で審議します。</li>
-        <li>グループディレクトリのi-node最大数はデフォルトで10,000,000個ですが、申請により無条件で増量できます。</li>
-        <li>増量を申請する方は、所属長の許可を得てから<a target="_blank" href="https://portal.cloud.r-ccs.riken.jp/redmine/projects/helpdesk/issues">コチラ</a>から申請ください。</li>
+	<li>ホームディレクトリのPATHは<code>/home/users/(ユーザ名)</code>です。</li>
+	<ul>
+          <li>ホームディレクトリの容量は最大1TBです。</li>
+	  <li>ファイル数に制限はありません。</li>
+	  <li>利用状況を取得するコマンドは<code>lfs quota -h -u `whoami` /hs/work0</code>です。</li>
+	</ul>
+	<li>グループディレクトリのPATHは<code>/lvs0/(グループ名)</code>です。グループ名は下表を参考にしてください。</li>
+	<ul>
+          <li>グループディレクトリのデフォルトの最大容量と最大ファイル数は、それぞれ5TBと10,000,000個です。</li>
+	  <li>利用状況を取得するコマンドは<code>lfs quota -hp [Project ID] /lvs0</code>です（例：<code>lfs quota -hp 11020 /lvs0</code>）。Project IDは下表を参考にしてください。</li>
+	  <li>グループディレクトリの容量は段階的（5TB &rarr; 10TB &rarr; 50TB &rarr; 100TB &rarr; 200TB &rarr; 400TB）に増量可能です。段階を飛ばすことはできませんので、希望する増量が承認されてから、次の申請を提出ください。400TBまでは無条件で承認されますが、それを超えるものについては、申請理由に基づき審議します。</li>
+	  <li>ファイル数は申請により条件なく増量できます。</li>
+	  <li>容量と最大ファイル数の増量を申請する方は、所属長の許可を得てから<a target="_blank" href="https://portal.cloud.r-ccs.riken.jp/redmine/projects/helpdesk/issues">コチラ</a>から申請ください。</li>
+	</ul>
       </ul>
       <p>
-      グループディレクトリのPATHとProject IDは下記の表の通りです。自分が所属するグループを確認したい場合は、ターミナルから<code>id</code>コマンドを実行ください。下記の表にチーム・ユニット名がない場合は、<a target="_blank" href="https://portal.cloud.r-ccs.riken.jp/redmine/projects/helpdesk/issues">コチラ</a>から申請ください。
+     下記の表にチーム・ユニット名がない場合は、<a target="_blank" href="https://portal.cloud.r-ccs.riken.jp/redmine/projects/helpdesk/issues">コチラ</a>から申請ください。
       </p>
       <table class="table table-sm fs-6">
         <tr><th>チーム・ユニット名</th><th>Project ID</th><th>グループ名</th><th>グループディレクトリのPATH</th></tr>

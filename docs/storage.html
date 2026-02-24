@@ -26,18 +26,25 @@
     <main class="main-content">
       <h2>3. Storage</h2>
       <ul>
-        <li>R-CCS Cloud storage consists of a "Home Directory" available to each user and a "Group Directory" shared within each team/unit.</li>
-        <li>The Home Directory capacity is up to 1TB. To check usage: <code>lfs quota -h -u `whoami` /hs/work0</code>.</li>
-        <li>The Group Directory capacity is 5TB by default. To check usage: <code>lfs quota -hp [Project ID] /lvs0</code> (e.g., <code>lfs quota -hp 11020 /lvs0</code>).</li>
-        <li>Group Directory capacity can be increased step by step (5TB → 10TB → 50TB → 100TB → 200TB → 400TB) upon request. You cannot skip steps. Submit the next request only after the previous increase has been approved.</li>
-        <li>Up to 400TB will be approved unconditionally. Requests exceeding 400TB will be reviewed by a committee based on the reason provided.</li>
-        <li>The maximum number of i-nodes in the Group Directory is 10,000,000 by default, but can be increased unconditionally upon request.</li>
-        <li>To apply for an increase, obtain approval from your supervisor and submit the request via <a target="_blank" href="https://portal.cloud.r-ccs.riken.jp/redmine/projects/helpdesk/issues">this link</a>.</li>
+	<li>The R-CCS Cloud storage provides a "home directory" available to each user and a "group directory" that can be shared within each team or unit.</li>
+	<li>The path to the home directory is <code>/home/users/(username)</code>.</li>
+	<ul>
+	  <li>The maximum capacity of the home directory is 1 TB.</li>
+	  <li>There is no limit on the number of files.</li>
+	  <li>You can check usage with the following command: <code>lfs quota -h -u `whoami` /hs/work0</code>.</li>
+	</ul>
+	<li>The path to the group directory is <code>/lvs0/(group_name)</code>. Please refer to the table below for the group name.</li>
+	<ul>
+	  <li>The default maximum capacity and maximum number of files for a group directory are 5 TB and 10,000,000 files, respectively.</li>
+	  <li>You can check usage with the following command: <code>lfs quota -hp [Project ID] /lvs0</code> (example: <code>lfs quota -hp 11020 /lvs0</code>). Please refer to the table below for the Project ID.</li>
+	  <li>The capacity of a group directory can be increased stepwise (5 TB &rarr; 10 TB &rarr; 50 TB &rarr; 100 TB &rarr; 200 TB &rarr; 400 TB). Skipping levels is not allowed. After your requested increase is approved, please submit the next request. Increases up to 400 TB are automatically approved. Requests exceeding 400 TB will be reviewed based on the justification provided in the application.</li>
+	  <li>The maximum number of files can be increased upon request without conditions.</li>
+	  <li>If you wish to apply for an increase in capacity or maximum number of files, please obtain approval from your supervisor and submit your request <a target="_blank" href="https://portal.cloud.r-ccs.riken.jp/redmine/projects/helpdesk/issues">here</a>.</li>
+	</ul>
       </ul>
+
       <p>
-        The PATH and Project ID of the Group Directory are listed in the table below.  
-        To check your group, run the <code>id</code> command in the terminal.  
-        If your team/unit is not listed in the table, please apply via <a target="_blank" href="https://portal.cloud.r-ccs.riken.jp/redmine/projects/helpdesk/issues">this link</a>.
+	If your team or unit name is not listed in the table below, please submit a request <a target="_blank" href="https://portal.cloud.r-ccs.riken.jp/redmine/projects/helpdesk/issues">here</a>.
       </p>
       <table class="table table-sm fs-6">
         <tr><th>Team/Unit Name</th><th>Project ID</th><th>Group Name</th><th>Group Directory PATH</th></tr>
