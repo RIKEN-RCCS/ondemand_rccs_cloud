@@ -25,7 +25,7 @@
 	<li class="nav-item ms-3"><a href="ood_ja.html#passenger" class="nav-link">4.3. Passengerアプリケーション</a></li>
 	<li class="nav-item ms-5"><a href="ood_ja.html#active" class="nav-link">4.3.1. Active Jobs</a></li>
 	<li class="nav-item ms-5"><a href="ood_ja.html#home" class="nav-link">4.3.2. Home Directory</a></li>
-	<li class="nav-item ms-5"><a href="ood_ja.html#login" class="nav-link">4.3.3. Login Node</a></li>
+	<li class="nav-item ms-5"><a href="ood_ja.html#login" class="nav-link">4.3.3. Shell Access</a></li>
 	<li class="nav-item ms-5"><a href="ood_ja.html#ssh" class="nav-link">4.3.4. SSH Public Key</a></li>
 	<li class="nav-item ms-5"><a href="ood_ja.html#slurm" class="nav-link">4.3.5. Slurm</a></li>
 	<li class="nav-item ms-5"><a href="ood_ja.html#system" class="nav-link">4.3.6. System Status</a></li>
@@ -60,9 +60,9 @@
       </p>
       <table class="table">
         <tr><th>開発アプリケーション</th><th>説明</th></tr>
-	<tr><td>Compute Node (<a target="_blank" rel="noopener noreferrer" href="https://github.com/tsl0922/ttyd">ttyd</a>)</td><td>ターミナルセッションをウェブブラウザから操作するためのツール</td></tr>
-        <tr><td>Desktop (<a target="_blank" rel="noopener noreferrer" href="https://www.xfce.org/">Xfce</a>)</a></td><td>X Window System上で動作する軽量デスクトップ環境</td></tr>
-	<tr><td><a target="_blank" rel="noopener noreferrer" href="https://jupyter.org/">JupyterLab</a></td><td>Webブラウザ上で動作するプログラムの対話型実行環境</td></tr>
+        <tr><td>Desktop (<a target="_blank" rel="noopener noreferrer" href="https://www.xfce.org/">Xfce</a>)</td><td>X Window System上で動作する軽量デスクトップ環境</td></tr>
+        <tr><td><a target="_blank" rel="noopener noreferrer" href="https://jupyter.org/">JupyterLab</a></td><td>Webブラウザ上で動作するプログラムの対話型実行環境</td></tr>
+        <tr><td>Terminal (<a target="_blank" rel="noopener noreferrer" href="https://github.com/tsl0922/ttyd">ttyd</a>)</td><td>ターミナルセッションをウェブブラウザから操作するためのツール</td></tr>
         <tr><td><a target="_blank" rel="noopener noreferrer" href="https://code.visualstudio.com/">VSCode</a></td><td><a target="_blank" rel="noopener noreferrer" href="https://www.microsoft.com/">Microsoft</a>が開発しているコードエディタ</td></tr>
         <tr><td><a target="_blank" rel="noopener noreferrer" href="https://taki-036.github.io/OPEN-WHEEL/">WHEEL</a></td><td>解析ジョブの作成/実行をインタラクティブに操作するWebツール</td></tr>
       </table>
@@ -106,7 +106,7 @@
         <tr><th>名前</th><th>説明</th></tr>
 	<tr><td><a href="#active">Active Jobs</a></td><td>ジョブのモニタリング</td></tr>
 	<tr><td><a href="#home">Home Directory</a></td><td>ファイル操作</td></tr>
-	<tr><td><a href="#login">Login Node</a></td><td>ターミナル</td></tr>
+	<tr><td><a href="#login">Shell Access</a></td><td>ターミナル</td></tr>
 	<tr><td><a href="#ssh">SSH Public Key</a></td><td>SSH公開鍵の登録</td></tr>
 	<tr><td><a href="#slurm">Slurm</a></td><td>バッチジョブの作成と投入</td></tr>
 	<tr><td><a href="#system">System Status</a></td><td>クラスタの利用状況の確認</td></tr>
@@ -152,7 +152,7 @@
       <a target="_blank" rel="noopener noreferrer" href="https://rclone.org">Rclone</a>を用いたクラウドストレージに対するファイルの操作も可能です。Rcloneの設定を行うには、対話アプリケーションのDesktopを起動し、そのターミナルから<code>rclone</code>もしくは<code>rclone-browser</code>を実行します。設定後にOpen OnDemandのメニューバーの「Help」&rarr; 「Restart Web Server」をクリックし、Home Directoryを起動すると、設定されたクラウドストレージにアクセスできます。なお、R-CCSクラウドヘルプデスクではRcloneの設定のサポートは行っておりませんのでご了承ください。
       </p>
       
-      <h4 id="login">4.3.3. Login Node</h4>
+      <h4 id="login">4.3.3. Shell Access</h4>
       <p>WebブラウザからログインノードにSSHアクセスし、コマンドラインインタフェースを用いた操作を行うことができます。</p>
       <img width="600" alt="Terminal for Login Node" src="img/shell_access.png">
       
@@ -185,7 +185,7 @@
       <p>
      「Application」列のリンクをクリックすると、そのアプリケーションページが開きます。
       <p>
-      「Script Location」列のリンクをクリックすると、Open OnDemandの<a href="#home">Home Directory</a>が起動します。また、その横のターミナルアイコンをクリックすると、Open OnDemandの<a href="#login">Login Node</a>が起動します。
+      「Script Location」列のリンクをクリックすると、Open OnDemandの<a href="#home">Home Directory</a>が起動します。また、その横のターミナルアイコンをクリックすると、Open OnDemandの<a href="#login">Shell Access</a>が起動します。
       </p>
       <p>
       「Script Name」列のリンクをクリックすると、送信されたシェルスクリプトの内容を表示するウィンドウが開きます。そのウィンドウの「Load Parameters」ボタンをクリックすると、パラメータが読み込まれたアプリケーションのページが開きます。

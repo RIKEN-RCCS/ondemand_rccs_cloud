@@ -25,7 +25,7 @@
         <li class="nav-item ms-3"><a href="ood.html#passenger" class="nav-link">4.3. Passenger Application</a></li>
         <li class="nav-item ms-5"><a href="ood.html#active" class="nav-link">4.3.1. Active Jobs</a></li>
         <li class="nav-item ms-5"><a href="ood.html#home" class="nav-link">4.3.2. Home Directory</a></li>
-        <li class="nav-item ms-5"><a href="ood.html#login" class="nav-link">4.3.3. Login Node</a></li>
+        <li class="nav-item ms-5"><a href="ood.html#login" class="nav-link">4.3.3. Shell Access</a></li>
         <li class="nav-item ms-5"><a href="ood.html#ssh" class="nav-link">4.3.4. SSH Public Key</a></li>
         <li class="nav-item ms-5"><a href="ood.html#slurm" class="nav-link">4.3.5. Slurm</a></li>
         <li class="nav-item ms-5"><a href="ood.html#system" class="nav-link">4.3.6. System Status</a></li>
@@ -41,22 +41,23 @@
       <h2>3. Storage</h2>
       <ul>
 	<li>The R-CCS Cloud storage provides a "home directory" available to each user and a "group directory" that can be shared within each team or unit.</li>
-	<li>The path to the home directory is <code>/home/users/(username)</code>.</li>
-	<ul>
-	  <li>The maximum capacity of the home directory is 1 TB.</li>
-	  <li>There is no limit on the number of files.</li>
-	  <li>You can check usage with the following command: <code>lfs quota -h -u `whoami` /hs/work0</code>.</li>
-	</ul>
-	<li>The path to the group directory is <code>/lvs0/(group_name)</code>. Please refer to the table below for the group name.</li>
-	<ul>
-	  <li>The default maximum capacity and maximum number of files for a group directory are 5 TB and 10,000,000 files, respectively.</li>
-	  <li>You can check usage with the following command: <code>lfs quota -hp [Project ID] /lvs0</code> (example: <code>lfs quota -hp 11020 /lvs0</code>). Please refer to the table below for the Project ID.</li>
-	  <li>The capacity of a group directory can be increased stepwise (5 TB &rarr; 10 TB &rarr; 50 TB &rarr; 100 TB &rarr; 200 TB &rarr; 400 TB). Skipping levels is not allowed. After your requested increase is approved, please submit the next request. Increases up to 400 TB are automatically approved. Requests exceeding 400 TB will be reviewed based on the justification provided in the application.</li>
-	  <li>The maximum number of files can be increased upon request without conditions.</li>
-	  <li>If you wish to apply for an increase in capacity or maximum number of files, please obtain approval from your supervisor and submit your request <a target="_blank" href="https://portal.cloud.r-ccs.riken.jp/redmine/projects/helpdesk/issues">here</a>.</li>
-	</ul>
+	<li>The path to the home directory is <code>/home/users/(username)</code>.
+	  <ul>
+	    <li>The maximum capacity of the home directory is 1 TB.</li>
+	    <li>There is no limit on the number of files.</li>
+	    <li>You can check usage with the following command: <code>lfs quota -h -u `whoami` /hs/work0</code>.</li>
+	  </ul>
+	</li>
+	<li>The path to the group directory is <code>/lvs0/(group_name)</code>. Please refer to the table below for the group name.
+	  <ul>
+	    <li>The default maximum capacity and maximum number of files for a group directory are 5 TB and 10,000,000 files, respectively.</li>
+	    <li>You can check usage with the following command: <code>lfs quota -hp [Project ID] /lvs0</code> (example: <code>lfs quota -hp 11020 /lvs0</code>). Please refer to the table below for the Project ID.</li>
+	    <li>The capacity of a group directory can be increased stepwise (5 TB &rarr; 10 TB &rarr; 50 TB &rarr; 100 TB &rarr; 200 TB &rarr; 400 TB). Skipping levels is not allowed. After your requested increase is approved, please submit the next request. Increases up to 400 TB are automatically approved. Requests exceeding 400 TB will be reviewed based on the justification provided in the application.</li>
+	    <li>The maximum number of files can be increased upon request without conditions.</li>
+	    <li>If you wish to apply for an increase in capacity or maximum number of files, please obtain approval from your supervisor and submit your request <a target="_blank" href="https://portal.cloud.r-ccs.riken.jp/redmine/projects/helpdesk/issues">here</a>.</li>
+	  </ul>
+	</li>
       </ul>
-
       <p>
 	If your team or unit name is not listed in the table below, please submit a request <a target="_blank" href="https://portal.cloud.r-ccs.riken.jp/redmine/projects/helpdesk/issues">here</a>.
       </p>
