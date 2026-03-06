@@ -14,7 +14,6 @@ global_bc_form_items:
       - [ "ai-h200-brc"                              ]
       - [ "ai-l40s"                                  ]
       - [ "qc-a100"                                  ]
-      - [ "qc-h100",     data-hide-global-gpus: true ]
       - [ "qc-gh200",    data-hide-global-gpus: true ]
       - [ "qc-mi210",    data-hide-global-gpus: true ]
       - [ "qc-mi250",    data-hide-global-gpus: true ]
@@ -37,7 +36,6 @@ global_bc_form_items:
       - [ "ai-h200-brc"                              ]
       - [ "ai-l40s"                                  ]
       - [ "qc-a100"                                  ]
-      - [ "qc-h100",     data-hide-global-gpus: true ]
       - [ "qc-mi210",    data-hide-global-gpus: true ]
       - [ "qc-pvc",      data-hide-global-gpus: true ]
       - [ "qc-mi250",    data-hide-global-gpus: true ]
@@ -56,7 +54,6 @@ global_bc_form_items:
       - [ "ai-h200-brc"                              ]
       - [ "ai-l40s"                                  ]
       - [ "qc-a100"                                  ]
-      - [ "qc-h100",     data-hide-global-gpus: true ]
     help: The run time for the ai-h100l-pu is 30 minutes.
   
   global_hours:

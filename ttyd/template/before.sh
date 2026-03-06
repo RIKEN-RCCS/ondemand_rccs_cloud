@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Export the module function if it exists
-[[ $(type -t module) == "function" ]] && export -f module
+#[[ $(type -t module) == "function" ]] && export -f module
 
 # Export compute node the script is running on (already defined earlier, so no need to define again)
 HOST="$host"
@@ -13,7 +13,7 @@ PORT="$port"
 export port PORT
 
 # Generate SHA1 encrypted password (requires OpenSSL installed)
-password="$(create_passwd 16)"
+password="$(create_passwd 24)"
 PASSWORD="$password"
 export password PASSWORD
 
