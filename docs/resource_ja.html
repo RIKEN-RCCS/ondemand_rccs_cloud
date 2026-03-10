@@ -41,29 +41,33 @@
       <h2>2. 計算資源</h2>
       <p>下表の計算資源を利用できます。1ジョブ当たりの最大実行時間は24時間です。</p>
       <table class="table table-sm fs-6">
-        <tr><th>Partition</th><th class="text-nowrap">ノード数</th><th>CPU + GPU</th><th>Memory</th><th>Network</th><th>備考</th></tr>
-        <tr><td class="text-nowrap">fx700</td><td class="text-end">31</td><td>Fujitsu A64FX</td><td class="text-end">32GB</td><td>Infiniband EDR 100Gbps</td><td></td></tr>
-        <tr><td class="text-nowrap">a100</td><td class="text-end">2</td><td>AMD EPYC 7763 x 2 + NVIDIA A100 x 8</td><td class="text-end">2,048GB</td><td>InfiniBand HDR 200Gbps x 8</td><td></td></tr>
-        <tr><td class="text-nowrap">mi100</td><td class="text-end">1</td><td>AMD EPYC 7713 x 2 + AMD MI100 x 8</td><td class="text-end">1,024GB</td><td>Ethernet 1Gbps</td><td></td></tr>
-        <tr><td class="text-nowrap">r340</td><td class="text-end">2</td><td>Intel Xeon E-2134</td><td class="text-end">64GB</td><td>Ethernet 1Gbps</td><td>複数ユーザ同時利用可能。FX700のクロスコンパイル環境用としてご利用ください。</td></tr>
-        <tr><td class="text-nowrap">genoa</td><td class="text-end">16</td><td>AMD EPYC 9684X</td><td class="text-end">768GB</td><td>Ethernet 1Gbps</td><td></td></tr>
-        <tr><td class="text-nowrap">genoa-m</td><td class="text-end">1</td><td>AMD EPYC 9684X x 2</td><td class="text-end">3,072GB</td><td>Ethernet 1Gbps</td><td></td></tr>
-        <tr><td class="text-nowrap">ai-h100l</td><td class="text-end">2</td><td>Intel Xeon Gold 5515+ x 2 + H100 NVL x 1</td><td class="text-end">256GB</td><td>Ethernet 1Gbps</td><td>AIチーム専用</td></tr>
-        <tr><td class="text-nowrap">ai-h100l-pu</td><td class="text-end">2</td><td>Intel Xeon Gold 5515+ x 2 + H100 NVL x 1</td><td class="text-end">256GB</td><td>Ethernet 1Gbps</td><td>ai-h100lとノード共用。AIチーム以外の人も利用できるが最大実行時間30分に制限。</td></tr>
- 	<tr><td class="text-nowrap">ai-h200-brc</td><td class="text-end">1</td><td>Intel Xeon Platinum 8592+ x 2 + NVIDIA H200 x 8</td><td class="text-end">1,536GB</td><td>Ethernet 1Gbps</td><td>GPUを使用する場合はSlurmのオプションで --gpus=&lt;使用するGPU数&gt; を指定ください。InfiniBand NDR 200Gbps準備中。</td></tr>
-        <tr><td class="text-nowrap">ai-l40s</td><td class="text-end">7</td><td>AMD EPYC 9554 x 2 + NVIDIA L40S x 8</td><td class="text-end">1,536GB</td><td>Ethernet 1Gbps</td><td>GPUを使用する場合はSlurmのオプションで --gpus=&lt;使用するGPU数&gt; を指定ください。InfiniBand NDR 200Gbps準備中。</td></tr>
-        <tr><td class="text-nowrap">qc-a100</td><td class="text-end">2</td><td>AMD EPYC 7713 x 2 + NVIDIA A100 x 8</td><td class="text-end">4,096GB</td><td>InfiniBand HDR 200Gbps</td><td>GPUを使用する場合はSlurmのオプションで --gpus=&lt;使用するGPU数&gt; を指定ください。</td></tr>
-        <tr><td class="text-nowrap">qc-h100</td><td class="text-end">1</td><td>AMD EPYC 9534 x 2 + NVIDIA H100 x 4</td><td class="text-end">1,536GB</td><td>InfiniBand HDR 200Gbps</td><td>（修理中）</td></tr>
-        <tr><td class="text-nowrap">qc-gh200</td><td class="text-end">8</td><td>NVIDIA GH200 Grace Hopper Superchip</td><td class="text-end">512GB</td><td>InfiniBand HDR 200Gbps</td><td></td></tr>
-        <tr><td class="text-nowrap">qc-mi210</td><td class="text-end">2</td><td>AMD EPYC 9554 x 2 + AMD MI210 x 1</td><td class="text-end">1,536GB</td><td>InfiniBand HDR 200Gbps</td><td>GPUは準備中</td></tr>
-        <tr><td class="text-nowrap">qc-mi250</td><td class="text-end">4</td><td>AMD EPYC 7713 x 2 + AMD MI250 x 8</td><td class="text-end">1,024GB</td><td>InfiniBand HDR 200Gbps</td><td></td></tr>
-        <tr><td class="text-nowrap">qc-pvc</td><td class="text-end">2</td><td>Intel Xeon Platinum 8470 x 2 + Intel Data Center GPU Max 1550 x 8</td><td class="text-end">2,048GB</td><td>InfiniBand HDR 200Gbps</td><td></td></tr>
-  	<tr><td class="text-nowrap">fs-mi300a</td><td class="text-end">1</td><td>AMD MI300A x 4</td><td class="text-end">512GB</td><td>InfiniBand HDR 200Gbps</td><td></td></tr>
-        <tr><td class="text-nowrap">fs-mi300x</td><td class="text-end">1</td><td>AMD EPYC 9534 x 2 + AMD MI300X x 8</td><td class="text-end">1,536GB</td><td>InfiniBand HDR 200Gbps</td><td></td></tr>
+        <tr style="vertical-align: middle;"><th>Partition</th><th class="text-nowrap">ノード数</th><th>CPU + GPU</th><th>Memory</th><th>Network</th><th>備考</th></tr>
+        <tr style="vertical-align: middle;"><td class="text-nowrap">fx700</td><td class="text-end">31</td><td>Fujitsu A64FX</td><td class="text-end">32GB</td><td>Infiniband EDR 100Gbps</td><td></td></tr>
+        <tr style="vertical-align: middle;"><td class="text-nowrap">a100</td><td class="text-end">2</td><td>AMD EPYC 7763 x 2 + NVIDIA A100 x 8</td><td class="text-end">2,048GB</td><td>InfiniBand HDR 200Gbps x 8</td><td></td></tr>
+        <tr style="vertical-align: middle;"><td class="text-nowrap">mi100</td><td class="text-end">1</td><td>AMD EPYC 7713 x 2 + AMD MI100 x 8</td><td class="text-end">1,024GB</td><td>Ethernet 1Gbps</td><td></td></tr>
+        <tr style="vertical-align: middle;"><td class="text-nowrap">r340</td><td class="text-end">2</td><td>Intel Xeon E-2134</td><td class="text-end">64GB</td><td>Ethernet 1Gbps</td><td>複数ユーザ同時利用可能。FX700のクロスコンパイル環境用としてご利用ください。Dell EMC PowerEdge R340を利用。</td></tr>
+        <tr style="vertical-align: middle;"><td class="text-nowrap">genoa-m</td><td class="text-end">16</td><td>AMD EPYC 9684X</td><td class="text-end">768GB</td><td>Ethernet 1Gbps</td><td></td></tr>
+        <tr style="vertical-align: middle;"><td class="text-nowrap">fntb-s</td><td class="text-end">8</td><td rowspan="5">NVIDIA GB10 Grace Blackwell Superchip</td><td rowspan="5" class="text-end">128GB</td><td rowspan="5">Ethernet 10Gbps</td><td rowspan="5">fntbはFugaku Next Test Bedの略。fntb-m[0-3]については、各2ノード間は200G QSFPで接続している。</td></tr>
+	<tr style="vertical-align: middle;"><td class="text-nowrap">fntb-m0</td><td class="text-end">2</td></tr>
+	<tr style="vertical-align: middle;"><td class="text-nowrap">fntb-m1</td><td class="text-end">2</td></tr>
+	<tr style="vertical-align: middle;"><td class="text-nowrap">fntb-m2</td><td class="text-end">2</td></tr>
+	<tr style="vertical-align: middle;"><td class="text-nowrap">fntb-m3</td><td class="text-end">2</td></tr>
+        <tr style="vertical-align: middle;"><td class="text-nowrap">ai-h100l</td><td class="text-end">2</td><td>Intel Xeon Gold 5515+ x 2 + H100 NVL x 1</td><td class="text-end">256GB</td><td>Ethernet 1Gbps</td><td>AIチーム専用</td></tr>
+        <tr style="vertical-align: middle;"><td class="text-nowrap">ai-h100l-pu</td><td class="text-end">2</td><td>Intel Xeon Gold 5515+ x 2 + H100 NVL x 1</td><td class="text-end">256GB</td><td>Ethernet 1Gbps</td><td>ai-h100lとノード共用。AIチーム以外の人も利用できるが最大実行時間30分に制限。</td></tr>
+ 	<tr style="vertical-align: middle;"><td class="text-nowrap">ai-h200-brc</td><td class="text-end">1</td><td>Intel Xeon Platinum 8592+ x 2 + NVIDIA H200 x 8</td><td class="text-end">1,536GB</td><td>Ethernet 1Gbps</td><td>GPUを使用する場合はSlurmのオプションで --gpus=&lt;使用するGPU数&gt; を指定ください。InfiniBand NDR 200Gbps準備中。</td></tr>
+        <tr style="vertical-align: middle;"><td class="text-nowrap">ai-l40s</td><td class="text-end">7</td><td>AMD EPYC 9554 x 2 + NVIDIA L40S x 8</td><td class="text-end">1,536GB</td><td>Ethernet 1Gbps</td><td>GPUを使用する場合はSlurmのオプションで --gpus=&lt;使用するGPU数&gt; を指定ください。InfiniBand NDR 200Gbps準備中。</td></tr>
+        <tr style="vertical-align: middle;"><td class="text-nowrap">qc-a100</td><td class="text-end">2</td><td>AMD EPYC 7713 x 2 + NVIDIA A100 x 8</td><td class="text-end">4,096GB</td><td>InfiniBand HDR 200Gbps</td><td>GPUを使用する場合はSlurmのオプションで --gpus=&lt;使用するGPU数&gt; を指定ください。</td></tr>
+        <tr style="vertical-align: middle;"><td style="background-color: lightblue;" class="text-nowrap">qc-h100</td><td style="background-color: lightblue;" class="text-end">1</td><td style="background-color: lightblue;">AMD EPYC 9534 x 2 + NVIDIA H100 x 4</td><td style="background-color: lightblue;" class="text-end">1,536GB</td><td style="background-color: lightblue;">InfiniBand HDR 200Gbps</td><td style="background-color: lightblue;">（修理中）</td></tr>
+        <tr style="vertical-align: middle;"><td class="text-nowrap">qc-gh200</td><td class="text-end">8</td><td>NVIDIA GH200 Grace Hopper Superchip</td><td class="text-end">512GB</td><td>InfiniBand HDR 200Gbps</td><td></td></tr>
+        <tr style="vertical-align: middle;"><td class="text-nowrap">qc-mi210</td><td class="text-end">2</td><td>AMD EPYC 9554 x 2 + AMD MI210 x 1</td><td class="text-end">1,536GB</td><td>InfiniBand HDR 200Gbps</td><td>GPUは準備中</td></tr>
+        <tr style="vertical-align: middle;"><td class="text-nowrap">qc-mi250</td><td class="text-end">4</td><td>AMD EPYC 7713 x 2 + AMD MI250 x 8</td><td class="text-end">1,024GB</td><td>InfiniBand HDR 200Gbps</td><td></td></tr>
+        <tr style="vertical-align: middle;"><td class="text-nowrap">qc-pvc</td><td class="text-end">2</td><td>Intel Xeon Platinum 8470 x 2 + Intel Data Center GPU Max 1550 x 8</td><td class="text-end">2,048GB</td><td>InfiniBand HDR 200Gbps</td><td></td></tr>
+  	<tr style="vertical-align: middle;"><td class="text-nowrap">fs-mi300a</td><td class="text-end">1</td><td>AMD MI300A x 4</td><td class="text-end">512GB</td><td>InfiniBand HDR 200Gbps</td><td></td></tr>
+        <tr style="vertical-align: middle;"><td class="text-nowrap">fs-mi300x</td><td class="text-end">1</td><td>AMD EPYC 9534 x 2 + AMD MI300X x 8</td><td class="text-end">1,536GB</td><td>InfiniBand HDR 200Gbps</td><td></td></tr>
       </table>
 
       <p>
-        各パーティションにおける計算ノードの環境変数は、下表の<code>module</code>コマンドを用いて設定してください。r340については、特に設定は必要ありません。
+        各パーティションにおける計算ノードの環境変数は、下表の<code>module</code>コマンドを用いて設定してください。r340とfntbについては、特に設定は必要ありません。
       </p>
       <table class="table table-sm fs-6">
         <tr><th>Partition</th><th>コマンド</th></tr>
