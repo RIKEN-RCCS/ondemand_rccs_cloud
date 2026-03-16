@@ -23,11 +23,17 @@ batch_connect:
       singularity run ${_OPTION} <%= CONTAINER_IMAGE["x86_64"] %> bash ./container.sh
     else
       export SINGULARITYENV_XDG_DATA_HOME=<%= XDG_DATA_HOME["aarch64"] %>/<%= APP_NAME %>
-      if [ "<%= global_queue %>" = "fx700" ]; then
-        singularity run ${_OPTION} /cloud_opt/ondemand/rocky97_fx700_aarch64.sif bash ./container.sh
-      else
-        singularity run ${_OPTION} <%= CONTAINER_IMAGE["aarch64"] %> bash ./container.sh
-      fi
+      case "<%= global_queue %>" in
+        fx700)
+          singularity run ${_OPTION} /cloud_opt/ondemand/rocky97_fx700_aarch64.sif bash ./container.sh
+          ;;
+        dgx-*)
+          bash ./container.sh
+          ;;
+        *)
+          singularity run ${_OPTION} <%= CONTAINER_IMAGE["aarch64"] %> bash ./container.sh
+          ;;
+      esac
     fi
 
 script:

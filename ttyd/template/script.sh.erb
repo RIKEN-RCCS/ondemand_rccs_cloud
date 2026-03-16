@@ -13,8 +13,13 @@ cd "$HOME" || exit 7
 #TTYD_PATH="$(which --skip-alias --skip-functions ttyd)"
 export TTYD_BASE_PATH="/node/${HOST}/${PORT}/${PASSWORD}"
 ARCH=`arch`
+<% if context.global_queue.start_with?("dgx-") %>
+VERSION="24.04"
+TTYD_PATH=/cloud_opt/ondemand/ttyd-fork/${ARCH}/u${VERSION}/bin/ttyd
+<% else %>
 VERSION=`rpm -E %{rhel}`
 TTYD_PATH=/cloud_opt/ondemand/ttyd-fork/${ARCH}/r${VERSION}/bin/ttyd
+<% end %>
 $TTYD_PATH \
   -p "${PORT}" \
   -t "fontSize=${OOD_FONT_SIZE}" \
@@ -24,6 +29,3 @@ $TTYD_PATH \
   -W -m 1  \
   "$OOD_STAGED_ROOT/tmux.sh"
 
-echo aa
-echo $TTYD_BASE_PATH
-echo vb
