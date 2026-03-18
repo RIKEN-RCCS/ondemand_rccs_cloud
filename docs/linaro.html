@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>R-CCS Cloud User Manual</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container-fluid">
+    <nav class="sidebar bg-body-secondary">
+      <h5 class="ps-3 pe-1 d-inline">Contents</h5><a href="linaro_ja.html" style="font-size: 0.75rem;" class="text-decoration-none ms-0">[Japanese]</a>
+      <ul class="nav flex-column ps-3 pe-1 py-2">
+        <li class="nav-item"><a href="index.html" class="nav-link">1. Introduction</a></li>
+        <li class="nav-item ms-3"><a href="index.html#ood" class="nav-link">1.1. Using Open OnDemand</a></li>
+        <li class="nav-item ms-3"><a href="index.html#ssh" class="nav-link">1.2. Using Terminal Software</a></li>
+        <li class="nav-item"><a href="resource.html" class="nav-link">2. Computational Resources</a></li>
+        <li class="nav-item"><a href="storage.html" class="nav-link">3. Storage</a></li>
+        <li class="nav-item"><a href="ood.html" class="nav-link">4. Open OnDemand</a></li>
+        <li class="nav-item ms-3"><a href="ood.html#overview" class="nav-link">4.1. Overview</a></li>
+        <li class="nav-item ms-3"><a href="ood.html#interactive" class="nav-link">4.2. Interactive Application</a></li>
+        <li class="nav-item ms-3"><a href="ood.html#passenger" class="nav-link">4.3. Passenger Application</a></li>
+        <li class="nav-item ms-5"><a href="ood.html#active" class="nav-link">4.3.1. Active Jobs</a></li>
+        <li class="nav-item ms-5"><a href="ood.html#home" class="nav-link">4.3.2. Home Directory</a></li>
+        <li class="nav-item ms-5"><a href="ood.html#login" class="nav-link">4.3.3. Shell Access</a></li>
+        <li class="nav-item ms-5"><a href="ood.html#ssh" class="nav-link">4.3.4. SSH Public Key</a></li>
+        <li class="nav-item ms-5"><a href="ood.html#slurm" class="nav-link">4.3.5. Slurm</a></li>
+        <li class="nav-item ms-5"><a href="ood.html#system" class="nav-link">4.3.6. System Status</a></li>
+        <li class="nav-item"><a href="terminal.html" class="nav-link">5. Terminal</a></li>
+        <li class="nav-item ms-3"><a href="terminal.html#batch" class="nav-link">5.1. Using Batch Job</a></li>
+        <li class="nav-item ms-3"><a href="terminal.html#interactive" class="nav-link">5.2. Interactive Use</a></li>
+        <li class="nav-item ms-3"><a href="terminal.html#sinfo" class="nav-link">5.3. Checking Resource</a></li>
+        <li class="nav-item"><a href="linaro.html" class="nav-link">6. Linaro Forge User Guide</a></li>
+        <li class="nav-item ms-3"><a href="linaro.html#overview" class="nav-link">6.1. Overview</a></li>
+        <li class="nav-item ms-3"><a href="linaro.html#install" class="nav-link">6.2. Client Installation</a></li>
+        <li class="nav-item ms-3"><a href="linaro.html#setting" class="nav-link">6.3. Client Settings</a></li>
+        <li class="nav-item ms-3"><a href="linaro.html#execution" class="nav-link">6.4. How to run</a></li>
+        <li class="nav-item"><a href="other.html" class="nav-link">7. Others</a></li>
+      </ul>
+    </nav>
+
+		<main class="main-content">
+			<h2>6. Linaro Forge User Guide</h2>
+			<h3 id="overview">6.1. Overview</h3>
+      <p>
+				Linaro Forge is a GUI tool for debugging and performance analysis of parallel programs written in C/C++, Fortran and Python. This section shows how to run the program using Linaro Forge in R-CCS Cloud.
+			</p>
+			<p>
+				For more information on Linaro Forge, see e.g. <a target="_blank" href="https://www.linaroforge.com/">https://www.linaroforge.com/</a>.
+      </p>
+
+      <h3 id="install">6.2. Client Installation</h3>
+      <p>
+				In March 2026, Linaro Forge has version 23.1.2 installed on R-CCS Cloud at <code>/cloud_opt/linaro/forge/23.1.2/</code>.
+			</p>
+			<p>
+				Each user must install a client application to use Linaro Forge. The Linaro Forge client can be installed on Windows, Mac and Linux respectively. Download and install the client file from <a target="_blank" href="https://www.linaroforge.com/download-forge-old-version">the official site</a> according to your operating system.
+				To use Linaro Forge, you need to have the right version installed.
+			</p>
+
+			<table class="table table-sm fs-6">
+				<tr><th>OS</th><th>Client file</th></tr>
+				<tr><td>Windows</td><td>linaro-forge-client-23.1.2-windows-x86_64.exe</td></tr>
+				<tr><td>Mac</td><td>linaro-forge-client-23.1.2-macos-x86_64.dmg</td></tr>
+				<tr style="vertical-align: middle;"><td rowspan="3">Linux</td><td>linaro-forge-23.1.2-linux-x86_64.tar</td></tr>
+				<tr><td>linaro-forge-23.1.2-linux-aarch64.tar</td></tr>
+				<tr><td>linaro-forge-23.1.2-linux-ppc64le.tar</td></tr>
+			</table>
+
+      <h3 id="setting">6.3. Client Settings</h3>
+      <p>
+				As there are few differences between operating systems in the subsequent configuration and execution, the Linux version is used to provide a summary explanation.
+			</p>
+			<p>
+				If the client is successfully started, the screen shown below is displayed. Select ‘Configure’ from the ‘Remote Launch’ pull-down tab and add new connection settings with ‘Add’.
+			</p>
+
+			<img width="800" alt="linaro" src="img/linaro01.png">
+
+			<p>
+				In the ‘Remote Launch’ configuration section, the ‘Host Name’, ‘Remote Installation Directory’ and ‘Private Key’ must be entered.
+			</p>
+
+			<img width="800" alt="linaro" src="img/linaro02.png">
+
+			<p>
+				Each input field should be set as follows.
+			</p>
+
+      <table class="table table-sm fs-6">
+        <tr><th>Option Name</th><th>Input detailes</th></tr>
+        <tr><td>Host Name</td><td>{User ID}@login.cloud.r-ccs.riken.jp</td></tr>
+        <tr style="vertical-align: middle;"><td rowspan="2">Remote Installation Directory</td><td><code>/cloud_opt/linaro/forge/23.1.2/x86_64</code> (クライアントがx86_64版の場合）</td></tr>
+        <tr><td><code>/cloud_opt/linaro/forge/23.1.2/aarch64</code> (クライアントがaarch64版の場合）</td></tr>
+				<tr><td>Private Key</td><td>Path of the SSH private key file used to connect to the login node R-CCS Cloud</td></tr>
+      </table>
+
+			<p>
+				Once the configuration is complete, you can test the connection using the ‘Test Remote Launch’ button. If the connection test is successful, the display will appear as shown in the figure below.
+			</p>
+
+			<img width="800" alt="linaro" src="img/linaro03.png">
+
+			<p>
+				Create a connection configuration and select the configuration created in ‘Remote Launch’ to connect to R-CCS Cloud. If the connection is successful, the licence number in the lower-left corner of the launch screen will be displayed as “18054” and detailed licence information can be obtained as shown in the figure bellow.
+			</p>
+
+			<img width="500" alt="linaro" src="img/linaro04.png">
+
+			<p>
+				Once you have created the connection settings, you can simply select the settings you have already created to connect when you start up again.
+			</p>
+			
+      <h3 id="execution">6.4. How to run</h3>
+      <p>
+				This section shows how to run a test program in R-CCS Cloud using Linaro Forge.
+			</p>
+			<p>
+				Connect to R-CCS Cloud in the client configuration described in the previous section and use Linaro Forge’s Reverse Connect function to connect from the job to the client. The job is described in the following form. In the example, Linaro DDT is started.
+			</p>
+
+			<div class="card shadow-sm ms-3">
+        <div class="card-body p-0">
+          <pre class="m-0 p-2 bg-light text-dark">
+#!/bin/sh
+#SBATCH --job-name=GPU-test
+#SBATCH --partition=qc-gh200
+#SBATCH --time=01:00:00
+#
+module load system/qc-gh200
+module load nvhpc
+
+# LinaroForge
+. /cloud_opt/linaro/setup-env.sh
+
+# run
+ddt --connect --mpi="Generic" --np 48 ./test_c.exe</pre>
+        </div>
+			</div>
+
+			<p>
+				When the job is executed, a message requesting a response is displayed on the client screen, as shown below.
+			</p>
+
+			<img width="500" alt="linaro" src="img/linaro05.png">
+
+			<p>
+				If the response is allowed, information on the running application can be obtained and execution is started by pressing the Run button.
+			</p>
+			
+			<img width="500" alt="linaro" src="img/linaro06.png">
+
+			<p>
+				Once the application is running, the Linaro Forge screen will look like the figure below. The application can then be debugged as a GUI debugger.
+			</p>
+
+			<img width="800" alt="linaro" src="img/linaro07.png">
+
+			<p>
+				As with Linaro DDT, it is also possible to use Linaro MAP. In this case, specify map instead of ddt.
+			</p>
+
+      <div class="card shadow-sm ms-3">
+        <div class="card-body p-0">
+          <pre class="m-0 p-2 bg-light text-dark">
+#!/bin/sh
+#SBATCH --job-name=GPU-test
+#SBATCH --partition=qc-gh200
+#SBATCH --time=01:00:00
+#
+module load system/qc-gh200
+module load nvhpc
+
+# LinaroForge
+. /cloud_opt/linaro/setup-env.sh
+
+# run
+map --connect --mpi="Generic" --np 48 ./test_c.exe</pre>
+				</div>
+			</div>
+			<p>
+				Once the application is running, the Linaro Forge screen will look like the figure below. The application can be analysed as a GUI performance analysis tool. Once the MAP has been successfully executed, a map file is generated, which can be re-loaded to re-analyses the job without running it.
+			</p>
+
+			<img width="800" alt="linaro" src="img/linaro08.png">
+
+			<p>
+				Note that the maximum number of Linaro Forge processes that can be used in R-CCS Cloud is 512. This is a number shared by all users of Linaro Forge: if one person runs a program that uses 512 processes, the other users will wait until the licence is released. Currently, there is no limit on the number of processes used per person, but we ask that you use the system in moderation.
+			</p>
+    </main>
+  </div>
+  <footer class="bg-purple d-flex justify-content-center align-items-center">
+    <p class="mb-0 text-white">&copy; RIKEN Center for Computational Science</p>
+  </footer>
+</body>
+</html>

@@ -20,31 +20,36 @@
         <li class="nav-item"><a href="resource_ja.html" class="nav-link">2. 計算資源</a></li>
         <li class="nav-item"><a href="storage_ja.html" class="nav-link">3. ストレージ</a></li>
         <li class="nav-item"><a href="ood_ja.html" class="nav-link">4. Open OnDemand</a></li>
-	<li class="nav-item ms-3"><a href="ood_ja.html#overview" class="nav-link">4.1. 概要</a></li>
-	<li class="nav-item ms-3"><a href="ood_ja.html#interactive" class="nav-link">4.2. 対話アプリケーション</a></li>
-	<li class="nav-item ms-3"><a href="ood_ja.html#passenger" class="nav-link">4.3. Passengerアプリケーション</a></li>
-	<li class="nav-item ms-5"><a href="ood_ja.html#active" class="nav-link">4.3.1. Active Jobs</a></li>
-	<li class="nav-item ms-5"><a href="ood_ja.html#home" class="nav-link">4.3.2. Home Directory</a></li>
-	<li class="nav-item ms-5"><a href="ood_ja.html#login" class="nav-link">4.3.3. Shell Access</a></li>
-	<li class="nav-item ms-5"><a href="ood_ja.html#ssh" class="nav-link">4.3.4. SSH Public Key</a></li>
-	<li class="nav-item ms-5"><a href="ood_ja.html#slurm" class="nav-link">4.3.5. Slurm</a></li>
-	<li class="nav-item ms-5"><a href="ood_ja.html#system" class="nav-link">4.3.6. System Status</a></li>
-	<li class="nav-item"><a href="terminal_ja.html" class="nav-link">5. ターミナル</a></li>
-	<li class="nav-item ms-3"><a href="terminal_ja.html#batch" class="nav-link">5.1. バッチジョブの利用</a></li>
-	<li class="nav-item ms-3"><a href="terminal_ja.html#interactive" class="nav-link">5.2. 対話的利用</a></li>
-	<li class="nav-item ms-3"><a href="terminal_ja.html#sinfo" class="nav-link">5.3. 計算資源の確認</a></li>
-        <li class="nav-item"><a href="other_ja.html" class="nav-link">6. その他</a></li>
+				<li class="nav-item ms-3"><a href="ood_ja.html#overview" class="nav-link">4.1. 概要</a></li>
+				<li class="nav-item ms-3"><a href="ood_ja.html#interactive" class="nav-link">4.2. 対話アプリケーション</a></li>
+				<li class="nav-item ms-3"><a href="ood_ja.html#passenger" class="nav-link">4.3. Passengerアプリケーション</a></li>
+				<li class="nav-item ms-5"><a href="ood_ja.html#active" class="nav-link">4.3.1. Active Jobs</a></li>
+				<li class="nav-item ms-5"><a href="ood_ja.html#home" class="nav-link">4.3.2. Home Directory</a></li>
+				<li class="nav-item ms-5"><a href="ood_ja.html#login" class="nav-link">4.3.3. Shell Access</a></li>
+				<li class="nav-item ms-5"><a href="ood_ja.html#ssh" class="nav-link">4.3.4. SSH Public Key</a></li>
+				<li class="nav-item ms-5"><a href="ood_ja.html#slurm" class="nav-link">4.3.5. Slurm</a></li>
+				<li class="nav-item ms-5"><a href="ood_ja.html#system" class="nav-link">4.3.6. System Status</a></li>
+				<li class="nav-item"><a href="terminal_ja.html" class="nav-link">5. ターミナル</a></li>
+				<li class="nav-item ms-3"><a href="terminal_ja.html#batch" class="nav-link">5.1. バッチジョブの利用</a></li>
+				<li class="nav-item ms-3"><a href="terminal_ja.html#interactive" class="nav-link">5.2. 対話的利用</a></li>
+				<li class="nav-item ms-3"><a href="terminal_ja.html#sinfo" class="nav-link">5.3. 計算資源の確認</a></li>
+        <li class="nav-item"><a href="linaro_ja.html" class="nav-link">6. Linaro Forge利用ガイド</a></li>
+        <li class="nav-item ms-3"><a href="linaro_ja.html#overview" class="nav-link">6.1. 概要</a></li>
+        <li class="nav-item ms-3"><a href="linaro_ja.html#install" class="nav-link">6.2. クライアントのインストール</a></li>
+        <li class="nav-item ms-3"><a href="linaro_ja.html#setting" class="nav-link">6.3. クライアント設定</a></li>
+        <li class="nav-item ms-3"><a href="linaro_ja.html#execution" class="nav-link">6.4. 実行方法</a></li>
+        <li class="nav-item"><a href="other_ja.html" class="nav-link">7. その他</a></li>
       </ul>
     </nav>
 
     <main class="main-content">
-      <h2>6. その他</h2>
-      <h3>6.1. 質問がある場合</h3>
+      <h2>7. その他</h2>
+      <h3>7.1. 質問がある場合</h3>
       <p>
       <a target="_blank" href="https://portal.cloud.r-ccs.riken.jp/redmine/projects/helpdesk/issues/new">コチラ</a>から質問を行って下さい。
       </p>
 
-      <h3>6.2. FX700のクロスコンパイル環境</h3>
+      <h3>7.2. FX700のクロスコンパイル環境</h3>
       <p>クロスコンパイル環境はSingularityのコンテナイメージで提供しています。x86_64環境の計算ノードをSlurmを用いて確保し、コンテナイメージを用いてコンパイルを行います（例では r340パーティションを利用）。</p>
       <div class="card shadow-sm ms-3">
         <div class="card-body p-0">
@@ -55,17 +60,17 @@ $ FCCpx test.c -o test.x</pre>
         </div>
       </div>
 
-      <h3>6.3. スクラッチ領域</h3>
+      <h3>7.3. スクラッチ領域</h3>
       <p>
       計算ノードの一時的なスクラッチ領域が利用可能です。スクラッチ領域はジョブスケジューラによって動的に確保され、そのディレクトリパスは環境変数<code>USER_SCRATCH_DIR</code>に格納されています。このディレクトリはジョブが終了した際に削除されます。
       </p>
 
-      <h3>6.4. S3 File Access</h3>
+      <h3>7.4. S3 File Access</h3>
       <p>
       R-CCS Cloud のファイルを AWS S3プロトコルでアクセスするサービスを提供しています。このサービスでは外部からのアクセスが可能になるので、初期設定では利用不可になっています。利用には管理者による設定が必要です。希望者は<a target="_blank" href="https://portal.cloud.r-ccs.riken.jp/redmine/projects/helpdesk/issues/new">コチラ</a>から申請を行って下さい。
       </p>
       <p>
-      S3によるアクセスには以下のステップが必要です。これらの設定は<a target="_blank" href="https://lens3.cloud.r-ccs.riken.jp/lens3.sts/">https://lens3.cloud.r-ccs.riken.jp/lens3.sts/</a>から行います。
+				S3によるアクセスには以下のステップが必要です。これらの設定は<a target="_blank" href="https://lens3.cloud.r-ccs.riken.jp/lens3.sts/">https://lens3.cloud.r-ccs.riken.jp/lens3.sts/</a>から行います。
       </p>
       <ol class="ms-3">
         <li>バケツを作るディレクトリを登録する。</li>
@@ -76,12 +81,12 @@ $ FCCpx test.c -o test.x</pre>
       このサービスの提供にはLenticularis-S3を使っています。詳細は<a target="_blank" href="https://github.com/riken-rccs/lens3/">https://github.com/riken-rccs/lens3/</a>を参照して下さい。
       </p>
 
-      <h3>6.5. 注意点</h3>
+      <h3>7.5. 注意点</h3>
       <ul class="mt-2 ms-3">
         <li>ログインノードでは高負荷の計算（Claude CodeなどのAIツールを含む）、JupyterLabやVSCodeなどのサーバプログラム、長時間のコンパイル等を行わないで下さい。計算ノードを確保して実行してください。</li>
       </ul>
 
-      <h3>6.5. FAQ</h3>
+      <h3>7.6. FAQ</h3>
       <p><a target="_blank" href="https://portal.cloud.r-ccs.riken.jp/redmine/projects/helpdesk/wiki/FAQ">コチラ</a>を参照ください。</p>
     </main>
   </div>

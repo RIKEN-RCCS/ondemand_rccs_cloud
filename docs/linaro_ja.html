@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>R-CCSクラウド利用マニュアル</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container-fluid">
+    <nav class="sidebar bg-body-secondary">
+      <h5 class="ps-3 pe-1 d-inline">目次</h5><a href="linaro.html" style="font-size: 0.75rem;" class="text-decoration-none ms-0">[English]</a>
+      <ul class="nav flex-column ps-3 pe-1 py-2">
+        <li class="nav-item"><a href="index_ja.html" class="nav-link">1. はじめに</a></li>
+        <li class="nav-item ms-3"><a href="index_ja.html#ood" class="nav-link">1.1. Open OnDemandの利用</a></li>
+        <li class="nav-item ms-3"><a href="index_ja.html#ssh" class="nav-link">1.2. 端末ソフトウェアの利用</a></li>
+        <li class="nav-item"><a href="resource_ja.html" class="nav-link">2. 計算資源</a></li>
+        <li class="nav-item"><a href="storage_ja.html" class="nav-link">3. ストレージ</a></li>
+        <li class="nav-item"><a href="ood_ja.html" class="nav-link">4. Open OnDemand</a></li>
+				<li class="nav-item ms-3"><a href="ood_ja.html#overview" class="nav-link">4.1. 概要</a></li>
+				<li class="nav-item ms-3"><a href="ood_ja.html#interactive" class="nav-link">4.2. 対話アプリケーション</a></li>
+				<li class="nav-item ms-3"><a href="ood_ja.html#passenger" class="nav-link">4.3. Passengerアプリケーション</a></li>
+				<li class="nav-item ms-5"><a href="ood_ja.html#active" class="nav-link">4.3.1. Active Jobs</a></li>
+				<li class="nav-item ms-5"><a href="ood_ja.html#home" class="nav-link">4.3.2. Home Directory</a></li>
+				<li class="nav-item ms-5"><a href="ood_ja.html#login" class="nav-link">4.3.3. Shell Access</a></li>
+				<li class="nav-item ms-5"><a href="ood_ja.html#ssh" class="nav-link">4.3.4. SSH Public Key</a></li>
+				<li class="nav-item ms-5"><a href="ood_ja.html#slurm" class="nav-link">4.3.5. Slurm</a></li>
+				<li class="nav-item ms-5"><a href="ood_ja.html#system" class="nav-link">4.3.6. System Status</a></li>
+				<li class="nav-item"><a href="terminal_ja.html" class="nav-link">5. ターミナル</a></li>
+				<li class="nav-item ms-3"><a href="terminal_ja.html#batch" class="nav-link">5.1. バッチジョブの利用</a></li>
+				<li class="nav-item ms-3"><a href="terminal_ja.html#interactive" class="nav-link">5.2. 対話的利用</a></li>
+				<li class="nav-item ms-3"><a href="terminal_ja.html#sinfo" class="nav-link">5.3. 計算資源の確認</a></li>
+				<li class="nav-item"><a href="linaro_ja.html" class="nav-link">6. Linaro Forge利用ガイド</a></li>
+				<li class="nav-item ms-3"><a href="linaro_ja.html#overview" class="nav-link">6.1. 概要</a></li>
+        <li class="nav-item ms-3"><a href="linaro_ja.html#install" class="nav-link">6.2. クライアントのインストール</a></li>
+        <li class="nav-item ms-3"><a href="linaro_ja.html#setting" class="nav-link">6.3. クライアント設定</a></li>
+				<li class="nav-item ms-3"><a href="linaro_ja.html#execution" class="nav-link">6.4. 実行方法</a></li>
+        <li class="nav-item"><a href="other_ja.html" class="nav-link">7. その他</a></li>
+      </ul>
+    </nav>
+
+		<main class="main-content">
+			<h2>6. Linaro Forge利用ガイド</h2>
+			<h3 id="overview">6.1. 概要</h3>
+      <p>
+				Linaro ForgeはC/C++、Fortran、Pythonで書かれた並列プログラムのデバッグおよび性能解析をGUIで行えるツールです。ここではR-CCSクラウド上で、Linaro Forgeを利用したプログラムの実行方法を示します。
+			</p>
+			<p>
+				Linaro Forgeに関する詳細な情報は、<a target="_blank" href="https://www.linaroforge.com/">https://www.linaroforge.com/</a>等を参考にしてください。
+      </p>
+
+      <h3 id="install">6.2. クライアントのインストール</h3>
+      <p>
+				2026年3月現在、R-CCSクラウドにはLinaro Forge バージョン23.1.2がインストールされています。 インストール先は<code>/cloud_opt/linaro/forge/23.1.2/</code>です。
+			</p>
+			<p>
+				Linaro Forgeを利用するには各ユーザがクライアントアプリケーションをインストールする必要があります。Linaro ForgeクライアントのインストールはWindows、Mac、Linuxそれぞれで行うことができます。ご利用のOSに合わせてクライアント用ファイルを<a target="_blank" href="https://www.linaroforge.com/download-forge-old-version">公式サイト</a>からダウンロードし、インストールしてください。Linaro Forgeを利用するには、インストールされているバージョンを揃える必要があることに注意ください。
+			</p>
+
+			<table class="table table-sm fs-6">
+				<tr><th>OS</th><th>クライアント用ファイル</th></tr>
+				<tr><td>Windows</td><td>linaro-forge-client-23.1.2-windows-x86_64.exe</td></tr>
+				<tr><td>Mac</td><td>linaro-forge-client-23.1.2-macos-x86_64.dmg</td></tr>
+				<tr style="vertical-align: middle;"><td rowspan="3">Linux</td><td>linaro-forge-23.1.2-linux-x86_64.tar</td></tr>
+				<tr><td>linaro-forge-23.1.2-linux-aarch64.tar</td></tr>
+				<tr><td>linaro-forge-23.1.2-linux-ppc64le.tar</td></tr>
+			</table>
+
+      <h3 id="setting">6.3. クライアント設定</h3>
+      <p>
+				以降の設定、実行についてはOSによる差異があまりないため、Linux版を用いてまとめて解説します。
+			</p>
+			<p>
+				クライアントの起動に成功すると、下図のような画面が表示されます。 「Remote Launch」のプルタブから「Configure」を選択し、「Add」で新しい接続設定を追加します。
+      </p>
+
+			<img width="800" alt="linaro" src="img/linaro01.png">
+
+			<p>
+				「Remote Launch」の設定項目では、「Host Name」「Remote Installation Directory」「Private Key」の入力が必須です。
+			</p>
+
+			<img width="800" alt="linaro" src="img/linaro02.png">
+
+			<p>
+				各入力項目は以下のように設定してください。
+			</p>
+
+      <table class="table table-sm fs-6">
+        <tr><th>設定項目</th><th>入力内容</th></tr>
+        <tr><td>Host Name</td><td>{ユーザID}@login.cloud.r-ccs.riken.jp</td></tr>
+        <tr style="vertical-align: middle;"><td rowspan="2">Remote Installation Directory</td><td><code>/cloud_opt/linaro/forge/23.1.2/x86_64</code> (クライアントがx86_64版の場合）</td></tr>
+        <tr><td><code>/cloud_opt/linaro/forge/23.1.2/aarch64</code> (クライアントがaarch64版の場合）</td></tr>
+				<tr><td>Private Key</td><td>R-CCSクラウドのログインノードにSSH接続する際に使用する秘密鍵のパス</td></tr>
+      </table>
+
+			<p>
+				設定が完了したら、「Test Remote Launch」ボタンで接続テストを行うことができます。 正常に接続テストが成功した場合、下図のように表示されます。
+			</p>
+
+			<img width="800" alt="linaro" src="img/linaro03.png">
+
+			<p>
+				接続設定を作成し、「Remote Launch」で作成した設定を選択すると、R-CCSクラウドへ接続します。 接続に成功した場合、起動画面の左下にあるライセンス番号が「18054」と表示され、下図のように詳細なライセンス情報を取得できるようになります。
+			</p>
+
+			<img width="500" alt="linaro" src="img/linaro04.png">
+
+			<p>
+				一度接続設定を作成すれば、再度起動した時には作成済みの設定を選択するだけで接続できるようになります。
+			</p>
+			
+      <h3 id="execution">6.4. 実行方法</h3>
+      <p>
+				ここではLinaro Forgeを利用したテストプログラムによるR-CCSクラウドでの実行方法を示します。
+			</p>
+			<p>
+				前項のクライアント設定でR-CCSクラウドに接続しておき、Linaro ForgeのReverse Connect機能を用いてジョブからクライアントへ接続します。 ジョブは以下のような形で記述します。例ではLinaro DDTを起動します。
+      </p>
+
+			<div class="card shadow-sm ms-3">
+        <div class="card-body p-0">
+          <pre class="m-0 p-2 bg-light text-dark">
+#!/bin/sh
+#SBATCH --job-name=GPU-test
+#SBATCH --partition=qc-gh200
+#SBATCH --time=01:00:00
+#
+module load system/qc-gh200
+module load nvhpc
+
+# LinaroForge
+. /cloud_opt/linaro/setup-env.sh
+
+# run
+ddt --connect --mpi="Generic" --np 48 ./test_c.exe</pre>
+        </div>
+			</div>
+
+			<p>
+				ジョブが実行されると、下図のようにクライアント画面に応答を要求するメッセージが表示されます。
+			</p>
+
+			<img width="500" alt="linaro" src="img/linaro05.png">
+
+			<p>
+				応答を許可すると、実行アプリケーションの情報を取得でき、Runボタンを押すことで実行を開始します。
+			</p>
+			
+			<img width="500" alt="linaro" src="img/linaro06.png">
+
+			<p>
+				アプリケーションが実行されると、Linaro Forgeの画面が下図のようになります。 以降はGUIデバッガとしてアプリケーションのデバッグを行うことができます。
+			</p>
+
+			<img width="800" alt="linaro" src="img/linaro07.png">
+
+			<p>
+				Linaro DDTと同様に、Linaro MAPを使用することも可能です。 その場合、ddtではなくmapを指定します。
+			</p>
+
+      <div class="card shadow-sm ms-3">
+        <div class="card-body p-0">
+          <pre class="m-0 p-2 bg-light text-dark">
+#!/bin/sh
+#SBATCH --job-name=GPU-test
+#SBATCH --partition=qc-gh200
+#SBATCH --time=01:00:00
+#
+module load system/qc-gh200
+module load nvhpc
+
+# LinaroForge
+. /cloud_opt/linaro/setup-env.sh
+
+# run
+map --connect --mpi="Generic" --np 48 ./test_c.exe</pre>
+				</div>
+			</div>
+			<p>
+				アプリケーションが実行されると、Linaro Forgeの画面が下図のようになります。 以降はGUI性能解析ツールとしてアプリケーションの分析を行うことができます。 一度MAPが正常に実行されるとmapファイルが生成されるので、それを再度読み込むことでジョブを実行せずに分析をし直すこともできます。
+			</p>
+
+			<img width="800" alt="linaro" src="img/linaro08.png">
+
+			<p>
+				注意点として、R-CCSクラウドで使用可能なLinaro Forgeの最大プロセス数は512となっています。これはLinaro Forgeを使用する全ユーザで共有する数値です。1人が512プロセスを利用するプログラムを実行した場合、その他のユーザはライセンスが解放されるまで待機することになります。現在は1人あたりのプロセス利用数に制限は設けませんが、節度ある利用をお願いいたします。
+			</p>
+    </main>
+  </div>
+  <footer class="bg-purple d-flex justify-content-center align-items-center">
+    <p class="mb-0 text-white">&copy; RIKEN Center for Computational Science</p>
+  </footer>
+</body>
+</html>
