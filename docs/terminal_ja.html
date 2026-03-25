@@ -44,10 +44,14 @@
 
     <main class="main-content">
       <h2>5. ターミナル</h2>
-      <p>本章では、ターミナルソフトウェアを用いたコマンドラインによるバッチジョブの投入方法について説明します。R-CCSクラウドではジョブスケジューラにSlurmを用いています。Slurmの利用方法の詳細は<a target="_blank" href="https://slurm.schedmd.com">https://slurm.schedmd.com</a>を参照ください。</p>
+      <p>本章では、ターミナルソフトウェアを用いたコマンドラインによるバッチジョブの投入方法について説明します。R-CCSクラウドではジョブスケジューラにSlurmを用いています。Slurmの利用方法の詳細は<a target="_blank" href="https://slurm.schedmd.com">https://slurm.schedmd.com</a>を参照ください。
+			</p>
 
       <h3 id="batch">5.1. バッチジョブの利用</h3>
-      <p>例として、以下のジョブスクリプトを<code>sample.sh</code>という名前で保存します。<code>-p</code>で指定する利用可能なパーティションは<a href="resource_ja.html">2. 計算資源</a>を参照してください。
+      <p>
+				例として、以下のジョブスクリプトを<code>sample.sh</code>という名前で保存します。<code>#SBATCH -p</code>で指定する利用可能なパーティションは<a href="resource_ja.html">2. 計算資源</a>を参照してください。
+				<code>qc-a100</code>、<code>ai-h200-brc</code>、<code>ai-l40s</code>パーティションを利用する場合は、利用するGPU数を<code>#SBATCH --gpus=[0-8]</code>で指定して下さい。
+			</p>
       <div class="card shadow-sm ms-3">
         <div class="card-body p-0">
           <pre class="m-0 p-2 bg-light text-dark">
@@ -61,8 +65,9 @@ module load system/fx700 FJSVstclanga
 hostname # 実行したいコマンド</pre>
         </div>
       </div>
-      <p>
-      <code>sbatch</code>コマンドを用いて<code>sample.sh</code>をジョブスケジューラに登録します。指定したパーティションに空きができると、自動的にジョブが実行されます。
+			<p>
+				<code>sbatch</code>コマンドを用いて<code>sample.sh</code>をジョブスケジューラに登録します。指定したパーティションに空きができると、自動的にジョブが実行されます。
+			</p>
       <div class="card shadow-sm ms-3">
         <div class="card-body p-0">
           <pre class="m-0 p-2 bg-light text-dark">

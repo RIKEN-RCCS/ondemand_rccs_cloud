@@ -53,7 +53,8 @@
       <h3 id="batch">5.1. Using Batch Job</h3>
       <p>
         As an example, save the following job script as <code>sample.sh</code>.  
-        For available partitions specified with <code>-p</code>, see <a href="resource.html">2. Computational Resources</a>.
+        For available partitions specified with <code>#SBATCH -p</code>, see <a href="resource.html">2. Computational Resources</a>.
+				When you use the <code>qc-a100</code>, <code>ai-h200-brc</code>, or <code>ai-l40s</code> partitions, specify the number of GPUs to use with <code>#SBATCH --gpus=[0-8]</code>.
       </p>
       <div class="card shadow-sm ms-3">
         <div class="card-body p-0">
