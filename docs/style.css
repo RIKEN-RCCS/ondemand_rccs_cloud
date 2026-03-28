@@ -17,12 +17,21 @@
   padding-left: 0.5rem;
   padding-right: 1rem;
 }
+.main-content ul {
+    margin-top: 8px;
+}
+.main-content li {
+    margin-left: 1rem;
+}
+.main-content li li {
+  margin-left: 0rem;
+}
 .table {
   width: auto;
   text-align: left;
   border-collapse: collapse;
   border-spacing: 0;
-  margin-left: 1rem;
+  margin-left: 2rem;
   display: inline-table;
 }
 .table th,
@@ -56,20 +65,21 @@ h3 {
   font-weight: 600;
 }
 h4 {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   color: black;
-  border-left: 8px solid black;
+  border-left: 6px solid black;
   padding-left: 0.5rem;
   margin: 1rem 0 0 1rem;
   font-weight: 600;
 }
+
 p {
-  padding-left: 1rem;
+  padding-left: 2rem;
   margin: 0.6rem 0;
   text-align: justify;
 }
 img {
-  margin: 0rem 1rem;
+  margin: 0rem 2rem;
   border: 1px black solid;
 }
 footer {
@@ -82,3 +92,4 @@ footer p {
   padding: 0;
   margin: 0;
 }
+
