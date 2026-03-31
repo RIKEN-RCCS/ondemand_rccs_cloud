@@ -39,60 +39,46 @@
     </nav>
 
     <main class="main-content">
-      <h2>1. Policies</h2>
-      <h3 id="usage">1.1. Usage Policy</h3>
-
-      <h4>1.1.1. Use of Compute Nodes</h4>
-      <ul>
-        <li>As this system is a shared resource, users must not occupy computational resources for extended periods through continuous job resubmission or similar practices.</li>
-        <li>Users must not reserve or use computational resources beyond what is necessary.</li>
-        <li>This system is intended for small-scale experimental research. The following uses are prohibited:
-          <ul>
-            <li>Production use (e.g., large-scale training of LLMs, large-scale simulations for real-world applications)</li>
-            <li>Use for providing continuous services</li>
-            <li>Personal use</li>
-          </ul>
-        </li>
-      </ul>
-      
-      <h4>1.1.2. Use of Login Nodes</h4>
+      <h2>2. How to use</h2>
       <p>
-        Users must not run long-duration or high-load processes on login nodes. Specifically, the following types of processes must be executed on compute nodes:
+        To use the R-CCS Cloud, there are two methods:
+        "Using Open OnDemand via a web browser" and "Connecting to the login node via SSH from terminal software".
+      </p>
+
+      <h3 id="ood">2.1. Using Open OnDemand</h3>
+      <p>
+        Please log in at
+        <a target="_blank" href="https://ondemand.cloud.r-ccs.riken.jp">https://ondemand.cloud.r-ccs.riken.jp</a>.
+        Open OnDemand is a web portal that allows you to use the supercomputer from your web browser.
+        It provides the following functions:
       </p>
       <ul>
-        <li>Continuous execution of AI-assisted tools (e.g., Claude Code)</li>
-        <li>Long-running server programs such as JupyterLab or VSCode Server</li>
-        <li>Long-duration compilation processes using a large number of CPU cores</li>
+        <li>File transfer and editing</li>
+        <li>Terminal access</li>
+        <li>Execution and management of interactive applications (such as remote desktop)</li>
+        <li>Execution and management of batch jobs</li>
       </ul>
-      
-      <h3 id="operation">1.2. Operational Policy</h3>
-      
-      <h4>1.2.1. Resource Occupancy Control</h4>
-      <ul>
-        <li>The maximum reservation time for computational resources per job is 24 hours.</li>
-        <li>The maximum amount of computational resources a user may submit (number of nodes × time) is limited to (number of nodes in the target partition × 72 hours).</li>
-        <li>If excessive job resubmission or resource occupation is observed, job control measures will be applied.</li>
-        <li>A scheduling policy will be applied such that users with lower cumulative usage are given higher priority.</li>
-      </ul>
-      
-      <h4>1.2.2. Control of Usage Purpose</h4>
-      <ul>
-        <li>If a user is determined to be in violation of the usage policy, their account may be suspended.</li>
-        <li>If high-load or long-running processes are detected on login nodes, those processes will be terminated.</li>
-      </ul>
-      
-      <h4>1.2.3. Disclaimer and Operational Discretion</h4>
-      <ul>
-        <li>The operations team assumes no responsibility for any loss resulting from the use of this system.</li>
-        <li>No data backup is provided on this system.</li>
-        <li>User support, including responses to system failures, is provided on a best-effort basis.</li>
-        <li>The operations team reserves the right to modify or suspend the system, or restrict access for specific users, without prior notice.</li>
-      </ul>
+      <p>
+        Open OnDemand supports major web browsers such as Google Chrome, Mozilla Firefox, and Microsoft Edge
+        (Note: Internet Explorer 11 is not supported).
+        Chrome is recommended because it natively supports copy & paste in remote desktop and other applications.
+      </p>
 
+      <h3 id="ssh">2.2. Using Terminal Software</h3>
+      <p>
+        To register your SSH public key, please start the "SSH Public Key" application in <a target="_blank" href="https://ondemand.cloud.r-ccs.riken.jp">https://ondemand.cloud.r-ccs.riken.jp</a>.
+        Enter your public key in the "Add Key" input field.
+      </p>
+      <img width="600" alt="SSH Public Key" src="img/SshPublicKey.png">
+      <p>
+        Next, in your terminal software, type <code>ssh xxx@login.cloud.r-ccs.riken.jp</code>. Here, <code>xxx</code> is your username.
+      </p>
     </main>
   </div>
+
   <footer class="bg-purple d-flex justify-content-center align-items-center">
     <p class="mb-0 text-white">&copy; RIKEN Center for Computational Science</p>
   </footer>
+
 </body>
 </html>
