@@ -68,7 +68,7 @@
       </table>
 
       <p>
-        Please set the environment variables of the compute nodes in each partition using the <code>module</code> command shown in the table below. For <code>r340</code> and <code>fs-dgx-(s|m[0-3])</code>, no specific settings are required.
+        Please set the environment variables of the compute nodes in each partition using the <code>module</code> command shown in the table below. For <code>r340</code>, no specific settings are required.
       </p>
       <table class="table table-sm fs-6">
         <tr><th>Partition</th><th>Command</th></tr>
@@ -87,6 +87,7 @@
         <tr><td class="text-nowrap">qc-pvc</td><td><code>module load system/qc-pvc</code> or <code>source /opt/intel/oneapi/setvars.sh</code></td></tr>
         <tr><td class="text-nowrap">fs-mi300a</td><td><code>module load system/fs-mi300a rocm</code></td></tr>
         <tr><td class="text-nowrap">fs-mi300x</td><td><code>module load system/fs-mi300x rocm</code></td></tr>
+        <tr><td class="text-nowrap">fs-dgx-(s|m[0-3])</td><td><code>module load system/fs-dgx nvhpc</code></td></tr>
       </table>
     </main>
   </div>
