@@ -13,7 +13,7 @@ cd "$HOME" || exit 7
 #TTYD_PATH="$(which --skip-alias --skip-functions ttyd)"
 export TTYD_BASE_PATH="/node/${HOST}/${PORT}/${PASSWORD}"
 ARCH=`arch`
-<% if context.global_queue.start_with?("dgx-") %>
+<% if context.global_queue.start_with?("ng-dgx-") %>
 VERSION="24.04"
 TTYD_PATH=/cloud_opt/ondemand/ttyd-fork/${ARCH}/u${VERSION}/bin/ttyd
 <% else %>
