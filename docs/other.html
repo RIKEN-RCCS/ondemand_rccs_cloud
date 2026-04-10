@@ -58,10 +58,29 @@ $ FCCpx test.c -o test.x</pre>
         </div>
       </div>
 
-      <h3>8.3. Scratch Area</h3>
+      <h3>8.3. Scratch Space</h3>
       <p>
-        A temporary scratch area on compute nodes is available. The scratch directory is dynamically allocated by the scheduler, and its path is stored in the environment variable <code>USER_SCRATCH_DIR</code>. This directory is deleted when the job finishes.
+        On compute nodes, temporary scratch space is available for use during job execution.
+        This scratch space is dynamically created by the job scheduler when a job starts
+        and is automatically removed when the job finishes. Two types of scratch space
+        are provided depending on the use case, and each can be accessed via environment variables.
       </p>
+      <ul>
+        <li><code>USER_SCRATCH_DIR</code>
+          <ul>
+            <li>Overview: Scratch space located on large-capacity storage</li>
+            <li>Characteristics: Suitable for handling large datasets. Being disk-based, it is slower than memory-based storage</li>
+            <li>Use cases: Temporary storage of large input/output data and intermediate files</li>
+          </ul>
+        </li>
+        <li><code>USER_TMP_DIR</code> (<code>TMPDIR</code>)
+          <ul>
+            <li>Overview: Scratch space allocated in memory</li>
+            <li>Characteristics: Provides very fast access. Available capacity is relatively limited</li>
+            <li>Use cases: Temporary files that are small and frequently accessed, or workloads requiring high I/O performance. <code>USER_TMP_DIR</code> and <code>TMPDIR</code> refer to the same location</li>
+          </ul>
+        </li>
+      </ul>
 
       <h3>8.4. S3 File Access</h3>
       <p>
