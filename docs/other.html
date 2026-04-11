@@ -68,16 +68,16 @@ $ FCCpx test.c -o test.x</pre>
       <ul>
         <li><code>USER_SCRATCH_DIR</code>
           <ul>
-            <li>Overview: Scratch space located on large-capacity storage</li>
-            <li>Characteristics: Suitable for handling large datasets. Being disk-based, it is slower than memory-based storage</li>
-            <li>Use cases: Temporary storage of large input/output data and intermediate files</li>
+            <li>Overview: Scratch space located on high-capacity storage</li>
+            <li>Characteristics: Suitable for handling large datasets, but slower compared to <code>USER_TMP_DIR</code></li>
+            <li>Use cases: Temporary storage for large input/output data and intermediate files</li>
           </ul>
         </li>
-        <li><code>USER_TMP_DIR</code> (<code>TMPDIR</code>)
+        <li><code>USER_TMP_DIR</code>
           <ul>
-            <li>Overview: Scratch space allocated in memory</li>
-            <li>Characteristics: Provides very fast access. Available capacity is relatively limited</li>
-            <li>Use cases: Temporary files that are small and frequently accessed, or workloads requiring high I/O performance. <code>USER_TMP_DIR</code> and <code>TMPDIR</code> refer to the same location</li>
+            <li>Overview: Scratch area allocated in memory</li>
+            <li>Characteristics: Extremely fast access, but smaller capacity compared to <code>USER_SCRATCH_DIR</code></li>
+            <li>Use cases: Small, frequently accessed temporary files and processes requiring high-speed I/O</li>
           </ul>
         </li>
       </ul>
