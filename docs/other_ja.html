@@ -63,15 +63,15 @@ $ FCCpx test.c -o test.x</pre>
       <ul>
         <li><code>USER_SCRATCH_DIR</code>
           <ul>
-            <li>概要：大容量ストレージ上に配置されたスクラッチ領域</li>
+            <li>概要：大容量ストレージ上に確保されるスクラッチ領域</li>
             <li>特徴：大きなデータを扱うことが可能であるが、<code>USER_TMP_DIR</code>と比較すると速度は劣る</li>
-            <li>用途：大容量の入力データや出力データの一時保存や中間ファイルの保存</li>
+            <li>用途：大容量の入出力データの一時保存や中間ファイルの保存</li>
           </ul>
         </li>
         <li><code>USER_TMP_DIR</code>
           <ul>
 	          <li>概要：メモリ上に確保されるスクラッチ領域</li>
-            <li>特徴：非常に高速なアクセスが可能であるが、<code>USER_SCRATCH_DIR</code>と比較すると容量は小さい</li>
+            <li>特徴：高速なアクセスが可能であるが、<code>USER_SCRATCH_DIR</code>と比較すると容量は小さい</li>
             <li>用途：小規模で頻繁にアクセスする一時ファイルや高速なI/Oが求められる処理</li>
           </ul>
         </li>
