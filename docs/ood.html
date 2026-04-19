@@ -114,19 +114,26 @@
       </p>
       <table class="table">
         <tr><th>Name</th><th>Description</th></tr>
-	<tr><td><a href="#active">Active Jobs</a></td><td>Monitoring Jobs</td></tr>
-	<tr><td><a href="#home">Home Directory</a></td><td>File Operations</td></tr>
-	<tr><td><a href="#login">Shell Access</a></td><td>Terminal</td></tr>
-	<tr><td><a href="#ssh">SSH Public Key</a></td><td>Registering an SSH public key</td></tr>
-	<tr><td><a href="#slurm">Slurm</a></td><td>Creating and submitting a batch job</td></tr>
-	<tr><td><a href="#system">System Status</a></td><td>Check usage status</td></tr>
+	      <tr><td><a href="#active">Active Jobs</a></td><td>Monitoring Jobs</td></tr>
+        <tr><td><a href="#passkey">Delete Passkey</a></td><td>Delete a passkey</td></tr>
+	      <tr><td><a href="#home">Home Directory</a></td><td>File Operations</td></tr>
+	      <tr><td><a href="#login">Shell Access</a></td><td>Terminal</td></tr>
+	      <tr><td><a href="#ssh">SSH Public Key</a></td><td>Registering an SSH public key</td></tr>
+	      <tr><td><a href="#slurm">Slurm</a></td><td>Creating and submitting a batch job</td></tr>
+	      <tr><td><a href="#system">System Status</a></td><td>Check usage status</td></tr>
       </table>
  
       <h4 id="active">5.3.1. Active Jobs</h4>
       <p>You can view and delete job information. Click the button left of "ID" to view details, and the "Actions" column button to cancel a job.</p>
       <img width="600" alt="Active Jobs" src="img/activejobs.png">
- 
-      <h4 id="home">5.3.2. Home Directory</h4>
+
+      <h4 id="passkey">5.3.2. Delete Passkey</h4>
+      <p>
+        You can delete your registered Passkey. Click the "Delete" button.
+      </p>
+      <img width="600" alt="Delete Passkey" src="img/passkey.png">
+      
+      <h4 id="home">5.3.3. Home Directory</h4>
       <p>You can send, receive, and edit files. The maximum file size for transfer is 10GB.</p>
       <img width="600" alt="Home Directory" src="img/home_directory.png">
       <p>The functions of the Home Directory are as follows. Operations on individual files or directories can be performed from the "three-dot + triangle" menu.</p>
@@ -165,14 +172,14 @@
         Note that the R-CCS Cloud Help Desk does not provide support for Rclone configuration.
       </p>
 
-      <h4 id="login">5.3.3 Shell Access</h4>
+      <h4 id="login">5.3.4 Shell Access</h4>
       <p>You can SSH into the login node via browser and operate with a command-line interface.</p>
       <img width="600" alt="Terminal for Login Node" src="img/shell_access.png">
 
-      <h4 id="ssh">5.3.4. SSH Public Key</h4>
+      <h4 id="ssh">5.3.5. SSH Public Key</h4>
       <p>See <a target="_blank" rel="noopener noreferrer" href="index.html#ssh">1.2. Using Terminal Software</a>.</p>
       
-      <h4 id="slurm">5.3.5. Slurm</h4>
+      <h4 id="slurm">5.3.6. Slurm</h4>
       <p>
 	You can create and submit batch jobs.
         A batch job is a compute task executed non-interactively by the job scheduler.  
@@ -217,7 +224,7 @@
       </p>
       <img width="400" alt="Load Parameters" src="img/history_load_parameters.png">
 
-      <h4 id="system">5.3.6. System Status</h4>
+      <h4 id="system">5.3.7. System Status</h4>
       <p>You can view the usage status of each partition.</p>
       <img width="600" alt="Grafana" src="img/grafana.png">
     </main>

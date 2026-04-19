@@ -105,19 +105,26 @@
       </p>
       <table class="table">
         <tr><th>名前</th><th>説明</th></tr>
-	<tr><td><a href="#active">Active Jobs</a></td><td>ジョブのモニタリング</td></tr>
-	<tr><td><a href="#home">Home Directory</a></td><td>ファイル操作</td></tr>
-	<tr><td><a href="#login">Shell Access</a></td><td>ターミナル</td></tr>
-	<tr><td><a href="#ssh">SSH Public Key</a></td><td>SSH公開鍵の登録</td></tr>
-	<tr><td><a href="#slurm">Slurm</a></td><td>バッチジョブの作成と投入</td></tr>
-	<tr><td><a href="#system">System Status</a></td><td>クラスタの利用状況の確認</td></tr>
+	      <tr><td><a href="#active">Active Jobs</a></td><td>ジョブのモニタリング</td></tr>
+        <tr><td><a href="#passkey">Delete Passkey</a></td><td>パスキーの削除</td></tr>
+	      <tr><td><a href="#home">Home Directory</a></td><td>ファイル操作</td></tr>
+	      <tr><td><a href="#login">Shell Access</a></td><td>ターミナル</td></tr>
+	      <tr><td><a href="#ssh">SSH Public Key</a></td><td>SSH公開鍵の登録</td></tr>
+	      <tr><td><a href="#slurm">Slurm</a></td><td>バッチジョブの作成と投入</td></tr>
+	      <tr><td><a href="#system">System Status</a></td><td>クラスタの利用状況の確認</td></tr>
       </table>
 
       <h4 id="active">5.3.1. Active Jobs</h4>
       <p>ジョブの情報を閲覧や削除を行うことができます。「ID」の列の左側のボタンをクリックすると、ジョブ詳細情報を表示できます。「Actions」の列のボタンをクリックすると、ジョブの削除を行えます。</p>
       <img width="600" alt="Active Jobs" src="img/activejobs.png">
 
-      <h4 id="home">5.3.2. Home Directory</h4>
+      <h4 id="passkey">5.3.2. Delete Passkey</h4>
+      <p>
+        登録済のPasskeyを削除することができます。「Delete」ボタンをクリックしてください。
+      </p>
+      <img width="600" alt="Delete Passkey" src="img/passkey.png">
+      
+      <h4 id="home">5.3.3. Home Directory</h4>
       <p>ファイルの送受信・編集などを行えます。送受信可能な最大サイズは10GBです。</p>
       <img width="600" alt="Home Directory" src="img/home_directory.png">
       <p>Home Directoryの各機能は下記の通りです。個別のファイルやディレクトリに対する操作は「3点＋下三角」のメニューから行えます。</p>
@@ -153,14 +160,14 @@
       <a target="_blank" rel="noopener noreferrer" href="https://rclone.org">Rclone</a>を用いたクラウドストレージに対するファイルの操作も可能です。Rcloneの設定を行うには、対話アプリケーションのDesktopを起動し、そのターミナルから<code>rclone</code>もしくは<code>rclone-browser</code>を実行します。設定後にOpen OnDemandのメニューバーの「Help」&rarr; 「Restart Web Server」をクリックし、Home Directoryを起動すると、設定されたクラウドストレージにアクセスできます。なお、R-CCSクラウドヘルプデスクではRcloneの設定のサポートは行っておりませんのでご了承ください。
       </p>
       
-      <h4 id="login">5.3.3. Shell Access</h4>
+      <h4 id="login">5.3.4. Shell Access</h4>
       <p>WebブラウザからログインノードにSSHアクセスし、コマンドラインインタフェースを用いた操作を行うことができます。</p>
       <img width="600" alt="Terminal for Login Node" src="img/shell_access.png">
       
-      <h4 id="ssh">5.3.4. SSH Public Key</h4>
+      <h4 id="ssh">5.3.5. SSH Public Key</h4>
       <p><a target="_blank" rel="noopener noreferrer" href="index_ja.html#ssh">1.2. ターミナルソフトウェアの利用</a>を参照ください。</p>
       
-      <h4 id="slurm">5.3.5. Slurm</h4>
+      <h4 id="slurm">5.3.6. Slurm</h4>
       <p>
         バッチジョブの作成と投入を行えます。バッチジョブとは、ジョブスケジューラによって非対話的に実行される計算タスクのことです。バッチジョブはシェルスクリプトで記述され、必要な計算資源（たとえばノード数や最大実行時間など）は、ジョブスケジューラのディレクティブ（例：<code>#SBATCH -N 4</code>）を用いて指定します。R-CCSクラウドOpen OnDemandでは、Open OnDemand上で動作するアプリケーションである<a target="_blank" rel="noopener noreferrer" href="https://github.com/RIKEN-RCCS/OpenComposer/">Open Composer</a>を利用しており、簡易にバッチジョブの投入と管理を行うことができます。
       </p>
@@ -193,7 +200,7 @@
       </p>
       <img width="400" alt="Load Parameters" src="img/history_load_parameters.png">
 
-      <h4 id="system">5.3.6. System Status</h4>
+      <h4 id="system">5.3.7. System Status</h4>
       <p>各パーティションの利用状況を閲覧できます。</p>
       <img width="600" alt="Grafana" src="img/grafana.png">
       <!--
