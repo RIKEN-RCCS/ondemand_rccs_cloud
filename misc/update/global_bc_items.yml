@@ -5,6 +5,7 @@ global_bc_form_items:
     options:
       - [ "fx700",       data-hide-global-gpus: true ]
       - [ "a100",        data-hide-global-gpus: true ]
+      - [ "b300"                                     ]
       - [ "mi100",       data-hide-global-gpus: true ]
       - [ "r340",        data-hide-global-gpus: true ]
       - [ "genoa",       data-hide-global-gpus: true ]
@@ -32,6 +33,7 @@ global_bc_form_items:
     options:
       - [ "fx700",       data-hide-global-gpus: true ]
       - [ "a100",        data-hide-global-gpus: true ]
+      - [ "b300"                                     ]
       - [ "mi100",       data-hide-global-gpus: true ]
       - [ "r340",        data-hide-global-gpus: true ]
       - [ "genoa",       data-hide-global-gpus: true ]
@@ -54,6 +56,7 @@ global_bc_form_items:
     label: "Partition*"
     options:
       - [ "a100",        data-hide-global-gpus: true ]
+      - [ "b300"                                     ]
       - [ "mi100",       data-hide-global-gpus: true ]
       - [ "r340",        data-hide-global-gpus: true ]
       - [ "genoa",       data-hide-global-gpus: true ]
@@ -75,7 +78,7 @@ global_bc_form_items:
     label: "Partition*"
     options:
       - [ "a100",        data-hide-global-gpus: true ]
-      - [ "r340",        data-hide-global-gpus: true ]
+      - [ "b300"                                     ]
       - [ "ai-h100l",    data-hide-global-gpus: true ]
       - [ "ai-h100l-pu", data-hide-global-gpus: true, data-hide-global-hours: true ]
       - [ "ai-h200-brc"                              ]
