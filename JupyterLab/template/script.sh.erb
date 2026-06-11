@@ -15,7 +15,7 @@ if [ `arch` = "x86_64" ]; then
   PYTHONUSERBASE=<%= XDG_DATA_HOME["x86_64"] %>/JupyterLab
 else
   PYTHONUSERBASE=<%= XDG_DATA_HOME["aarch64"] %>/JupyterLab
-  if [ "<%= context.global_queue %>" = "fx700" ]; then
+  if [ "<%= context.global_queue_tmp %>" = "fx700" ]; then
     CONTAINER_IMAGE="/cloud_opt/ondemand/rocky97_fx700_aarch64.sif"
   else
     CONTAINER_IMAGE=<%= CONTAINER_IMAGE["aarch64"] %>

@@ -36,7 +36,7 @@ def script(name, queue, hours, gpus = "", email = "")
   yaml << "    native:\n"
 
   case queue
-  when "qc-a100", "ai-l40s", "ai-h200-brc"
+  when "b300", "qc-a100", "ai-l40s", "ai-h200-brc"
     gpus_option = gpus.to_s.strip.empty? ? "--gpus=1" : "--gpus=#{gpus}"
     yaml << "      - \"#{gpus_option}\ -t #{hours}:00:00\"\n"
   when "ai-h100l-pu"
@@ -64,9 +64,10 @@ def is_vgl(queue, gpus)
   ]
 
   gpu_dependent = %w[
-    ai-h200-brc
-    ai-l40s
+    b300
     qc-a100
+    ai-l40s
+    ai-h200-brc
   ]
 
   always_false = %w[
