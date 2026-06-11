@@ -32,6 +32,13 @@ const esc = (s) =>
     .replaceAll('>', '&gt;');
 
 /**
+ * RFC4515 に基づく LDAP 検索フィルタ用エスケープ
+ */
+const escLdapFilter = (s) =>
+  String(s).replace(/[\\*()\0]/g, (c) =>
+    '\\' + c.charCodeAt(0).toString(16).padStart(2, '0'));
+
+/**
  * LDIF形式の文字列をパースし、uidとipaSshPubKeyを抽出
  */
 function parseLdif(ldif) {
@@ -61,7 +68,8 @@ const HTML_HEAD = `<!DOCTYPE html>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SSH Public Key</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>`;
 
 /**
@@ -107,14 +115,16 @@ router.post('/login', (req, res) => {
 
   // ユーザー名を取得
   const USERNAME = process.env.USER || process.env.LOGNAME || 'unknown';
-  const filter = `(krbPrincipalName=${USERNAME}@CLOUD.R-CCS.RIKEN.JP)`;
+  const filter = `(krbPrincipalName=${escLdapFilter(USERNAME)}@CLOUD.R-CCS.RIKEN.JP)`;
   const attrs = ['uid', 'ipaSshPubKey'];
 
   // ldapsearch 実行
   const args = ['-LLL', '-Y', 'GSSAPI', '-o', 'ldif-wrap=no', filter, ...attrs];
   const ls = spawnSync('/usr/bin/ldapsearch', args, { timeout: 15000 });
   if (ls.status !== 0) {
-    return res.status(500).send(`<pre>${esc((ls.stderr || '').toString())}</pre>`);
+    // 詳細はサーバログのみへ。クライアントには汎用メッセージを返す
+    console.error('[SshPublicKey] ldapsearch failed:', (ls.stderr || '').toString());
+    return res.status(500).send('Failed to retrieve SSH public keys');
   }
 
   // LDIF をパース
@@ -157,7 +167,7 @@ router.post('/login', (req, res) => {
 
     <script>
       const BASE = "${BASE}";
-      window.sshKeys = ${JSON.stringify(keysArr)};
+      window.sshKeys = ${JSON.stringify(keysArr).replace(/</g, '\\u003c')};
 
       // HTML エスケープ
       function escapeHtml(s) {
@@ -246,13 +256,40 @@ router.post('/login', (req, res) => {
 </html>`);
 });
 
+// SSH 公開鍵の形式（1行）を検証する正規表現。改行が混入していれば必ず弾かれる
+const SSH_KEY_RE =
+  /^(ssh-(ed25519|rsa|dss)|ecdsa-sha2-nistp(256|384|521)|sk-ssh-ed25519@openssh\.com|sk-ecdsa-sha2-nistp256@openssh\.com) [A-Za-z0-9+/]+={0,3}( \S.*)?$/;
+
+/**
+ * cross-site からの POST を拒否する CSRF 緩和ミドルウェア。
+ * Sec-Fetch-Site が cross-site の場合のみ拒否する（same-origin/same-site は許可）。
+ * リバースプロキシ配下でも Host 突合に依存しないため安全に効く。
+ */
+function blockCrossSite(req, res, next) {
+  const site = req.get('sec-fetch-site');
+  if (site && site === 'cross-site') {
+    return res.status(403).send('Cross-site request blocked');
+  }
+  next();
+}
+
 /**
  * 公開鍵追加/削除処理を共通化
  */
 const handleKey = (action) => (req, res) => {
-  const uid = (req.body.uid || '').trim();
+  // uid はクライアント入力ではなく認証済みユーザから決定する（IDOR/権限逸脱対策）
+  const uid = (process.env.USER || process.env.LOGNAME || '').trim();
   const key = (req.body.key || '').trim();
   if (!uid || !key) return res.status(400).send('uid and key required');
+
+  // LDIF/DN インジェクション対策: uid に DN メタ文字や改行が含まれていたら拒否
+  if (/[\r\n,+="\\<>;]/.test(uid)) {
+    return res.status(400).send('Invalid username');
+  }
+  // 鍵は1行の SSH 公開鍵形式のみ許可（改行混入による LDIF インジェクションを防ぐ）
+  if (/[\r\n]/.test(key) || !SSH_KEY_RE.test(key)) {
+    return res.status(400).send('Invalid SSH public key format');
+  }
 
   const dn = `uid=${uid},cn=users,cn=accounts,dc=cloud,dc=r-ccs,dc=riken,dc=jp`;
   const uri = 'ldap://ds1.cloud.r-ccs.riken.jp';
@@ -267,15 +304,16 @@ const handleKey = (action) => (req, res) => {
     console.log('[SshPublicKey] ' + mod.stdout);
     return res.send('ok');
   } else {
+    // 詳細はサーバログにのみ出力し、クライアントには汎用メッセージを返す
     console.error('[SshPublicKey] status:', mod.status, 'signal:', mod.signal, 'error:', mod.error);
-    console.log('[SshPublicKey] ' + mod.stderr);
-    return res.status(500).send((mod.stderr || '').toString());
+    console.error('[SshPublicKey] ' + (mod.stderr || ''));
+    return res.status(500).send('LDAP operation failed');
   }
 };
 
 // API エンドポイント
-router.post('/add-key', express.json(), handleKey('add'));
-router.post('/delete-key', express.json(), handleKey('delete'));
+router.post('/add-key', blockCrossSite, express.json(), handleKey('add'));
+router.post('/delete-key', blockCrossSite, express.json(), handleKey('delete'));
 
 // サーバー起動
 app.listen(port, () => {
