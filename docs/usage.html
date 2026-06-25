@@ -67,11 +67,15 @@
       <h3 id="ssh">2.2. Using Terminal Software</h3>
       <p>
         To register your SSH public key, please start the "SSH Public Key" application in <a target="_blank" href="https://ondemand.cloud.r-ccs.riken.jp">https://ondemand.cloud.r-ccs.riken.jp</a>.
-        Enter your public key in the "Add Key" input field.
+        The following screen will appear; please enter the password you use to log in to Open OnDemand. If the password entry does not work, click the Shell Access link and run the <code>kinit</code> command.
+      </p>
+      <img width="600" alt="SSH Public Key" src="img/SshPublicKey2.png">
+      <p>
+        When the following screen opens, enter your public key in the "Add Key" input field.
       </p>
       <img width="600" alt="SSH Public Key" src="img/SshPublicKey.png">
       <p>
-        Next, in your terminal software, type <code>ssh xxx@login.cloud.r-ccs.riken.jp</code>. Here, <code>xxx</code> is your username.
+        The public key registration is now complete. In your terminal software, type <code>ssh xxx@login.cloud.r-ccs.riken.jp</code>. Here, <code>xxx</code> is your username.
       </p>
     </main>
   </div>

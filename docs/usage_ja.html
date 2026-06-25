@@ -59,11 +59,15 @@
 
       <h3 id="ssh">2.2. 端末ソフトウェアの利用</h3>
       <p>
-        SSHの公開鍵の登録を行うために、<a target="_blank" href="https://ondemand.cloud.r-ccs.riken.jp">https://ondemand.cloud.r-ccs.riken.jp</a>から「SSH Public Key」を起動し、「Add Key」の入力欄にご自身の公開鍵を入力してください。
+        SSHの公開鍵の登録を行うために、<a target="_blank" href="https://ondemand.cloud.r-ccs.riken.jp">https://ondemand.cloud.r-ccs.riken.jp</a>から「SSH Public Key」を起動してください。下記の画面が表示されますので、Open OnDemandにログインするためのパスワードを入力してください。パスワード入力がうまくいかない場合は、Shell Accessのリンクをクリックし、<code>kinit</code>コマンドを実行してください。
+      </p>
+      <img width="600" alt="SSH Public Key" src="img/SshPublicKey2.png">
+      <p>
+       下記の画面が開きましたら、「Add Key」の入力欄にご自身の公開鍵を入力してください。
       </p>
       <img width="600" alt="SSH Public Key" src="img/SshPublicKey.png">
       <p>
-      次に端末ソフトウェアで<code>ssh xxx@login.cloud.r-ccs.riken.jp</code>と入力ください。<code>xxx</code>はユーザ名です。
+        これで公開鍵の登録が完了しました。端末ソフトウェアで<code>ssh xxx@login.cloud.r-ccs.riken.jp</code>と入力ください。<code>xxx</code>はユーザ名です。
       </p>
     </main>
   </div>
