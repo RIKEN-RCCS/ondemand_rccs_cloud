@@ -61,14 +61,14 @@
         <tr style="vertical-align: middle;"><td class="text-nowrap">qc-pvc</td><td class="text-end">2</td><td>Intel Xeon Platinum 8470 x 2 + Intel Data Center GPU Max 1550 x 8</td><td class="text-end">2,048GB</td><td>InfiniBand HDR 200Gbps</td><td></td></tr>
         <tr style="vertical-align: middle;"><td class="text-nowrap">qc-pro6000</td><td class="text-end">1</td><td>Intel Xeon w9-3575X x 1 + NVIDIA RTX PRO 6000 Blackwell Max-Q Workstation Edition x 2</td><td class="text-end">512GB</td><td>Ethernet 1Gbps</td><td></td></tr>
   	    <tr style="vertical-align: middle;"><td class="text-nowrap">fs-mi300a</td><td class="text-end">1</td><td>AMD MI300A x 4</td><td class="text-end">512GB</td><td>InfiniBand HDR 200Gbps</td><td></td></tr>
-        <tr style="vertical-align: middle;"><td class="text-nowrap">fs-h100</td><td class="text-end">1</td><td>AMD EPYC 9654 x 1 + NVIDIA H100 x 1</td><td class="text-end">256GB</td><td>Ethernet 1Gbps</td><td></td></tr>
         <tr style="vertical-align: middle;"><td class="text-nowrap">fs-mi300x</td><td class="text-end">1</td><td>AMD EPYC 9534 x 2 + AMD MI300X x 8</td><td class="text-end">1,536GB</td><td>InfiniBand HDR 200Gbps</td><td></td></tr>
-        <tr style="vertical-align: middle;"><td class="text-nowrap">next-pvc</td><td class="text-end">1</td><td>Intel Xeon Silver 4410T x 2 + Intel Data Center GPU Max 1100 x 2</td><td class="text-end">512GB</td><td>Ethernet 1Gbps</td><td></td></tr>
+        <tr style="vertical-align: middle;"><td class="text-nowrap">fs-h100</td><td class="text-end">1</td><td>AMD EPYC 9654 x 1 + NVIDIA H100 x 1</td><td class="text-end">256GB</td><td>Ethernet 1Gbps</td><td></td></tr>
         <tr style="vertical-align: middle;"><td class="text-nowrap">ng-dgx-s</td><td class="text-end">7</td><td rowspan="5">NVIDIA GB10 Grace Blackwell Superchip</td><td rowspan="5" class="text-end">128GB</td><td rowspan="5">Ethernet 10Gbps</td><td rowspan="5">ng-dgx-m[0-3]内の2ノード間は200Gbpsで接続している。</td></tr>
 				<tr style="vertical-align: middle;"><td class="text-nowrap">ng-dgx-m0</td><td class="text-end">2</td></tr>
 				<tr style="vertical-align: middle;"><td class="text-nowrap">ng-dgx-m1</td><td class="text-end">2</td></tr>
 				<tr style="vertical-align: middle;"><td class="text-nowrap">ng-dgx-m2</td><td class="text-end">2</td></tr>
 				<tr style="vertical-align: middle;"><td class="text-nowrap">ng-dgx-m3</td><td class="text-end">2</td></tr>
+        <tr style="vertical-align: middle;"><td class="text-nowrap">next-pvc</td><td class="text-end">1</td><td>Intel Xeon Silver 4410T x 2 + Intel Data Center GPU Max 1100 x 2</td><td class="text-end">512GB</td><td>Ethernet 1Gbps</td><td></td></tr>
       </table>
 
       <p>
@@ -93,8 +93,8 @@
         <tr><td class="text-nowrap">fs-mi300a</td><td><code>module load system/fs-mi300a rocm</code></td></tr>
         <tr><td class="text-nowrap">fs-mi300x</td><td><code>module load system/fs-mi300x rocm</code></td></tr>
         <tr><td class="text-nowrap">fs-h100</td><td><code>module load system/fs-h100 nvhpc</code></td></tr>
-        <tr><td class="text-nowrap">next-pvc</td><td><code>module load system/next-pvc</code> or <code>source /opt/intel/oneapi/setvars.sh</code></td></tr>
         <tr><td class="text-nowrap">ng-dgx-(s|m[0-3])</td><td><code>module load system/ng-dgx nvhpc</code></td></tr>
+        <tr><td class="text-nowrap">next-pvc</td><td><code>module load system/next-pvc</code> or <code>source /opt/intel/oneapi/setvars.sh</code></td></tr>
       </table>
     </main>
   </div>
