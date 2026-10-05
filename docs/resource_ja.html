@@ -73,14 +73,14 @@
       </table>
 
       <p>
-        各パーティションにおける計算ノードの環境変数は、下表の<code>module</code>コマンドを用いて設定してください。<code>r340</code>と<code>mi100</code>については、特に設定は必要ありません。
+        各パーティションにおける計算ノードの環境変数は、下表の<code>module</code>コマンドを用いて設定してください。<code>r340</code>と<code>mi100</code>と<code>genoa</code>については、特に設定は必要ありません。
       </p>
       <table class="table table-sm fs-6">
         <tr><th>Partition</th><th>コマンド</th></tr>
         <tr><td class="text-nowrap">fx700</td><td><code>module load system/fx700 FJSVstclanga</code></td></tr>
         <tr><td class="text-nowrap">a100</td><td><code>module load system/a100 nvhpc</code></td></tr>
         <tr><td class="text-nowrap">b300</td><td><code>module load system/b300 nvhpc</code></td></tr>
-        <tr><td class="text-nowrap">genoa, genoa-m</td><td><code>module load system/genoa mpi/openmpi-x86_64</code></td></tr>
+        <tr><td class="text-nowrap">genoa</td><td><code>module load system/genoa mpi/openmpi-x86_64</code></td></tr>
         <tr><td class="text-nowrap">ai-h100l, ai-h100l-pu</td><td><code>module load system/ai-h100l nvhpc</code></td></tr>
         <tr><td class="text-nowrap">ai-h200-brc</td><td><code>module load system/ai-h200-brc nvhpc</code></td></tr>
         <tr><td class="text-nowrap">ai-l40s</td><td><code>module load system/ai-l40s nvhpc</code></td></tr>
