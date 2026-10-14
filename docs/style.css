@@ -44,6 +44,11 @@
   border: solid 1px black;
   font-size: 0.9rem; 
 }
+/* Bootstrap's .table sets vertical-align: top; center merged cells vertically */
+.table td[rowspan],
+.table th[rowspan] {
+  vertical-align: middle;
+}
 .table th {
   background: purple;
   color: #ffffff;
