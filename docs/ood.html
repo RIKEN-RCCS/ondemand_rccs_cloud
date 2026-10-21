@@ -24,8 +24,10 @@
         <li class="nav-item"><a href="storage.html" class="nav-link">4. Storage</a></li>
         <li class="nav-item"><a href="ood.html" class="nav-link">5. Open OnDemand</a></li>
         <li class="nav-item ms-3"><a href="ood.html#overview" class="nav-link">5.1. Overview</a></li>
-        <li class="nav-item ms-3"><a href="ood.html#interactive" class="nav-link">5.2. Interactive Application</a></li>
-        <li class="nav-item ms-3"><a href="ood.html#passenger" class="nav-link">5.3. Passenger Application</a></li>
+        <li class="nav-item ms-3"><a href="ood.html#files" class="nav-link">5.2. Files Application</a></li>
+        <li class="nav-item ms-3"><a href="ood.html#jobs" class="nav-link">5.3. Jobs Application</a></li>
+        <li class="nav-item ms-3"><a href="ood.html#clusters" class="nav-link">5.4. Clusters Application</a></li>
+        <li class="nav-item ms-3"><a href="ood.html#interactive" class="nav-link">5.5. Interactive Application</a></li>
         <li class="nav-item"><a href="terminal.html" class="nav-link">6. Terminal Software</a></li>
         <li class="nav-item ms-3"><a href="terminal.html#batch" class="nav-link">6.1. Using Batch Job</a></li>
         <li class="nav-item ms-3"><a href="terminal.html#interactive" class="nav-link">6.2. Interactive Use</a></li>
@@ -49,91 +51,26 @@
       </p>
       <table class="table">
         <tr><th>Item</th><th>Description</th></tr>
+        <tr><td>Files</td><td>Applications for file operations</td></tr>
+        <tr><td>Jobs</td><td>Applications for job operations</td></tr>
+        <tr><td>Clusters</td><td>Applications related to the cluster</td></tr>
         <tr><td>Interactive Apps</td><td>Interactive applications running on compute nodes</td></tr>
-        <tr><td>Passenger Apps</td><td>Applications running on the Open OnDemand server</td></tr>
         <tr><td>My Interactive Sessions</td><td>List of interactive application session information</td></tr>
         <tr><td>Help &rarr; Restart Web Server</td><td>Restart Open OnDemand</td></tr>
         <tr><td>Help &rarr; Manual</td><td>Link to this manual</td></tr>
         <tr><td>Log Out</td><td>Log out</td></tr>
       </table>
 
-      <h3 id="interactive">5.2. Interactive Application</h3>
+      <h3 id="files">5.2. Files Application</h3>
       <p>
-	Interactive applications are applications that allow users to interactively operate applications running on compute nodes. They are provided in the following categories: "development applications" and "visualization applications."
-      </p>
-      <table class="table">
-	<tr><th>Development Application</th><th>Description</th></tr>
-        <tr><td>Desktop (<a target="_blank" rel="noopener noreferrer" href="https://www.xfce.org/">Xfce</a>)</td><td>Lightweight desktop environment running on the X Window System</td></tr>
-        <tr><td><a target="_blank" rel="noopener noreferrer" href="https://jupyter.org/">JupyterLab</a></td><td>Interactive execution environment for programs running in a web browser</td></tr>
-	<tr><td>Terminal (<a target="_blank" rel="noopener noreferrer" href="https://github.com/tsl0922/ttyd">ttyd</a>)</td><td>A tool for controlling terminal sessions from a web browser</td></tr>
-	<tr><td><a target="_blank" rel="noopener noreferrer" href="https://code.visualstudio.com/">VSCode</a></td><td>Code editor developed by <a target="_blank" rel="noopener noreferrer" href="https://www.microsoft.com/">Microsoft</a></td></tr>
-        <tr><td><a target="_blank" rel="noopener noreferrer" href="https://taki-036.github.io/OPEN-WHEEL/">WHEEL</a></td><td>Web tool for interactively creating and running analysis jobs</td></tr>
-      </table>
-      <br>
-      <table class="table">
-	<tr><th>Visualization Application</th><th>Description</th></tr>
-	<tr><td><a target="_blank" rel="noopener noreferrer" href="http://www.gnuplot.info/">Gnuplot</a></td><td>Command-line driven graphing program</td></tr>
-	<tr><td><a target="_blank" rel="noopener noreferrer" href="http://opengrads.org/">GrADS</a></td><td>Visualization and analysis program for gridded data in meteorology and climate fields</td></tr>
-	<tr><td><a target="_blank" rel="noopener noreferrer" href="https://imagej.net/ij/">ImageJ</a></td><td>Image processing software running on the Java Virtual Machine</td></tr>
-	<tr><td><a target="_blank" rel="noopener noreferrer" href="https://www.ovito.org/">OVITO</a></td><td>Visualization and analysis program for large datasets such as particle simulations</td></tr>
-	<tr><td><a target="_blank" rel="noopener noreferrer" href="https://www.paraview.org/">ParaView</a></td><td>Scientific and technical data visualization program</td></tr>
-	<tr><td><a target="_blank" rel="noopener noreferrer" href="https://www.pymol.org/">PyMOL</a></td><td>Visualization and analysis program for 3D structures of biomacromolecules</td></tr>
-	<tr><td><a target="_blank" rel="noopener noreferrer" href="https://pages.nist.gov/fds-smv/">Smokeview</a></td><td>Visualization program for displaying results from <a target="_blank" rel="noopener noreferrer" href="https://pages.nist.gov/fds-smv/">FDS</a> and <a target="_blank" rel="noopener noreferrer" href="https://pages.nist.gov/cfast/index.html">CFAST</a></td></tr>
-	<tr><td><a target="_blank" rel="noopener noreferrer" href="https://jp-minerals.org/vesta/jp/">VESTA</a></td><td>Visualization program for crystal structures and 3D data such as electron/nuclear densities</td></tr>
-	<tr><td><a target="_blank" rel="noopener noreferrer" href="https://visit-dav.github.io/visit-website/">VisIt</a></td><td>Visualization and analysis program supporting various scientific data formats</td></tr>
-	<tr><td><a target="_blank" rel="noopener noreferrer" href="http://www.xcrysden.org/">XCrySDen</a></td><td>Visualization program for crystal and molecular structures</td></tr>
-      </table>
-      <p>
-        For example, to use the Desktop: click the "Desktop" in "Interactive Apps", a web form will appear to enter compute resources and other information. After entering the information, click "Launch" to submit a job to the R-CCS Cloud.
-      </p>
-      <img width="400" alt="Webform of Desktop" src="img/remote_desktop_webform.png">
-      <p>
-        Immediately after job submission, a screen showing "Queued" will appear, meaning the job is waiting.  
-        When the job starts on a compute node, the display changes to "Running" and a "Launch Desktop" button appears.  
-        Set appropriate values for "Compression" and "Image Quality", then click "Launch Desktop" to open the Desktop in your browser.
-      </p>
-      <p>
-        Clicking the "View Only (Share-able Link)" button opens a mirrored desktop in a new tab.  
-        The mirrored screen cannot be operated.  
-        You can share the screen by sending the URL via email, but only among users who have an account on the R-CCS Cloud.
-      </p>
-      <img width="600" alt="Running Status" src="img/remote_desktop_running.png"><p></p>
-      <img width="600" alt="Remote Desktop" src="img/remote_desktop.png">
-      <p>
-        To terminate the desktop, do one of the following. Simply closing the browser will not terminate it:
-      </p>
-      <ul>
-        <li>Click the "Delete" button (as shown in the second previous image).</li>
-        <li>Click "My Interactive Sessions" in the menu bar and then click "Delete" for the relevant job.</li>
-        <li>From "Applications" at the top left of the desktop, click "Log Out".</li>
-      </ul>
-
-      <h3 id="passenger">5.3. Passenger Application</h3>
-      <p>
-	Passenger applications are applications that run on the Open OnDemand server. We provide the following applications.	
+        Files applications are applications for file operations. We provide the following application.
       </p>
       <table class="table">
         <tr><th>Name</th><th>Description</th></tr>
-	      <tr><td><a href="#active">Active Jobs</a></td><td>Monitoring Jobs</td></tr>
-        <tr><td><a href="#passkey">Delete Passkey</a></td><td>Delete a passkey</td></tr>
-	      <tr><td><a href="#home">Home Directory</a></td><td>File Operations</td></tr>
-	      <tr><td><a href="#login">Shell Access</a></td><td>Terminal</td></tr>
-	      <tr><td><a href="#ssh">SSH Public Key</a></td><td>Registering an SSH public key</td></tr>
-	      <tr><td><a href="#slurm">Slurm</a></td><td>Creating and submitting a batch job</td></tr>
-	      <tr><td><a href="#system">System Status</a></td><td>Check usage status</td></tr>
+        <tr><td><a href="#home">Home Directory</a></td><td>File Operations</td></tr>
       </table>
- 
-      <h4 id="active">5.3.1. Active Jobs</h4>
-      <p>You can view and delete job information. Click the button left of "ID" to view details, and the "Actions" column button to cancel a job.</p>
-      <img width="600" alt="Active Jobs" src="img/activejobs.png">
 
-      <h4 id="passkey">5.3.2. Delete Passkey</h4>
-      <p>
-        You can delete your registered Passkey. Click the "Delete" button.
-      </p>
-      <img width="600" alt="Delete Passkey" src="img/passkey.png">
-      
-      <h4 id="home">5.3.3. Home Directory</h4>
+      <h4 id="home">5.2.1. Home Directory</h4>
       <p>You can send, receive, and edit files. The maximum file size for transfer is 10GB.</p>
       <img width="600" alt="Home Directory" src="img/home_directory.png">
       <p>The functions of the Home Directory are as follows. Operations on individual files or directories can be performed from the "three-dot + triangle" menu.</p>
@@ -163,8 +100,6 @@
         <tr><td>Filter</td><td>Filter by filename</td></tr>
       </table>
 
-      <p>Clicking a path in "Passenger Apps" launches the Home Directory starting from that path.</p>
-      <img width="200" alt="Click to Home Directory" src="img/home_directory_click.png">
       <p>
         File operations with cloud storage via <a target="_blank" rel="noopener noreferrer" href="https://rclone.org">Rclone</a> are also supported.  
         To configure Rclone, start a Desktop, open a terminal, and run <code>rclone</code> or <code>rclone-browser</code>.  
@@ -172,14 +107,21 @@
         Note that the R-CCS Cloud Help Desk does not provide support for Rclone configuration.
       </p>
 
-      <h4 id="login">5.3.4 Shell Access</h4>
-      <p>You can SSH into the login node via browser and operate with a command-line interface.</p>
-      <img width="600" alt="Terminal for Login Node" src="img/shell_access.png">
+      <h3 id="jobs">5.3. Jobs Application</h3>
+      <p>
+        Jobs applications are applications for job operations. We provide the following applications.
+      </p>
+      <table class="table">
+        <tr><th>Name</th><th>Description</th></tr>
+        <tr><td><a href="#active">Active Jobs</a></td><td>Monitoring Jobs</td></tr>
+        <tr><td><a href="#slurm">Slurm</a></td><td>Creating and submitting a batch job</td></tr>
+      </table>
 
-      <h4 id="ssh">5.3.5. SSH Public Key</h4>
-      <p>See <a target="_blank" rel="noopener noreferrer" href="index.html#ssh">1.2. Using Terminal Software</a>.</p>
-      
-      <h4 id="slurm">5.3.6. Slurm</h4>
+      <h4 id="active">5.3.1. Active Jobs</h4>
+      <p>You can view and delete job information. Click the button left of "ID" to view details, and the "Actions" column button to cancel a job.</p>
+      <img width="600" alt="Active Jobs" src="img/activejobs.png">
+
+      <h4 id="slurm">5.3.2. Slurm</h4>
       <p>
 	You can create and submit batch jobs.
         A batch job is a compute task executed non-interactively by the job scheduler.  
@@ -228,9 +170,83 @@
       </p>
       <img width="400" alt="Load Parameters" src="img/history_load_parameters.png">
 
-      <h4 id="system">5.3.7. System Status</h4>
+      <h3 id="clusters">5.4. Clusters Application</h3>
+      <p>
+        Clusters applications are applications related to the cluster. We provide the following applications.
+      </p>
+      <table class="table">
+        <tr><th>Name</th><th>Description</th></tr>
+        <tr><td><a href="#passkey">Delete Passkey</a></td><td>Delete a passkey</td></tr>
+        <tr><td><a href="#login">Shell Access</a></td><td>Terminal</td></tr>
+        <tr><td><a href="#ssh">SSH Public Key</a></td><td>Registering an SSH public key</td></tr>
+        <tr><td><a href="#system">System Status</a></td><td>Check usage status</td></tr>
+      </table>
+
+      <h4 id="passkey">5.4.1. Delete Passkey</h4>
+      <p>
+        You can delete your registered Passkey. Click the "Delete" button.
+      </p>
+      <img width="600" alt="Delete Passkey" src="img/passkey.png">
+
+      <h4 id="login">5.4.2. Shell Access</h4>
+      <p>You can SSH into the login node via browser and operate with a command-line interface.</p>
+      <img width="600" alt="Terminal for Login Node" src="img/shell_access.png">
+
+      <h4 id="ssh">5.4.3. SSH Public Key</h4>
+      <p>See <a target="_blank" rel="noopener noreferrer" href="index.html#ssh">1.2. Using Terminal Software</a>.</p>
+
+      <h4 id="system">5.4.4. System Status</h4>
       <p>You can view the usage status of each partition.</p>
       <img width="600" alt="Grafana" src="img/grafana.png">
+
+      <h3 id="interactive">5.5. Interactive Application</h3>
+      <p>
+	Interactive applications are applications that allow users to interactively operate applications running on compute nodes. They are provided in the following categories: "development applications" and "visualization applications."
+      </p>
+      <table class="table">
+	<tr><th>Development Application</th><th>Description</th></tr>
+        <tr><td>Desktop (<a target="_blank" rel="noopener noreferrer" href="https://www.xfce.org/">Xfce</a>)</td><td>Lightweight desktop environment running on the X Window System</td></tr>
+        <tr><td><a target="_blank" rel="noopener noreferrer" href="https://jupyter.org/">JupyterLab</a></td><td>Interactive execution environment for programs running in a web browser</td></tr>
+	<tr><td>Terminal (<a target="_blank" rel="noopener noreferrer" href="https://github.com/tsl0922/ttyd">ttyd</a>)</td><td>A tool for controlling terminal sessions from a web browser</td></tr>
+	<tr><td><a target="_blank" rel="noopener noreferrer" href="https://code.visualstudio.com/">VSCode</a></td><td>Code editor developed by <a target="_blank" rel="noopener noreferrer" href="https://www.microsoft.com/">Microsoft</a></td></tr>
+        <tr><td><a target="_blank" rel="noopener noreferrer" href="https://taki-036.github.io/OPEN-WHEEL/">WHEEL</a></td><td>Web tool for interactively creating and running analysis jobs</td></tr>
+      </table>
+      <br>
+      <table class="table">
+	<tr><th>Visualization Application</th><th>Description</th></tr>
+	<tr><td><a target="_blank" rel="noopener noreferrer" href="http://www.gnuplot.info/">Gnuplot</a></td><td>Command-line driven graphing program</td></tr>
+	<tr><td><a target="_blank" rel="noopener noreferrer" href="http://opengrads.org/">GrADS</a></td><td>Visualization and analysis program for gridded data in meteorology and climate fields</td></tr>
+	<tr><td><a target="_blank" rel="noopener noreferrer" href="https://imagej.net/ij/">ImageJ</a></td><td>Image processing software running on the Java Virtual Machine</td></tr>
+	<tr><td><a target="_blank" rel="noopener noreferrer" href="https://www.ovito.org/">OVITO</a></td><td>Visualization and analysis program for large datasets such as particle simulations</td></tr>
+	<tr><td><a target="_blank" rel="noopener noreferrer" href="https://www.paraview.org/">ParaView</a></td><td>Scientific and technical data visualization program</td></tr>
+	<tr><td><a target="_blank" rel="noopener noreferrer" href="https://www.pymol.org/">PyMOL</a></td><td>Visualization and analysis program for 3D structures of biomacromolecules</td></tr>
+	<tr><td><a target="_blank" rel="noopener noreferrer" href="https://pages.nist.gov/fds-smv/">Smokeview</a></td><td>Visualization program for displaying results from <a target="_blank" rel="noopener noreferrer" href="https://pages.nist.gov/fds-smv/">FDS</a> and <a target="_blank" rel="noopener noreferrer" href="https://pages.nist.gov/cfast/index.html">CFAST</a></td></tr>
+	<tr><td><a target="_blank" rel="noopener noreferrer" href="https://visit-dav.github.io/visit-website/">VisIt</a></td><td>Visualization and analysis program supporting various scientific data formats</td></tr>
+      </table>
+      <p>
+        For example, to use the Desktop: click the "Desktop" in "Interactive Apps", a web form will appear to enter compute resources and other information. After entering the information, click "Launch" to submit a job to the R-CCS Cloud.
+      </p>
+      <img width="400" alt="Webform of Desktop" src="img/remote_desktop_webform.png">
+      <p>
+        Immediately after job submission, a screen showing "Queued" will appear, meaning the job is waiting.  
+        When the job starts on a compute node, the display changes to "Running" and a "Launch Desktop" button appears.  
+        Set appropriate values for "Compression" and "Image Quality", then click "Launch Desktop" to open the Desktop in your browser.
+      </p>
+      <p>
+        Clicking the "View Only (Share-able Link)" button opens a mirrored desktop in a new tab.  
+        The mirrored screen cannot be operated.  
+        You can share the screen by sending the URL via email, but only among users who have an account on the R-CCS Cloud.
+      </p>
+      <img width="600" alt="Running Status" src="img/remote_desktop_running.png"><p></p>
+      <img width="600" alt="Remote Desktop" src="img/remote_desktop.png">
+      <p>
+        To terminate the desktop, do one of the following. Simply closing the browser will not terminate it:
+      </p>
+      <ul>
+        <li>Click the "Delete" button (as shown in the second previous image).</li>
+        <li>Click "My Interactive Sessions" in the menu bar and then click "Delete" for the relevant job.</li>
+        <li>From "Applications" at the top left of the desktop, click "Log Out".</li>
+      </ul>
     </main>
   </div>
 

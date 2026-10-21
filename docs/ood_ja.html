@@ -24,8 +24,10 @@
         <li class="nav-item"><a href="storage_ja.html" class="nav-link">4. ストレージ</a></li>
         <li class="nav-item"><a href="ood_ja.html" class="nav-link">5. Open OnDemand</a></li>
         <li class="nav-item ms-3"><a href="ood_ja.html#overview" class="nav-link">5.1. 概要</a></li>
-        <li class="nav-item ms-3"><a href="ood_ja.html#interactive" class="nav-link">5.2. 対話アプリケーション</a></li>
-        <li class="nav-item ms-3"><a href="ood_ja.html#passenger" class="nav-link">5.3. Passengerアプリケーション</a></li>
+        <li class="nav-item ms-3"><a href="ood_ja.html#files" class="nav-link">5.2. Filesアプリケーション</a></li>
+        <li class="nav-item ms-3"><a href="ood_ja.html#jobs" class="nav-link">5.3. Jobsアプリケーション</a></li>
+        <li class="nav-item ms-3"><a href="ood_ja.html#clusters" class="nav-link">5.4. Clustersアプリケーション</a></li>
+        <li class="nav-item ms-3"><a href="ood_ja.html#interactive" class="nav-link">5.5. 対話アプリケーション</a></li>
         <li class="nav-item"><a href="terminal_ja.html" class="nav-link">6. 端末ソフトウェア</a></li>
         <li class="nav-item ms-3"><a href="terminal_ja.html#batch" class="nav-link">6.1. バッチジョブの利用</a></li>
         <li class="nav-item ms-3"><a href="terminal_ja.html#interactive" class="nav-link">6.2. 対話的利用</a></li>
@@ -47,84 +49,26 @@
       </p>
       <table class="table">
         <tr><th>項目</th><th>意味</th></tr>
+        <tr><td>Files</td><td>ファイル操作を行うアプリケーション</td></tr>
+        <tr><td>Jobs</td><td>ジョブ操作を行うアプリケーション</td></tr>
+        <tr><td>Clusters</td><td>クラスタに関するアプリケーション</td></tr>
         <tr><td>Interactive Apps</td><td>計算ノードで動作する対話アプリケーション</td></tr>
-        <tr><td>Passenger Apps</td><td>Open OnDemandサーバで動作するアプリケーション</td></tr>
         <tr><td>My Interactive Sessions</td><td>対話アプリケーションのセッション情報の一覧</td></tr>
         <tr><td>Help &rarr; Restart Web Server</td><td>Open OnDemandを再起動する</td></tr>
         <tr><td>Help &rarr; Manual</td><td>本マニュアルへのリンク</td></tr>
         <tr><td>Log Out</td><td>ログアウトする</td></tr>
       </table>
 
-      <h3 id="interactive">5.2. 対話アプリケーション</h3>
+      <h3 id="files">5.2. Filesアプリケーション</h3>
       <p>
-        対話アプリケーションとは、計算ノード上で実行するアプリケーションをユーザが対話的に操作できるアプリケーションです。下記の「開発アプリケーション」と「可視化アプリケーション」に分類して提供しています。
-      </p>
-      <table class="table">
-        <tr><th>開発アプリケーション</th><th>説明</th></tr>
-        <tr><td>Desktop (<a target="_blank" rel="noopener noreferrer" href="https://www.xfce.org/">Xfce</a>)</td><td>X Window System上で動作する軽量デスクトップ環境</td></tr>
-        <tr><td><a target="_blank" rel="noopener noreferrer" href="https://jupyter.org/">JupyterLab</a></td><td>Webブラウザ上で動作するプログラムの対話型実行環境</td></tr>
-        <tr><td>Terminal (<a target="_blank" rel="noopener noreferrer" href="https://github.com/tsl0922/ttyd">ttyd</a>)</td><td>ターミナルセッションをウェブブラウザから操作するためのツール</td></tr>
-        <tr><td><a target="_blank" rel="noopener noreferrer" href="https://code.visualstudio.com/">VSCode</a></td><td><a target="_blank" rel="noopener noreferrer" href="https://www.microsoft.com/">Microsoft</a>が開発しているコードエディタ</td></tr>
-        <tr><td><a target="_blank" rel="noopener noreferrer" href="https://taki-036.github.io/OPEN-WHEEL/">WHEEL</a></td><td>解析ジョブの作成/実行をインタラクティブに操作するWebツール</td></tr>
-      </table>
-      <br>
-      <table class="table">
-        <tr><th>可視化アプリケーション</th><th>説明</th></tr>
-        <tr><td><a target="_blank" rel="noopener noreferrer" href="http://www.gnuplot.info/">Gnuplot</a></td><td>コマンドライン駆動型グラフ作成プログラム</td></tr>
-	<tr><td><a target="_blank" rel="noopener noreferrer" href="http://opengrads.org/">GrADS</a></td><td>気象・気候分野の格子点データの可視化・解析プログラム</td></tr>
-	<tr><td><a target="_blank" rel="noopener noreferrer" href="https://imagej.net/ij/">ImageJ</a></td><td>Javaの仮想マシン上で動作する画像処理ソフトウェア</td></tr>
-	<tr><td><a target="_blank" rel="noopener noreferrer" href="https://www.ovito.org/">OVITO</a></td><td>粒子シミュレーションなどの大規模データの可視化・解析プログラム</td></tr>
-	<tr><td><a target="_blank" rel="noopener noreferrer" href="https://www.paraview.org/">ParaView</a></td><td>科学技術データ可視化プログラム</td></tr>
-	<tr><td><a target="_blank" rel="noopener noreferrer" href="https://www.pymol.org/">PyMOL</a></td><td>生体高分子の立体構造などび可視化・解析プログラム</td></tr>
-	<tr><td><a target="_blank" rel="noopener noreferrer" href="https://pages.nist.gov/fds-smv/">Smokeview</a></td><td><a target="_blank" rel="noopener noreferrer" href="https://pages.nist.gov/fds-smv/">FDS</a>や<a target="_blank" rel="noopener noreferrer" href="https://pages.nist.gov/cfast/index.html">CFAST</a>の結果を表示するための可視化プログラム</td></tr>
-	<tr><td><a target="_blank" rel="noopener noreferrer" href="https://jp-minerals.org/vesta/jp/">VESTA</a></td><td>結晶構造や電子・核密度等の三次元データなどの可視化プログラム</td></tr>
-	<tr><td><a target="_blank" rel="noopener noreferrer" href="https://visit-dav.github.io/visit-website/">VisIt</a></td><td>様々な科学データ形式に対応した可視化・解析プログラム</td></tr>
-	<tr><td><a target="_blank" rel="noopener noreferrer" href="http://www.xcrysden.org/">XCrySDen</a></td><td>結晶構造や分子構造などの可視化プログラム</td></tr>
-      </table>
-      <p>
-        例として、Desktopの利用方法を説明します。メニューバーの「Interactive Apps」から「Desktop」をクリックすると、計算リソースなどを入力するためのWebフォームが表示されます。入力後に「Launch」をクリックすると、R-CCSクラウドにジョブが投入されます。
-      </p>
-      <img width="400" alt="Webform of Remote Desktop" src="img/remote_desktop_webform.png">
-      <p>
-        ジョブ投入直後は、右上に「Queued」と記述された画面が表示されます。これは、ジョブは実行待ちであることを表しています。ジョブが計算ノードで起動すると「Running」という表示に変わり、「Launch Desktop」というボタンが表示されます。「Commpression（圧縮レベル）と「Image Quality（画質レベル）」に適当な値を設定して、「Launch Desktop」のボタンをクリックすると、DesktopがWebブラウザに表示されます。
-      </p>
-      <p>「View Only (Share-able Link) 」ボタンをクリックすると、ミラーリングされたDesktopが新しいタブで開きます。ミラーリングされた画面は操作できません。このタブのURLをメール等で送信することで、画面共有を行うことができます（R-CCSクラウドにアカウントを持っているユーザ間でのみ画面共有が可能です）。
-      </p>
-      <img width="600" alt="Running Status" src="img/remote_desktop_running.png"><p></p>
-      <img width="600" alt="Remote Desktop" src="img/remote_desktop.png">
-      <p>Desktopを終了させたい場合は、下記の手順のどれかを行ってください。Webブラウザを閉じるだけでは終了されないことに注意してください。</p>
-      <ul>
-        <li>2つ前の画像の「Delete」ボタンをクリックする。</li>
-        <li>メニューバーの「My Interactive Sessions」をクリックし、該当のジョブの「Delete」ボタンをクリックする。</li>
-        <li>Desktopの左上の「Applications」から「Log Out」をクリックする。</li>
-      </ul>
-
-      <h3 id="passenger">5.3. Passengerアプリケーション</h3>
-      <p>
-	Passengerアプリケーションとは、Open OnDemandサーバで動作するアプリケーションです。下記のアプリケーションを提供しています。
+        Filesアプリケーションとは、ファイルの操作を行うアプリケーションです。下記のアプリケーションを提供しています。
       </p>
       <table class="table">
         <tr><th>名前</th><th>説明</th></tr>
-	      <tr><td><a href="#active">Active Jobs</a></td><td>ジョブのモニタリング</td></tr>
-        <tr><td><a href="#passkey">Delete Passkey</a></td><td>パスキーの削除</td></tr>
-	      <tr><td><a href="#home">Home Directory</a></td><td>ファイル操作</td></tr>
-	      <tr><td><a href="#login">Shell Access</a></td><td>ターミナル</td></tr>
-	      <tr><td><a href="#ssh">SSH Public Key</a></td><td>SSH公開鍵の登録</td></tr>
-	      <tr><td><a href="#slurm">Slurm</a></td><td>バッチジョブの作成と投入</td></tr>
-	      <tr><td><a href="#system">System Status</a></td><td>クラスタの利用状況の確認</td></tr>
+        <tr><td><a href="#home">Home Directory</a></td><td>ファイル操作</td></tr>
       </table>
 
-      <h4 id="active">5.3.1. Active Jobs</h4>
-      <p>ジョブの情報を閲覧や削除を行うことができます。「ID」の列の左側のボタンをクリックすると、ジョブ詳細情報を表示できます。「Actions」の列のボタンをクリックすると、ジョブの削除を行えます。</p>
-      <img width="600" alt="Active Jobs" src="img/activejobs.png">
-
-      <h4 id="passkey">5.3.2. Delete Passkey</h4>
-      <p>
-        登録済のPasskeyを削除することができます。「Delete」ボタンをクリックしてください。
-      </p>
-      <img width="600" alt="Delete Passkey" src="img/passkey.png">
-      
-      <h4 id="home">5.3.3. Home Directory</h4>
+      <h4 id="home">5.2.1. Home Directory</h4>
       <p>ファイルの送受信・編集などを行えます。送受信可能な最大サイズは10GBです。</p>
       <img width="600" alt="Home Directory" src="img/home_directory.png">
       <p>Home Directoryの各機能は下記の通りです。個別のファイルやディレクトリに対する操作は「3点＋下三角」のメニューから行えます。</p>
@@ -154,20 +98,25 @@
         <tr><td>Filter</td><td>ファイル名による絞り込み</td></tr>
       </table>
 
-      <p>メニューバーの「Passenger Apps」にあるパスをクリックすると、そのパスを起点としたHome Directoryが起動します。</p>
-      <img width="200" alt="Click to Home Directory" src="img/home_directory_click.png">
       <p>
-      <a target="_blank" rel="noopener noreferrer" href="https://rclone.org">Rclone</a>を用いたクラウドストレージに対するファイルの操作も可能です。Rcloneの設定を行うには、対話アプリケーションのDesktopを起動し、そのターミナルから<code>rclone</code>もしくは<code>rclone-browser</code>を実行します。設定後にOpen OnDemandのメニューバーの「Help」&rarr; 「Restart Web Server」をクリックし、Home Directoryを起動すると、設定されたクラウドストレージにアクセスできます。なお、R-CCSクラウドヘルプデスクではRcloneの設定のサポートは行っておりませんのでご了承ください。
+        <a target="_blank" rel="noopener noreferrer" href="https://rclone.org">Rclone</a>を用いたクラウドストレージに対するファイルの操作も可能です。Rcloneの設定を行うには、対話アプリケーションのDesktopを起動し、そのターミナルから<code>rclone</code>もしくは<code>rclone-browser</code>を実行します。設定後にOpen OnDemandのメニューバーの「Help」&rarr; 「Restart Web Server」をクリックし、Home Directoryを起動すると、設定されたクラウドストレージにアクセスできます。なお、R-CCSクラウドヘルプデスクではRcloneの設定のサポートは行っておりませんのでご了承ください。
       </p>
       
-      <h4 id="login">5.3.4. Shell Access</h4>
-      <p>WebブラウザからログインノードにSSHアクセスし、コマンドラインインタフェースを用いた操作を行うことができます。</p>
-      <img width="600" alt="Terminal for Login Node" src="img/shell_access.png">
-      
-      <h4 id="ssh">5.3.5. SSH Public Key</h4>
-      <p><a target="_blank" rel="noopener noreferrer" href="index_ja.html#ssh">1.2. ターミナルソフトウェアの利用</a>を参照ください。</p>
-      
-      <h4 id="slurm">5.3.6. Slurm</h4>
+      <h3 id="jobs">5.3. Jobsアプリケーション</h3>
+      <p>
+        Jobsアプリケーションとは、Jobの操作を行うアプリケーションです。下記のアプリケーションを提供しています。
+      </p>
+      <table class="table">
+        <tr><th>名前</th><th>説明</th></tr>
+        <tr><td><a href="#active">Active Jobs</a></td><td>ジョブのモニタリング</td></tr>
+        <tr><td><a href="#slurm">Slurm</a></td><td>バッチジョブの作成と投入</td></tr>
+      </table>
+
+      <h4 id="active">5.3.1. Active Jobs</h4>
+      <p>ジョブの情報を閲覧や削除を行うことができます。「ID」の列の左側のボタンをクリックすると、ジョブ詳細情報を表示できます。「Actions」の列のボタンをクリックすると、ジョブの削除を行えます。</p>
+      <img width="600" alt="Active Jobs" src="img/activejobs.png">
+
+      <h4 id="slurm">5.3.2. Slurm</h4>
       <p>
         バッチジョブの作成と投入を行えます。バッチジョブとは、ジョブスケジューラによって非対話的に実行される計算タスクのことです。バッチジョブはシェルスクリプトで記述され、必要な計算資源（たとえばノード数や最大実行時間など）は、ジョブスケジューラのディレクティブ（例：<code>#SBATCH -N 4</code>）を用いて指定します。R-CCSクラウドOpen OnDemandでは、Open OnDemand上で動作するアプリケーションである<a target="_blank" rel="noopener noreferrer" href="https://github.com/RIKEN-RCCS/OpenComposer/">Open Composer</a>を利用しており、簡易にバッチジョブの投入と管理を行うことができます。
       </p>
@@ -180,7 +129,7 @@
       </p>
       <img width="800" alt="Link to Histroy Page" src="img/link_to_history.png">
       <p>
-      History pageでは、これまでに投入したジョブの履歴を閲覧することができます。表の各行は1つのジョブの情報を示しています。左上にある「Cancel Job」と「Delete Info」のボタンは、それぞれ「実行中のジョブのキャンセル」と「表からジョブの情報を削除する」ことを行います。それらの動作を行うためには、表の左端の列にある対応するチェックボックスをオンにします。
+        History pageでは、これまでに投入したジョブの履歴を閲覧することができます。表の各行は1つのジョブの情報を示しています。左上にある「Cancel Job」と「Delete Info」のボタンは、それぞれ「実行中のジョブのキャンセル」と「表からジョブの情報を削除する」ことを行います。それらの動作を行うためには、表の左端の列にある対応するチェックボックスをオンにします。
       </p>
       <p>
       右上にあるテキストエリアとチェックボックスは、表に表示されるジョブをフィルタリングするために使用します。「Filter」に文字列を入力すると、その文字列に関係するジョブだけが表示されます。「Queued」、「Running」、「Completed」、「Failed」のチェックボックスを選択すると、その状態のジョブだけが表示されます。
@@ -191,22 +140,89 @@
       </p>
       <img width="600" alt="Histroy Page" src="img/history_detail.png">
       <p>
-      「Job ID」列のリンクをクリックすると、ジョブスケジューラから取得されたプロファイリング情報が表示されます。
+        「Job ID」列のリンクをクリックすると、ジョブスケジューラから取得されたプロファイリング情報が表示されます。
       </p>
       <img width="400" alt="Job ID in Histroy Page" src="img/history_jobid.png">
       <p>
-     「Application」列のリンクをクリックすると、そのアプリケーションページが開きます。
+        「Application」列のリンクをクリックすると、そのアプリケーションページが開きます。
       <p>
-      「Script Location」列のリンクをクリックすると、Open OnDemandの<a href="#home">Home Directory</a>が起動します。また、その横のターミナルアイコンをクリックすると、Open OnDemandの<a href="#login">Shell Access</a>が起動します。
+        「Script Location」列のリンクをクリックすると、Open OnDemandの<a href="#home">Home Directory</a>が起動します。また、その横のターミナルアイコンをクリックすると、Open OnDemandの<a href="#login">Shell Access</a>が起動します。
       </p>
       <p>
-      「Script Name」列のリンクをクリックすると、送信されたシェルスクリプトの内容を表示するウィンドウが開きます。そのウィンドウの「Load Parameters」ボタンをクリックすると、パラメータが読み込まれたアプリケーションのページが開きます。
+        「Script Name」列のリンクをクリックすると、送信されたシェルスクリプトの内容を表示するウィンドウが開きます。そのウィンドウの「Load Parameters」ボタンをクリックすると、パラメータが読み込まれたアプリケーションのページが開きます。
       </p>
       <img width="400" alt="Load Parameters" src="img/history_load_parameters.png">
+      
+      <h3 id="clusters">5.4. Clustersアプリケーション</h3>
+      <p>
+        Clustersアプリケーションとは、クラスタに関するアプリケーションです。下記のアプリケーションを提供しています。
+      </p>
+      <table class="table">
+        <tr><th>名前</th><th>説明</th></tr>
+        <tr><td><a href="#passkey">Delete Passkey</a></td><td>パスキーの削除</td></tr>
+        <tr><td><a href="#login">Shell Access</a></td><td>ターミナル</td></tr>
+        <tr><td><a href="#ssh">SSH Public Key</a></td><td>SSH公開鍵の登録</td></tr>
+        <tr><td><a href="#system">System Status</a></td><td>クラスタの利用状況の確認</td></tr>
+      </table>
 
-      <h4 id="system">5.3.7. System Status</h4>
+      <h4 id="passkey">5.4.1. Delete Passkey</h4>
+      <p>
+        登録済のPasskeyを削除することができます。「Delete」ボタンをクリックしてください。
+      </p>
+      <img width="600" alt="Delete Passkey" src="img/passkey.png">
+
+      <h4 id="login">5.4.2. Shell Access</h4>
+      <p>WebブラウザからログインノードにSSHアクセスし、コマンドラインインタフェースを用いた操作を行うことができます。</p>
+      <img width="600" alt="Terminal for Login Node" src="img/shell_access.png">
+
+      <h4 id="ssh">5.4.3. SSH Public Key</h4>
+      <p><a target="_blank" rel="noopener noreferrer" href="index_ja.html#ssh">1.2. ターミナルソフトウェアの利用</a>を参照ください。</p>
+
+      <h4 id="system">5.4.4. System Status</h4>
       <p>各パーティションの利用状況を閲覧できます。</p>
       <img width="600" alt="Grafana" src="img/grafana.png">
+      
+      <h3 id="interactive">5.5. 対話アプリケーション</h3>
+      <p>
+        対話アプリケーションとは、計算ノード上で実行するアプリケーションをユーザが対話的に操作できるアプリケーションです。下記の「開発アプリケーション」と「可視化アプリケーション」に分類して提供しています。
+      </p>
+      <table class="table">
+        <tr><th>開発アプリケーション</th><th>説明</th></tr>
+        <tr><td>Desktop (<a target="_blank" rel="noopener noreferrer" href="https://www.xfce.org/">Xfce</a>)</td><td>X Window System上で動作する軽量デスクトップ環境</td></tr>
+        <tr><td><a target="_blank" rel="noopener noreferrer" href="https://jupyter.org/">JupyterLab</a></td><td>Webブラウザ上で動作するプログラムの対話型実行環境</td></tr>
+        <tr><td>Terminal (<a target="_blank" rel="noopener noreferrer" href="https://github.com/tsl0922/ttyd">ttyd</a>)</td><td>ターミナルセッションをウェブブラウザから操作するためのツール</td></tr>
+        <tr><td><a target="_blank" rel="noopener noreferrer" href="https://code.visualstudio.com/">VSCode</a></td><td><a target="_blank" rel="noopener noreferrer" href="https://www.microsoft.com/">Microsoft</a>が開発しているコードエディタ</td></tr>
+        <tr><td><a target="_blank" rel="noopener noreferrer" href="https://taki-036.github.io/OPEN-WHEEL/">WHEEL</a></td><td>解析ジョブの作成/実行をインタラクティブに操作するWebツール</td></tr>
+      </table>
+      <br>
+      <table class="table">
+        <tr><th>可視化アプリケーション</th><th>説明</th></tr>
+        <tr><td><a target="_blank" rel="noopener noreferrer" href="http://www.gnuplot.info/">Gnuplot</a></td><td>コマンドライン駆動型グラフ作成プログラム</td></tr>
+	      <tr><td><a target="_blank" rel="noopener noreferrer" href="http://opengrads.org/">GrADS</a></td><td>気象・気候分野の格子点データの可視化・解析プログラム</td></tr>
+	      <tr><td><a target="_blank" rel="noopener noreferrer" href="https://imagej.net/ij/">ImageJ</a></td><td>Javaの仮想マシン上で動作する画像処理ソフトウェア</td></tr>
+	      <tr><td><a target="_blank" rel="noopener noreferrer" href="https://www.ovito.org/">OVITO</a></td><td>粒子シミュレーションなどの大規模データの可視化・解析プログラム</td></tr>
+	      <tr><td><a target="_blank" rel="noopener noreferrer" href="https://www.paraview.org/">ParaView</a></td><td>科学技術データ可視化プログラム</td></tr>
+	      <tr><td><a target="_blank" rel="noopener noreferrer" href="https://www.pymol.org/">PyMOL</a></td><td>生体高分子の立体構造などび可視化・解析プログラム</td></tr>
+	      <tr><td><a target="_blank" rel="noopener noreferrer" href="https://pages.nist.gov/fds-smv/">Smokeview</a></td><td><a target="_blank" rel="noopener noreferrer" href="https://pages.nist.gov/fds-smv/">FDS</a>や<a target="_blank" rel="noopener noreferrer" href="https://pages.nist.gov/cfast/index.html">CFAST</a>の結果を表示するための可視化プログラム</td></tr>
+	      <tr><td><a target="_blank" rel="noopener noreferrer" href="https://visit-dav.github.io/visit-website/">VisIt</a></td><td>様々な科学データ形式に対応した可視化・解析プログラム</td></tr>
+      </table>
+      <p>
+        例として、Desktopの利用方法を説明します。メニューバーの「Interactive Apps」から「Desktop」をクリックすると、計算リソースなどを入力するためのWebフォームが表示されます。入力後に「Launch」をクリックすると、R-CCSクラウドにジョブが投入されます。
+      </p>
+      <img width="400" alt="Webform of Remote Desktop" src="img/remote_desktop_webform.png">
+      <p>
+        ジョブ投入直後は、右上に「Queued」と記述された画面が表示されます。これは、ジョブは実行待ちであることを表しています。ジョブが計算ノードで起動すると「Running」という表示に変わり、「Launch Desktop」というボタンが表示されます。「Commpression（圧縮レベル）と「Image Quality（画質レベル）」に適当な値を設定して、「Launch Desktop」のボタンをクリックすると、DesktopがWebブラウザに表示されます。
+      </p>
+      <p>「View Only (Share-able Link) 」ボタンをクリックすると、ミラーリングされたDesktopが新しいタブで開きます。ミラーリングされた画面は操作できません。このタブのURLをメール等で送信することで、画面共有を行うことができます（R-CCSクラウドにアカウントを持っているユーザ間でのみ画面共有が可能です）。
+      </p>
+      <img width="600" alt="Running Status" src="img/remote_desktop_running.png"><p></p>
+      <img width="600" alt="Remote Desktop" src="img/remote_desktop.png">
+      <p>Desktopを終了させたい場合は、下記の手順のどれかを行ってください。Webブラウザを閉じるだけでは終了されないことに注意してください。</p>
+      <ul>
+        <li>2つ前の画像の「Delete」ボタンをクリックする。</li>
+        <li>メニューバーの「My Interactive Sessions」をクリックし、該当のジョブの「Delete」ボタンをクリックする。</li>
+        <li>Desktopの左上の「Applications」から「Log Out」をクリックする。</li>
+      </ul>
       <!--
       <h3>3.4. HPCI共用ストレージ（準備中）</h3>
       <p>HPCI Shared Strageのアイコンをクリックください。<a href="https://www.hpci-office.jp">HPCI（High Performance Computing Infrastructure）</a>が提供するHPCI共用ストレージに対するファイル操作を行えます。本アプリケーションを利用するためには、<a href="https://elpis.hpci.nii.ac.jp/">JWT-SERVER</a>からパスフレーズを事前に発行しておく必要があります。</p>
