@@ -17,23 +17,16 @@ batch_connect:
     # Set SINGULARITY_BINDPATH and _OPTION
     <%= set_bindpath %>
     export SINGULARITY_BINDPATH=${SINGULARITY_BINDPATH},/cloud_opt,/lvs0,/hs
+    [ -d /usr/share/modules/modulefiles ] && export SINGULARITY_BINDPATH=${SINGULARITY_BINDPATH},/usr/share/modules/modulefiles
+    export SINGULARITYENV_LOGIN_SHELL="$(getent passwd $USER | cut -d: -f7)"
+    export SINGULARITYENV_SHELL="$(getent passwd $USER | cut -d: -f7)"
 
     if [ `arch` = "x86_64" ]; then
       export SINGULARITYENV_XDG_DATA_HOME=<%= XDG_DATA_HOME["x86_64"] %>/<%= APP_NAME %>
       singularity run ${_OPTION} <%= CONTAINER_IMAGE["x86_64"] %> bash ./container.sh
     else
       export SINGULARITYENV_XDG_DATA_HOME=<%= XDG_DATA_HOME["aarch64"] %>/<%= APP_NAME %>
-      case "<%= global_queue %>" in
-        fx700)
-          singularity run ${_OPTION} /cloud_opt/ondemand/rocky97_fx700_aarch64.sif bash ./container.sh
-          ;;
-        ng-dgx-*)
-          bash ./container.sh
-          ;;
-        *)
-          singularity run ${_OPTION} <%= CONTAINER_IMAGE["aarch64"] %> bash ./container.sh
-          ;;
-      esac
+      singularity run ${_OPTION} <%= CONTAINER_IMAGE["aarch64"] %> bash ./container.sh
     fi
 
 script:

@@ -22,11 +22,10 @@ export TMUX_CONFIG_PATH
 #TMUX_PATH="$(which --skip-alias --skip-functions tmux)"
 #$TMUX_PATH -f "$TMUX_CONFIG_PATH" -L "$TMUX_SOCKET" new -A -s "$TMUX_SESSION"
 ARCH=`arch`
-<% if context.global_queue_tmp.start_with?("ng-dgx-") %>
-VERSION="24.04"
-TMUX_PATH="/cloud_opt/ondemand/tmux/${ARCH}/u${VERSION}/bin/tmux"
-<% else %>
+<% if context.global_queue.start_with?("fx700") %>
 VERSION=`rpm -E %{rhel}`
 TMUX_PATH="/cloud_opt/ondemand/tmux/${ARCH}/r${VERSION}/bin/tmux"
+<% else %>
+TMUX_PATH="/usr/bin/tmux"
 <% end %>
 $TMUX_PATH -f "$TMUX_CONFIG_PATH" -L "$TMUX_SOCKET" new -A -s "$TMUX_SESSION"

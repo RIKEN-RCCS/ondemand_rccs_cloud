@@ -35,12 +35,16 @@ def script(name, queue, hours, gpus = "", email = "")
   yaml << "    queue_name: #{queue}\n"
   yaml << "    native:\n"
 
+  gpus_option = gpus.to_s.strip.empty? ? "--gpus=1" : "--gpus=#{gpus}"
+
   case queue
   when "b300", "qc-a100", "ai-l40s", "ai-h200-brc"
-    gpus_option = gpus.to_s.strip.empty? ? "--gpus=1" : "--gpus=#{gpus}"
-    yaml << "      - \"#{gpus_option}\ -t #{hours}:00:00\"\n"
+    yaml << "      - \"#{gpus_option} -t #{hours}:00:00\"\n"
   when "ai-h100l-pu"
     yaml << "      - \"-t 0:30:00\"\n"
+  when "ai-h200-brc-pu"
+    # Run time is fixed (the hours field is hidden in the form), but GPUs are selectable
+    yaml << "      - \"#{gpus_option} -t 1:00:00\"\n"
   else
     yaml << "      - \"-t #{hours}:00:00\"\n"
   end
@@ -61,6 +65,11 @@ def is_vgl(queue, gpus)
     ai-h100l-pu
     qc-h100
     qc-gh200
+    ng-dgx-s
+    ng-dgx-m0
+    ng-dgx-m1
+    ng-dgx-m2
+    ng-dgx-m3
   ]
 
   gpu_dependent = %w[
@@ -68,6 +77,8 @@ def is_vgl(queue, gpus)
     qc-a100
     ai-l40s
     ai-h200-brc
+    ai-h200-brc-pu
+    ai-pro6000
   ]
 
   always_false = %w[
@@ -81,11 +92,14 @@ def is_vgl(queue, gpus)
     qc-pvc
     fs-mi300a
     fs-mi300x
+    next-pvc
   ]
 
   return true  if always_true.include?(queue)
-  return gpus > 0 if gpu_dependent.include?(queue)
+  # Form values arrive as strings, so convert before comparing
+  return gpus.to_i > 0 if gpu_dependent.include?(queue)
   return false if always_false.include?(queue)
 
   false
 end
+

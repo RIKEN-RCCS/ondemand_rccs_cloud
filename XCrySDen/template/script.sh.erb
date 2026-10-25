@@ -1,11 +1,12 @@
 # Set xfce environment and _VIRTUALGL
 <%= set_xfce(is_vgl(context.global_queue_x86, context.global_gpus)) %>
+export SHELL="${LOGIN_SHELL:-/bin/bash}"
 
 # Start XCrySDen
 <% if context.file_format.to_s != "none" && !context.global_input_file.to_s.empty? %>
-${_VIRTUALGL} /opt/xcrysden/bin/xcrysden "<%= context.file_format %>" "<%= context.global_input_file %>" &
+${_VIRTUALGL} xcrysden "<%= context.file_format %>" "<%= context.global_input_file %>" &
 <% else %>
-${_VIRTUALGL} /opt/xcrysden/bin/xcrysden &
+${_VIRTUALGL} xcrysden &
 <% end %>
 
 # Start up xfce desktop (block until user logs out of desktop)

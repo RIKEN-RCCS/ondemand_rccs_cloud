@@ -1,0 +1,165 @@
+Bootstrap: docker
+From: ubuntu:24.04
+
+%post
+  APT_INSTALL="apt-get install -y"
+  apt-get update
+  #============================================================
+  # Base system and development environment
+  #============================================================
+  ${APT_INSTALL} emacs vim nano gedit gedit-plugins csh tcsh zsh fish rust-all libboost-dev cmake rclone libhwloc-dev numactl ghostscript \
+                 imagemagick ncview evince sshfs xfce4 xfce4-terminal dbus-x11 x11-utils xdg-utils curl mesa-utils bash-completion \
+		 build-essential autoconf automake libtool libtool-bin pkg-config flex bison libwebsockets-dev locate \
+                 libyaml-dev libjson-c-dev libkeyutils-dev libmount-dev libselinux1-dev zlib1g-dev libreadline-dev libssl-dev libnetcdff-dev \
+                 module-assistant dkms debhelper dh-dkms dpkg-dev fakeroot bzip2 quilt rsync ed \
+                 gdb cmake git automake autoconf autopoint tcl-dev tk-dev environment-modules ipmitool \
+                 python3-dev iputils-ping cron singularity-container munge libdrm-dev tmux \
+                 network-manager devscripts equivs python3-pip python-is-python3 numactl netcdf-bin rsyslog firewalld
+  # Firefox from Mozilla's APT repo. Ubuntu's own "firefox" package is only a
+  # transitional stub for the snap, which cannot run inside a container, so
+  # pin Mozilla's repo above it.
+  install -d -m 0755 /etc/apt/keyrings
+  curl -fsSL https://packages.mozilla.org/apt/repo-signing-key.gpg -o /etc/apt/keyrings/packages.mozilla.org.asc
+  echo "deb [signed-by=/etc/apt/keyrings/packages.mozilla.org.asc] https://packages.mozilla.org/apt mozilla main" \
+    > /etc/apt/sources.list.d/mozilla.list
+  printf 'Package: *\nPin: origin packages.mozilla.org\nPin-Priority: 1000\n' > /etc/apt/preferences.d/mozilla
+  apt-get update
+  ${APT_INSTALL} firefox
+  # Xfce's "Web Browser" launcher defaults to sensible-browser, which falls
+  # back to lynx in a terminal; point it at Firefox instead.
+  sed -i 's/^WebBrowser=.*/WebBrowser=firefox/' /etc/xdg/xfce4/helpers.rc
+  #
+  # Screen saver disabled for remote desktop usage
+  apt-get remove -y xfce4-screensaver light-locker
+  #
+  # NVIDIA Nsight Compute
+  ${APT_INSTALL} libxcb-dri2-0 libxcb-cursor0 libglapi-mesa
+  #
+  # TurboVNC
+  ${APT_INSTALL} gpg wget libturbojpeg
+  wget -q -O- https://packagecloud.io/dcommander/turbovnc/gpgkey | gpg --dearmor >/etc/apt/trusted.gpg.d/TurboVNC.gpg
+  cd /etc/apt/sources.list.d/
+  wget https://raw.githubusercontent.com/TurboVNC/repo/main/TurboVNC.list
+  apt-get update
+  ${APT_INSTALL} turbovnc python3-websockify
+  #
+  # VirtualGL
+  wget -q -O- https://packagecloud.io/dcommander/virtualgl/gpgkey | gpg --dearmor >/etc/apt/trusted.gpg.d/VirtualGL.gpg
+  cd /etc/apt/sources.list.d
+  wget https://raw.githubusercontent.com/VirtualGL/repo/main/VirtualGL.list
+  apt-get update
+  ${APT_INSTALL} virtualgl
+  #
+  # GDRCopy userspace library (libgdrapi). Without it UCX warns that the
+  # gdr_copy transport (requested by nvhpc-hpcx via UCX_TLS) is unavailable,
+  # since "apptainer --nv" does not bind it. Only on NVIDIA's redist server,
+  # not in any apt repo. Match the host's gdrdrv kernel module version (2.6-1).
+  cd /tmp
+  wget -O libgdrapi.deb "https://developer.download.nvidia.com/compute/redist/gdrcopy/CUDA%2013.3/ubuntu24_04/x64/libgdrapi_2.6-1_amd64.Ubuntu24_04.deb"
+  dpkg -i libgdrapi.deb
+  rm libgdrapi.deb
+
+  #============================================================
+  # Visualization software
+  #============================================================
+  # Gnuplot
+  ${APT_INSTALL} gnuplot
+
+  # ParaView
+  ${APT_INSTALL} paraview
+
+  # PyMOL
+  ${APT_INSTALL} pymol python3-pymol python3-zombie-imp
+
+  # OVITO
+  cd /opt
+  wget https://www.ovito.org/download/master/ovito-basic-3.16.1-x86_64.tar.xz
+  tar Jxf ovito-basic-3.16.1-x86_64.tar.xz
+  rm ovito-basic-3.16.1-x86_64.tar.xz
+  ln -s ovito-basic-3.16.1-x86_64 ovito
+
+  # GrADS
+  ${APT_INSTALL} libgeotiff-dev libghc-cairo-dev libudunits2-dev libxmu-dev libgd-dev
+  cd /opt
+  wget https://github.com/j-m-adams/GrADS/archive/refs/tags/v2.2.3.tar.gz
+  tar xfz v2.2.3.tar.gz
+  cd GrADS-2.2.3
+  mkdir lib
+  LIBS="-ludunits2" CPPFLAGS="-I /usr/include/udunits2 -DH5_USE_110_API" ./configure --prefix=/opt/grads-2.2.3
+  make -j
+  make install
+  cp -a data /opt/grads-2.2.3/
+  echo "gxdisplay    Cairo    /opt/grads/lib/libgxdCairo.so" >  /opt/grads-2.2.3/udpt
+  echo "gxprint      Cairo    /opt/grads/lib/libgxpCairo.so" >> /opt/grads-2.2.3/udpt
+  cd ..
+  ln -s /opt/grads-2.2.3 /opt/grads
+  rm -rf v2.2.3.tar.gz GrADS-2.2.3
+
+  # VisIt (https://visit-dav.github.io/visit-website/releases-as-tables/)
+  cd /opt
+  wget https://github.com/visit-dav/visit/releases/download/v3.5.0/visit3_5_0.linux-x86_64-ubuntu24.tar.gz
+  tar xfz visit3_5_0.linux-x86_64-ubuntu24.tar.gz
+  rm -f visit3_5_0.linux-x86_64-ubuntu24.tar.gz
+  ln -s visit3_5_0.linux-x86_64 visit
+
+  # SmokeView
+  ${APT_INSTALL} libxi-dev
+  cd /opt
+  wget https://github.com/firemodels/smv/archive/refs/tags/SMV-6.10.6.tar.gz
+  tar xfz SMV-6.10.6.tar.gz
+  cd smv-SMV-6.10.6/Build/smokeview/gnu_linux
+  bash make_smokeview.sh
+  mkdir /opt/smokeview-6.10.6
+  mv smokeview_linux /opt/smokeview-6.10.6
+  ln -s /opt/smokeview-6.10.6/smokeview_linux /opt/smokeview-6.10.6/smokeview
+  ln -s /opt/smokeview-6.10.6 /opt/smokeview
+  cd /opt
+  rm -rf SMV-6.10.6.tar.gz smv-SMV-6.10.6
+
+  # ImageJ
+  cd /opt
+  wget https://wsr.imagej.net/distros/linux/ij154-linux64-java8.zip
+  unzip ij154-linux64-java8.zip
+  rm -f ij154-linux64-java8.zip
+
+  # XCrySDen
+  #${APT_INSTALL} xcrysden
+  
+  #============================================================
+  # Interactive application (Optional)
+  #============================================================
+  # JupyterLab
+  #${APT_INSTALL} python3 python3-venv python3-pip
+  #python3 -m venv /opt/jupyterlab
+  #/opt/jupyterlab/bin/pip install --upgrade pip
+  #/opt/jupyterlab/bin/pip install jupyterlab
+
+  #============================================================
+  # Finalization and cleanup
+  #============================================================
+  apt-get clean
+
+  # Most users have a RHEL-style ~/.bashrc that sources /etc/bashrc, which
+  # Ubuntu lacks. Without it, login bash in Singularity ends up with PS1='$ '
+  # because the container's /etc/passwd has an empty shell field.
+  echo '[ -f /etc/bash.bashrc ] && . /etc/bash.bashrc' > /etc/bashrc
+
+%environment
+  # VirtualGL
+  export PATH=/opt/VirtualGL/bin:$PATH
+
+  # OVITO
+  export PATH=/opt/ovito/bin:$PATH
+  
+  # GrADS
+  export PATH=/opt/grads/bin:$PATH
+  
+  # VisIt
+  export PATH=/opt/visit/bin:$PATH
+
+  # SmokeView
+  export PATH=/opt/smokeview/bin:$PATH
+
+  # ImageJ
+  export PATH=/opt/ImageJ/bin:$PATH
+  

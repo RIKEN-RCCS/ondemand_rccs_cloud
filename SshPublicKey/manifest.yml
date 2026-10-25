@@ -1,6 +1,6 @@
 ---
 name: SSH Public Key
-category: Passenger Apps
+category: Clusters
 description: Show and register SSH Public Key
 icon: fa://key
 tile:

@@ -1,12 +1,8 @@
 # Set xfce environment and _VIRTUALGL
 <%= set_xfce(is_vgl(context.global_queue, context.global_gpus)) %>
+export SHELL="${LOGIN_SHELL:-/bin/bash}"
 
-# Select Paraview
-if [ "$(arch)" = "x86_64" ]; then
-  PARAVIEW_PATH=/opt/ParaView/bin/paraview
-else
-  PARAVIEW_PATH=/usr/bin/paraview
-fi
+PARAVIEW_PATH=/usr/bin/paraview
 
 # Start Paraview
 <% if !context.global_input_file.to_s.empty? %>

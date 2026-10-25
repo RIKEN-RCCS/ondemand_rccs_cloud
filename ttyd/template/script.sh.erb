@@ -13,13 +13,12 @@ cd "$HOME" || exit 7
 #TTYD_PATH="$(which --skip-alias --skip-functions ttyd)"
 export TTYD_BASE_PATH="/node/${HOST}/${PORT}/${PASSWORD}"
 ARCH=`arch`
-<% if context.global_queue_tmp.start_with?("ng-dgx-") %>
-VERSION="24.04"
-TTYD_PATH=/cloud_opt/ondemand/ttyd-fork/${ARCH}/u${VERSION}/bin/ttyd
+<% if context.global_queue.start_with?("fx700")%>
+TTYD_PATH=/cloud_opt/ondemand/ttyd-fork/${ARCH}/r8/bin/ttyd
 <% else %>
-VERSION=`rpm -E %{rhel}`
-TTYD_PATH=/cloud_opt/ondemand/ttyd-fork/${ARCH}/r${VERSION}/bin/ttyd
+TTYD_PATH=/cloud_opt/ondemand/ttyd-fork/${ARCH}/u24.04/bin/ttyd
 <% end %>
+
 $TTYD_PATH \
   -p "${PORT}" \
   -t "fontSize=${OOD_FONT_SIZE}" \

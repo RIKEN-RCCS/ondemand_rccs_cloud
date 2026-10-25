@@ -1,0 +1,105 @@
+Bootstrap: docker
+From: ubuntu:24.04
+
+%post
+  APT_INSTALL="apt-get install -y"
+  apt-get update
+  #============================================================
+  # Base system and development environment
+  #============================================================
+  ${APT_INSTALL} emacs vim nano gedit gedit-plugins csh tcsh zsh fish rust-all libboost-dev cmake rclone libhwloc-dev numactl ghostscript \
+                 imagemagick ncview evince sshfs xfce4 xfce4-terminal dbus-x11 x11-utils xdg-utils curl mesa-utils bash-completion \
+                 build-essential autoconf automake libtool libtool-bin pkg-config flex bison libwebsockets-dev locate \
+                 libyaml-dev libjson-c-dev libkeyutils-dev libmount-dev libselinux1-dev zlib1g-dev libreadline-dev libssl-dev libnetcdff-dev \
+                 module-assistant dkms debhelper dh-dkms dpkg-dev fakeroot bzip2 quilt rsync ed \
+                 gdb cmake git automake autoconf autopoint tcl-dev tk-dev environment-modules ipmitool \
+                 python3-dev iputils-ping cron singularity-container munge libdrm-dev tmux \
+                 network-manager devscripts equivs python3-pip python-is-python3 numactl netcdf-bin rsyslog firewalld
+  # Firefox from Mozilla's APT repo. Ubuntu's own "firefox" package is only a
+  # transitional stub for the snap, which cannot run inside a container, so
+  # pin Mozilla's repo above it.
+  install -d -m 0755 /etc/apt/keyrings
+  curl -fsSL https://packages.mozilla.org/apt/repo-signing-key.gpg -o /etc/apt/keyrings/packages.mozilla.org.asc
+  echo "deb [signed-by=/etc/apt/keyrings/packages.mozilla.org.asc] https://packages.mozilla.org/apt mozilla main" \
+    > /etc/apt/sources.list.d/mozilla.list
+  printf 'Package: *\nPin: origin packages.mozilla.org\nPin-Priority: 1000\n' > /etc/apt/preferences.d/mozilla
+  apt-get update
+  ${APT_INSTALL} firefox
+  # Xfce's "Web Browser" launcher defaults to sensible-browser, which falls
+  # back to lynx in a terminal; point it at Firefox instead.
+  sed -i 's/^WebBrowser=.*/WebBrowser=firefox/' /etc/xdg/xfce4/helpers.rc
+  #
+  # Screen saver disabled for remote desktop usage
+  apt-get remove -y xfce4-screensaver light-locker
+  #
+  # NVIDIA Nsight Compute
+  ${APT_INSTALL} libxcb-dri2-0 libxcb-cursor0 libglapi-mesa
+  #
+  # TurboVNC
+  ${APT_INSTALL} gpg wget libturbojpeg
+  wget -q -O- https://packagecloud.io/dcommander/turbovnc/gpgkey | gpg --dearmor >/etc/apt/trusted.gpg.d/TurboVNC.gpg
+  cd /etc/apt/sources.list.d/
+  wget https://raw.githubusercontent.com/TurboVNC/repo/main/TurboVNC.list
+  apt-get update
+  ${APT_INSTALL} turbovnc python3-websockify
+  #
+  # VirtualGL
+  wget -q -O- https://packagecloud.io/dcommander/virtualgl/gpgkey | gpg --dearmor >/etc/apt/trusted.gpg.d/VirtualGL.gpg
+  cd /etc/apt/sources.list.d
+  wget https://raw.githubusercontent.com/VirtualGL/repo/main/VirtualGL.list
+  apt-get update
+  ${APT_INSTALL} virtualgl
+  #
+  # GDRCopy userspace library (libgdrapi). Without it UCX warns that the
+  # gdr_copy transport (requested by nvhpc-hpcx via UCX_TLS) is unavailable,
+  # since "apptainer --nv" does not bind it. Only on NVIDIA's redist server,
+  # not in any apt repo. Match the host's gdrdrv kernel module version (2.6-1).
+  cd /tmp
+  wget -O libgdrapi.deb "https://developer.download.nvidia.com/compute/redist/gdrcopy/CUDA%2013.3/ubuntu24_04/aarch64/libgdrapi_2.6-1_arm64.Ubuntu24_04.deb"
+  dpkg -i libgdrapi.deb
+  rm libgdrapi.deb
+
+  #============================================================
+  # Visualization software
+  #============================================================
+  # Gnuplot
+  ${APT_INSTALL} gnuplot
+
+  # ParaView
+  ${APT_INSTALL} paraview
+
+  # PyMOL
+  ${APT_INSTALL} pymol python3-pymol python3-zombie-imp
+
+  # OVITO
+  cd /opt
+  wget https://www.ovito.org/download/master/ovito-basic-3.15.5-aarch64.tar.xz
+  tar Jxf ovito-basic-3.15.5-aarch64.tar.xz
+  rm ovito-basic-3.15.5-aarch64.tar.xz
+  ln -s ovito-basic-3.15.5-aarch64 ovito
+  #============================================================
+  # Interactive application (Optional)
+  #============================================================
+  # JupyterLab
+  #${APT_INSTALL} python3 python3-venv python3-pip
+  #python3 -m venv /opt/jupyterlab
+  #/opt/jupyterlab/bin/pip install --upgrade pip
+  #/opt/jupyterlab/bin/pip install jupyterlab
+
+  #============================================================
+  # Finalization and cleanup
+  #============================================================
+  apt-get clean
+  
+  # Most users have a RHEL-style ~/.bashrc that sources /etc/bashrc, which
+  # Ubuntu lacks. Without it, login bash in Singularity ends up with PS1='$ '
+  # because the container's /etc/passwd has an empty shell field.
+  echo '[ -f /etc/bash.bashrc ] && . /etc/bash.bashrc' > /etc/bashrc
+  
+%environment
+  # VirtualGL
+  export PATH=/opt/VirtualGL/bin:$PATH
+
+  # OVITO
+  export PATH=/opt/ovito/bin:$PATH
+  

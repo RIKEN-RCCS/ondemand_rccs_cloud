@@ -1,5 +1,6 @@
 # Set xfce environment and _VIRTUALGL
 <%= set_xfce %>
+export SHELL="${LOGIN_SHELL:-/bin/bash}"
 
 # Start Gnuplot
 <% if !context.global_input_file.to_s.empty? %>

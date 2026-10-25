@@ -1,26 +1,28 @@
-ln -s global_bc_items.yml /etc/ood/config/ondemand.d/global_bc_items.yml
-ln -s missing_home_directory.html /etc/ood/config/pun/html/missing_home_directory.html
-ln -s _welcome.html.erb /var/www/ood/apps/sys/dashboard/app/views/shared/_welcome.html.erb
-ln -s ood.rb /etc/ood/config/apps/dashboard/initializers/ood.rb
-ln -s _recently_used_apps_wo_params.html.erb /var/www/ood/apps/sys/dashboard/app/views/widgets/_recently_used_apps_wo_params.html.erb
+# アップデート
+dnf update
 
-Comment out the line dashboard.pinned_apps_title in /var/www/ood/apps/sys/dashboard/app/views/widgets/_pinned_apps.html.erb
+# 不要なファイルを消す（念のため、バックアップする）
+rm -rf bc_desktop.bak; mv bc_desktop bc_desktop.bak
+rm -rf projects.bak; mv projects projects.bak
+rm -rf system-status.bak; mv system-status system-status.bak
+rm -rf module-browser.bak; mv module-browser module-browser.bak
+rm -rf myjobs.bak; mv myjobs myjobs.bak
 
-rm -rf /var/www/ood/apps/sys/bc_desktop.bak
-mv /var/www/ood/apps/sys/bc_desktop /var/www/ood/apps/sys/bc_desktop.bak
+# シンボリックリンクを作成する
+ln -s /var/www/ood/apps/sys/ondemand_rccs_cloud/misc/update/global_bc_items.yml /etc/ood/config/ondemand.d/global_bc_items.yml
+ln -s /var/www/ood/apps/sys/ondemand_rccs_cloud/misc/update/missing_home_directory.html /etc/ood/config/pun/html/missing_home_directory.html
+ln -s /var/www/ood/apps/sys/ondemand_rccs_cloud/misc/update/_welcome.html.erb /var/www/ood/apps/sys/dashboard/app/views/shared/_welcome.html.erb
+ln -s /var/www/ood/apps/sys/ondemand_rccs_cloud/misc/update/ood.rb /etc/ood/config/apps/dashboard/initializers/ood.rb
+ln -s /var/www/ood/apps/sys/ondemand_rccs_cloud/misc/update/_recently_used_apps_wo_params.html.erb /var/www/ood/apps/sys/dashboard/app/views/widgets/_recently_used_apps_wo_params.html.erb
 
-rm -rf /var/www/ood/apps/sys/myjobs.bak
-mv /var/www/ood/apps/sys/myjobs /var/www/ood/apps/sys/myjobs.bak
+# コメントアウトする（見栄えを良くするため）
+/var/www/ood/apps/sys/dashboard/app/views/widgets/_pinned_apps.html.erbのdashboard.pinned_apps_titleの箇所をコメントアウトする。
 
-Set manifest.yml for files, activejobs and shell as follows.
+# manifest.ymlの変更
+files/manifest.yml, activejobs/manifest.yml, shell/manifest.ymlに下記を追記する。
+
 ```
-category: Passenger Apps
 tile:
   sub_caption: |
 ```
 
-For shell/manifest.yml, change the name to "Terminal for Login Node" and comment out the line of role.
-```
-name: Login Node
-#role: shell
-```
