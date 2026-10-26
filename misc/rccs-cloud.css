@@ -1,0 +1,141 @@
+/* Make the navbar as tall as the highlighted link (40px) by dropping its own vertical padding */
+.navbar {
+  --bs-navbar-padding-y: 0;
+}
+
+/* Shrink only the "Pinned Apps" heading; it is the h2 that links to the all-apps page,
+   so other h2 headings (Active Jobs, Projects, ...) keep their size */
+h2:has(a[href$="/apps/index"]) {
+  font-size: 1.35rem;
+}
+
+/* Pinned Apps tiles: six per row instead of Bootstrap's four (col-md-3), so the full-width row
+   holds all pinned apps and the tiles come out near-square like Rikyu's. Narrow screens keep four. */
+@media (min-width: 992px) {
+  .app-launcher-container {
+    width: calc(100% / 6);
+  }
+}
+
+/* Pinned Apps tiles: brand-colored border, no drop shadow (same look as Rikyu) */
+.app-launcher {
+  box-shadow: none;
+}
+
+/* !important beats the per-app color classes (.app-launcher .launcher-click.blue, ...) */
+.launcher-click {
+  border-color: #DB6135 !important;
+  border-width: 3px !important;
+}
+
+/* Dashboard cards (Home/Group Directory usage, Links, Partition Availability): brand-colored header and frame */
+.quota-card,
+.links-card,
+.partition-card {
+  border: 1px solid #DB6135;
+}
+
+.quota-card .card-header,
+.links-card .card-header,
+.partition-card .card-header {
+  background-color: #DB6135;
+  border-bottom: 1px solid #DB6135;
+  color: #fff;
+}
+
+.quota-card .card-header h3,
+.links-card .card-header h3,
+.partition-card .card-header h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+  font-size: 1.0rem;
+}
+
+/* Directory link on the colored header: white text, underline on hover only.
+   Extra specificity and !important beat the theme's .card a { text-decoration: none !important; } */
+.card .rccs-link-header {
+  color: #fff;
+}
+
+.card .rccs-link-header:hover {
+  text-decoration: underline !important;
+}
+
+/* Small external-link glyph appended to card links */
+.rccs-ext-icon {
+  font-size: 0.8em;
+  margin-left: 0.25em;
+}
+
+/* Partition Availability card: one colored chip per partition, grouped by hardware */
+.partition-summary {
+  font-size: 0.85rem;
+}
+
+.partition-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+  color: #6c757d;
+}
+
+.partition-legend-item::before {
+  content: "";
+  display: inline-block;
+  width: 0.7rem;
+  height: 0.7rem;
+  margin-right: 0.3rem;
+  border-radius: 2px;
+  vertical-align: -1px;
+  background-color: var(--chip-border);
+}
+
+.partition-group-name {
+  margin: 0.75rem 0 0.35rem;
+  font-size: 0.875rem;
+  color: #6c757d;
+}
+
+.partition-chips {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+  gap: 0.4rem;
+}
+
+.partition-chip {
+  padding: 0.35rem 0.5rem;
+  border: 1px solid var(--chip-border);
+  border-radius: 6px;
+  background-color: var(--chip-bg);
+  color: var(--chip-text);
+  font-size: 0.875rem;
+  line-height: 1.35;
+  cursor: default;
+}
+
+.partition-chip-name {
+  display: block;
+  overflow: hidden;
+  font-weight: 500;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.partition-pending {
+  margin-left: 0.35rem;
+  white-space: nowrap;
+}
+
+.partition-pending i {
+  margin-right: 0.15rem;
+  font-size: 0.75rem;
+}
+
+/* The legend swatches reuse these variables, so chip and legend colors stay in sync */
+.partition-free    { --chip-bg: #EAF3DE; --chip-border: #97C459; --chip-text: #27500A; }
+.partition-partial { --chip-bg: #FAEEDA; --chip-border: #EF9F27; --chip-text: #633806; }
+.partition-full    { --chip-bg: #FCEBEB; --chip-border: #F09595; --chip-text: #791F1F; }
+.partition-down    { --chip-bg: #F1EFE8; --chip-border: #B4B2A9; --chip-text: #444441; }

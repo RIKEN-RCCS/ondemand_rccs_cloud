@@ -1,0 +1,9 @@
+---
+name: Delete Passkey
+description: |-
+  Delete Passkey
+url: https://idp.r-ccs.riken.jp/realms/develop/account/account-security/signing-in
+icon: fa://unlock
+category: Clusters
+tile:
+  sub_caption: |

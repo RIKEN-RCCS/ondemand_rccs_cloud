@@ -1,0 +1,13 @@
+<%
+  home_dir = Dir.home
+  home_link = link_to("/pun/sys/dashboard/files/fs#{home_dir}", target: '_blank', rel: 'noopener', class: 'rccs-link-header') do
+    raw("#{ERB::Util.html_escape(home_dir)}<i class=\"fas fa-external-link-alt rccs-ext-icon\" aria-hidden=\"true\"></i>")
+  end
+
+  begin
+    quota = HomeQuota.fetch
+  rescue HomeQuota::Error
+    quota = nil
+  end
+%>
+<%= render partial: 'widgets/quota_card', locals: { title: home_link, icon: 'fa-hdd', quota: quota } %>

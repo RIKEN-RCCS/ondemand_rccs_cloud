@@ -1,0 +1,61 @@
+<%
+  # groups stays nil when sinfo/squeue fails or times out, so the card shows a notice instead of breaking the dashboard
+  begin
+    groups = PartitionStatus.fetch
+  rescue PartitionStatus::Error
+    groups = nil
+  end
+  entries = groups ? groups.flat_map(&:entries) : []
+
+  legend = [
+    [:free,    t('dashboard.partition_status.free',    default: 'Free')],
+    [:partial, t('dashboard.partition_status.partial', default: 'Partly free')],
+    [:full,    t('dashboard.partition_status.full',    default: 'Full')],
+    [:down,    t('dashboard.partition_status.down',    default: 'Down')]
+  ]
+
+  tooltip = lambda do |e|
+    lines = ["#{e.label}: #{e.free} / #{e.total} #{e.unit}s free"]
+    lines << "#{e.down} node(s) down" if e.down.positive?
+    e.pending_by_member.each { |member, n| lines << "#{member}: #{n} pending job(s)" }
+    lines.join("\n")
+  end
+%>
+<div class="card mb-4 partition-card">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h3><i class="fas fa-server" aria-hidden="true"></i> <%= t('dashboard.partition_status.title', default: 'Partition Availability') %></h3>
+    <%- if groups -%>
+      <span class="partition-summary"><%= t('dashboard.partition_status.summary', default: 'Available now') %> <%= entries.count { |e| e.free.positive? } %> / <%= entries.size %></span>
+    <%- end -%>
+  </div>
+  <div class="card-body">
+    <%- if groups.nil? -%>
+      <p class="text-muted mb-0"><%= t('dashboard.partition_status.unavailable', default: 'Partition information is currently unavailable.') %></p>
+    <%- else -%>
+      <div class="partition-legend">
+        <%- legend.each do |level, text| -%>
+          <span class="partition-legend-item partition-<%= level %>"><%= text %></span>
+        <%- end -%>
+        <span><i class="fas fa-hourglass-half" aria-hidden="true"></i> <%= t('dashboard.partition_status.pending', default: 'pending jobs') %></span>
+      </div>
+      <%- groups.each do |group| -%>
+        <div class="partition-group-name"><%= group.name %></div>
+        <div class="partition-chips">
+          <%- group.entries.each do |e| -%>
+            <div class="partition-chip partition-<%= e.level %>" title="<%= tooltip.call(e) %>">
+              <span class="partition-chip-name"><%= e.label %></span>
+              <%- if e.level == :down -%>
+                <%= t('dashboard.partition_status.down', default: 'Down') %>
+              <%- else -%>
+                <%= e.free %>/<%= e.total %> <%= e.unit %>
+              <%- end -%>
+              <%- if e.pending.positive? -%>
+                <span class="partition-pending"><i class="fas fa-hourglass-half" aria-hidden="true"></i><%= e.pending %></span>
+              <%- end -%>
+            </div>
+          <%- end -%>
+        </div>
+      <%- end -%>
+    <%- end -%>
+  </div>
+</div>

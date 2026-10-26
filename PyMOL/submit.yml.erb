@@ -1,6 +1,6 @@
 <%
-  require_relative "/var/www/ood/apps/sys/oodjp_apps/utils/config.rb"
-  XDG_DATA_HOME, CONTAINER_IMAGE = load_app_config
+  require_relative "/var/www/ood/apps/sys/ondemand_rccs_cloud/misc/config.rb"
+  XDG_DATA_HOME, CONTAINER_IMAGE = site_paths
   APP_NAME = "PyMOL"
 %>
 ---
@@ -15,7 +15,7 @@ batch_connect:
     CTRSCRIPT
 
     # Set SINGULARITY_BINDPATH and _OPTION
-    <%= set_bindpath %>
+    <%= gpu_bind_script %>
     export SINGULARITY_BINDPATH=${SINGULARITY_BINDPATH},/cloud_opt,/lvs0,/hs
     [ -d /usr/share/modules/modulefiles ] && export SINGULARITY_BINDPATH=${SINGULARITY_BINDPATH},/usr/share/modules/modulefiles
     export SINGULARITYENV_LOGIN_SHELL="$(getent passwd $USER | cut -d: -f7)"
@@ -30,4 +30,4 @@ batch_connect:
     fi
 
 script:
-  <%= script("ood_#{APP_NAME}", global_queue, global_hours, global_gpus, global_email) %>
+  <%= job_script_yaml("ood_#{APP_NAME}", global_queue, global_hours, global_gpus, global_email) %>

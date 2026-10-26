@@ -1,0 +1,55 @@
+<%
+  # Shared by the home and group cards. quota is nil when lfs failed or timed out.
+  # The Files row is shown only for quotas that track a file count (group directories).
+  show_files = quota.respond_to?(:used_files)
+
+  bar_class = lambda do |pct|
+    if pct.nil?
+      'bg-secondary'
+    elsif pct >= 90
+      'bg-danger'
+    elsif pct >= 70
+      'bg-warning'
+    else
+      'bg-success'
+    end
+  end
+
+  rows = []
+  unless quota.nil?
+    rows << { label: t('dashboard.quota.space', default: 'Space'), pct: quota.percent,
+              used: number_to_human_size(quota.used_bytes), limit: number_to_human_size(quota.limit_bytes) }
+    if show_files
+      rows << { label: t('dashboard.quota.files', default: 'Files'), pct: quota.files_percent,
+                used: number_with_delimiter(quota.used_files), limit: number_with_delimiter(quota.limit_files) }
+    end
+  end
+%>
+<div class="card mb-4 quota-card">
+  <div class="card-header">
+    <h3><i class="fas <%= icon %>" aria-hidden="true"></i> <%= title %></h3>
+  </div>
+  <div class="card-body">
+    <%- if quota.nil? -%>
+      <p class="text-muted mb-0"><%= t('dashboard.quota.unavailable', default: 'Quota information is currently unavailable.') %></p>
+    <%- else -%>
+      <%- rows.each_with_index do |row, i| -%>
+      <div class="<%= 'mb-3' if i < rows.size - 1 %>">
+        <div class="d-flex justify-content-between">
+          <span><%= row[:label] %></span>
+          <span>
+            <%- if row[:pct].nil? -%>
+              <%= row[:used] %> (<%= t('dashboard.quota.no_limit', default: 'no limit') %>)
+            <%- else -%>
+              <%= row[:used] %> / <%= row[:limit] %> (<%= row[:pct] %>%)
+            <%- end -%>
+          </span>
+        </div>
+        <div class="progress" role="progressbar" aria-label="<%= row[:label] %>" aria-valuenow="<%= row[:pct] || 0 %>" aria-valuemin="0" aria-valuemax="100">
+          <div class="progress-bar <%= bar_class.call(row[:pct]) %>" style="width: <%= [row[:pct] || 0, 100].min %>%"></div>
+        </div>
+      </div>
+      <%- end -%>
+    <%- end -%>
+  </div>
+</div>

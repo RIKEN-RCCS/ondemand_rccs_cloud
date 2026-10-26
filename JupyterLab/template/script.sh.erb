@@ -1,11 +1,11 @@
 <%
-  require_relative "/var/www/ood/apps/sys/oodjp_apps/utils/config.rb"
-  XDG_DATA_HOME, CONTAINER_IMAGE = load_app_config
+  require_relative "/var/www/ood/apps/sys/ondemand_rccs_cloud/misc/config.rb"
+  XDG_DATA_HOME, CONTAINER_IMAGE = site_paths
 %>
 #!/usr/bin/env bash
 
 # set SINGULARITY_BINDPATH and _OPTION
-<%= set_bindpath %>
+<%= gpu_bind_script %>
 export SINGULARITY_BINDPATH=${SINGULARITY_BINDPATH},/cloud_opt,/lvs0,/hs
 # The NGC-based image ships its own CUDA and /opt/nvidia (entrypoint);
 # binding the host's copies over them hides the entrypoint and mixes CUDA versions.

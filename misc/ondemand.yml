@@ -1,0 +1,38 @@
+bc_dynamic_js: true
+
+dashboard_layout:
+  rows:
+    - columns:
+        - width: 8
+          widgets:
+            - partition_status
+        - width: 4
+          widgets:
+            - home_quota
+            - group_quota
+            - links
+    - columns:
+        - width: 12
+          widgets:
+            - pinned_apps
+
+nav_bar:
+  - Files
+  - Jobs
+  - Clusters
+  - Interactive Apps
+  - My Interactive Sessions
+
+dashboard_title: "R-CCS Cloud"
+
+pinned_apps:
+  - category: Files
+  - category: Jobs
+  - category: Clusters
+
+disable_dashboard_welcome_message: true
+
+brand_bg_color: "#DB6135"
+brand_link_active_bg_color: "#ed6d3d"
+
+custom_css_files: ["/rccs-cloud.css"]

@@ -1,6 +1,9 @@
+<%
+  require_relative "/var/www/ood/apps/sys/ondemand_rccs_cloud/misc/config.rb"
+%>
 ---
 batch_connect:
   template: "basic"
 
 script:
-  <%= script("ood_wheel", global_queue_x86, global_hours, global_gpus, global_email) %>
+  <%= job_script_yaml("ood_wheel", global_queue_x86, global_hours, global_gpus, global_email) %>

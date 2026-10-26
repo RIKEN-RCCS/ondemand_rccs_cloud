@@ -1,0 +1,47 @@
+# アップデート
+## 不要なファイルを消す
+```
+for i in bc_desktop projects system-status module-browser myjobs; do
+  rm -rf ${i}.bak
+  mv ${i} ${i}.bak
+done
+```
+
+## manifest.ymlの変更
+files/manifest.yml, activejobs/manifest.yml, shell/manifest.ymlに下記を追記する。
+
+```
+tile:
+  sub_caption: |
+```
+
+## シンボリックリンクを作成する
+ln -s /var/www/ood/apps/sys/ondemand_rccs_cloud/misc/global_bc_items.yml /etc/ood/config/ondemand.d/global_bc_items.yml
+ln -s /var/www/ood/apps/sys/ondemand_rccs_cloud/misc/missing_home_directory.html /etc/ood/config/pun/html/missing_home_directory.html
+ln -s /var/www/ood/apps/sys/ondemand_rccs_cloud/misc/ondemand.yml /etc/ood/config/ondemand.d/
+ln -s /var/www/ood/apps/sys/ondemand_rccs_cloud/misc/ood.rb /etc/ood/config/apps/dashboard/initializers/ood.rb
+ln -s /var/www/ood/apps/sys/ondemand_rccs_cloud/misc/shell_env /etc/ood/config/apps/shell/env
+ln -s /var/www/ood/apps/sys/ondemand_rccs_cloud/misc/rccs-cloud.css /var/www/ood/public/
+ln -s /var/www/ood/apps/sys/ondemand_rccs_cloud/misc/dashboard/lib /etc/ood/config/apps/dashboard/lib
+ln -s /var/www/ood/apps/sys/ondemand_rccs_cloud/misc/dashboard/views /etc/ood/config/apps/dashboard/views
+#ln -s /var/www/ood/apps/sys/ondemand_rccs_cloud/misc/_welcome.html.erb /var/www/ood/apps/sys/dashboard/app/views/shared/_welcome.html.erb
+#ln -s /var/www/ood/apps/sys/ondemand_rccs_cloud/misc/_recently_used_apps_wo_params.html.erb /var/www/ood/apps/sys/dashboard/app/views/widgets/_recently_used_apps_wo_params.html.erb
+
+## コメントアウトする（見栄えを良くするため）
+#/var/www/ood/apps/sys/dashboard/app/views/widgets/_pinned_apps.html.erbのdashboard.pinned_apps_titleの箇所をコメントアウトする。
+
+# 初期インストール
+## リポジトリのクローン
+```
+cd /var/www/ood/apps/sys
+git clone git@github.com:RIKEN-RCCS/ondemand_rccs_cloud.git
+for i in Desktop Gnuplot GrADS ImageJ JupyterLab OVITO ParaView PyMOL Smokeview SshPublicKey SystemStatus ttyd VisIt VSCode WHEEL
+do
+  ln -s ondemand_rccs_cloud/$i .
+done
+mkdir -p /etc/ood/config/pun/html
+mkdir -p /etc/ood/config/apps/dashboard/initializers
+mkdir -p /etc/ood/config/apps/shell
+```
+
+

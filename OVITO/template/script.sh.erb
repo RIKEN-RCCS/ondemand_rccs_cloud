@@ -1,5 +1,5 @@
 # Set xfce environment and _VIRTUALGL
-<%= set_xfce(is_vgl(context.global_queue, context.global_gpus)) %>
+<%= xfce_startup_script(vgl_available?(context.global_queue, context.global_gpus)) %>
 export SHELL="${LOGIN_SHELL:-/bin/bash}"
 
 # Start OVITO
