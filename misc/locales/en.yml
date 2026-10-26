@@ -1,0 +1,7 @@
+# Overrides for the dashboard's built-in English strings (loaded after OOD's own config/locales).
+en:
+  dashboard:
+    # The default "%{cluster_title} Shell Access" is long for the tile; there is only one cluster here
+    shell_app_title: "Shell Access"
+    # Keep only the "Pinned Apps" title; the "A featured subset of all available apps" caption is dropped
+    pinned_apps_caption_html: ""

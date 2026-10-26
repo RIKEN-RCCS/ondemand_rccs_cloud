@@ -1,21 +1,28 @@
 <%
-  # groups stays nil when sinfo/squeue fails or times out, so the card shows a notice instead of breaking the dashboard
+  # groups stays nil when sinfo/scontrol/squeue fails or times out, so the card shows a notice instead of breaking the dashboard
   begin
     groups = PartitionStatus.fetch
   rescue PartitionStatus::Error
     groups = nil
   end
-  entries = groups ? groups.flat_map(&:entries) : []
 
-  legend = [
-    [:free,    t('dashboard.partition_status.free',    default: 'Free')],
-    [:partial, t('dashboard.partition_status.partial', default: 'Partly free')],
-    [:full,    t('dashboard.partition_status.full',    default: 'Full')],
-    [:down,    t('dashboard.partition_status.down',    default: 'Down')]
-  ]
+  mode_text = {
+    exclusive: t('dashboard.partition_status.exclusive', default: 'Exclusive'),
+    shared:    t('dashboard.partition_status.shared',    default: 'Shared')
+  }
+
+  # One table: each hardware type is split by mode, and the Type and Mode cells span the rows they cover
+  types = (groups || []).map do |group|
+    modes = %i[exclusive shared].filter_map do |mode|
+      members = group.entries.select { |e| e.mode == mode }
+      { mode: mode, entries: members } unless members.empty?
+    end
+    { name: group.name, modes: modes, rows: modes.sum { |m| m[:entries].size } }
+  end
 
   tooltip = lambda do |e|
-    lines = ["#{e.label}: #{e.free} / #{e.total} #{e.unit}s free"]
+    lines = ["#{e.label}: #{e.used} / #{e.total} #{e.unit}s in use, #{e.free} free"]
+    lines << (e.mode == :exclusive ? 'Exclusive: one job per node' : "Shared: several jobs per node (OverSubscribe=#{e.oversubscribe})")
     lines << "#{e.down} node(s) down" if e.down.positive?
     e.pending_by_member.each { |member, n| lines << "#{member}: #{n} pending job(s)" }
     lines.join("\n")
@@ -24,38 +31,59 @@
 <div class="card mb-4 partition-card">
   <div class="card-header d-flex justify-content-between align-items-center">
     <h3><i class="fas fa-server" aria-hidden="true"></i> <%= t('dashboard.partition_status.title', default: 'Partition Availability') %></h3>
-    <%- if groups -%>
-      <span class="partition-summary"><%= t('dashboard.partition_status.summary', default: 'Available now') %> <%= entries.count { |e| e.free.positive? } %> / <%= entries.size %></span>
-    <%- end -%>
+    <span class="partition-details">
+      <%= t('dashboard.partition_status.details', default: 'Partition Details') %>
+      <a class="btn btn-sm btn-outline-light" href="https://riken-rccs.github.io/ondemand_rccs_cloud/resource_ja.html" target="_blank" rel="noopener">JA</a>
+      <a class="btn btn-sm btn-outline-light" href="https://riken-rccs.github.io/ondemand_rccs_cloud/resource.html" target="_blank" rel="noopener">EN</a>
+    </span>
   </div>
   <div class="card-body">
     <%- if groups.nil? -%>
       <p class="text-muted mb-0"><%= t('dashboard.partition_status.unavailable', default: 'Partition information is currently unavailable.') %></p>
     <%- else -%>
-      <div class="partition-legend">
-        <%- legend.each do |level, text| -%>
-          <span class="partition-legend-item partition-<%= level %>"><%= text %></span>
+      <table class="table table-sm partition-table">
+        <thead>
+          <tr>
+            <th scope="col"><%= t('dashboard.partition_status.type', default: 'Type') %></th>
+            <th scope="col"><%= t('dashboard.partition_status.mode', default: 'Mode') %></th>
+            <th scope="col"><%= t('dashboard.partition_status.partition', default: 'Partition') %></th>
+            <th scope="col"><%= t('dashboard.partition_status.bar_legend', default: 'used / total (pending)') %></th>
+          </tr>
+        </thead>
+        <%- types.each do |type| -%>
+          <tbody>
+            <%- type[:modes].each_with_index do |mode, mode_index| -%>
+              <%- mode[:entries].each_with_index do |e, entry_index| -%>
+                <tr class="partition-<%= e.level %>" title="<%= tooltip.call(e) %>">
+                  <%- if mode_index.zero? && entry_index.zero? -%>
+                    <th scope="rowgroup" class="partition-type" rowspan="<%= type[:rows] %>"><%= type[:name] %></th>
+                  <%- end -%>
+                  <%- if entry_index.zero? -%>
+                    <td class="partition-mode" rowspan="<%= mode[:entries].size %>"><%= mode_text[mode[:mode]] %></td>
+                  <%- end -%>
+                  <td class="partition-name"><%= e.label %></td>
+                  <td class="partition-bar-cell">
+                    <span class="partition-bar">
+                      <span class="partition-bar-fill" style="width: <%= e.level == :down ? 100 : e.used_percent %>%"></span>
+                      <span class="partition-bar-text">
+                        <%- if e.level == :down -%>
+                          <%= t('dashboard.partition_status.down', default: 'Down') %>
+                        <%- else -%>
+                          <%= e.used %> / <%= e.total %> (<%= e.pending %>) <%= e.unit %>
+                        <%- end -%>
+                      </span>
+                    </span>
+                  </td>
+                </tr>
+              <%- end -%>
+            <%- end -%>
+          </tbody>
         <%- end -%>
-        <span><i class="fas fa-hourglass-half" aria-hidden="true"></i> <%= t('dashboard.partition_status.pending', default: 'pending jobs') %></span>
-      </div>
-      <%- groups.each do |group| -%>
-        <div class="partition-group-name"><%= group.name %></div>
-        <div class="partition-chips">
-          <%- group.entries.each do |e| -%>
-            <div class="partition-chip partition-<%= e.level %>" title="<%= tooltip.call(e) %>">
-              <span class="partition-chip-name"><%= e.label %></span>
-              <%- if e.level == :down -%>
-                <%= t('dashboard.partition_status.down', default: 'Down') %>
-              <%- else -%>
-                <%= e.free %>/<%= e.total %> <%= e.unit %>
-              <%- end -%>
-              <%- if e.pending.positive? -%>
-                <span class="partition-pending"><i class="fas fa-hourglass-half" aria-hidden="true"></i><%= e.pending %></span>
-              <%- end -%>
-            </div>
-          <%- end -%>
-        </div>
-      <%- end -%>
+      </table>
+      <p class="partition-note">
+        <%= mode_text[:exclusive] %>: <%= t('dashboard.partition_status.exclusive_help', default: 'one job per node') %>.
+        <%= mode_text[:shared] %>: <%= t('dashboard.partition_status.shared_help', default: 'several jobs per node') %>.
+      </p>
     <%- end -%>
   </div>
 </div>

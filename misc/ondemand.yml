@@ -11,9 +11,6 @@ dashboard_layout:
             - home_quota
             - group_quota
             - links
-    - columns:
-        - width: 12
-          widgets:
             - pinned_apps
 
 nav_bar:

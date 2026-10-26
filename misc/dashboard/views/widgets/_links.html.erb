@@ -3,12 +3,20 @@
     <h3><i class="fas fa-link" aria-hidden="true"></i> <%= t('dashboard.links.title', default: 'Links') %></h3>
   </div>
   <div class="card-body">
-    <div class="d-flex justify-content-between align-items-center">
+    <div class="d-flex justify-content-between align-items-center mb-2">
       <span><i class="fas fa-fw fa-book" aria-hidden="true"></i> <%= t('dashboard.links.user_guide', default: 'R-CCS Cloud User Guide') %></span>
       <span>
-        <a class="btn btn-sm btn-outline-secondary" href="https://riken-rccs.github.io/ondemand_rccs_cloud/index.html" target="_blank" rel="noopener">EN</a>
         <a class="btn btn-sm btn-outline-secondary" href="https://riken-rccs.github.io/ondemand_rccs_cloud/index_ja.html" target="_blank" rel="noopener">JA</a>
+        <a class="btn btn-sm btn-outline-secondary" href="https://riken-rccs.github.io/ondemand_rccs_cloud/index.html" target="_blank" rel="noopener">EN</a>
       </span>
+    </div>
+    <div class="d-flex justify-content-between align-items-center mb-2">
+      <span><i class="fas fa-fw fa-chart-line" aria-hidden="true"></i> <%= t('dashboard.links.grafana', default: 'Cluster Monitoring') %></span>
+      <a class="btn btn-sm btn-outline-secondary" href="https://portal.cloud.r-ccs.riken.jp/grafana/d/YcZEQk77k/" target="_blank" rel="noopener">EN</a>
+    </div>
+    <div class="d-flex justify-content-between align-items-center">
+      <span><i class="fas fa-fw fa-key" aria-hidden="true"></i> <%= t('dashboard.links.signing_in', default: 'Sign-in Settings') %></span>
+      <a class="btn btn-sm btn-outline-secondary" href="https://idp.r-ccs.riken.jp/realms/develop/account/account-security/signing-in" target="_blank" rel="noopener">EN</a>
     </div>
   </div>
 </div>

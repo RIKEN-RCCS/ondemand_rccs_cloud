@@ -1,5 +1,5 @@
 # Hardware groups for the dashboard's partition availability card (widgets/_partition_status).
-# Add a new partition to its group here; partitions not listed are shown under "Other".
+# Only the partitions listed here are shown; add a new partition to its group to show it.
 groups:
   - name: CPU
     partitions: [fx700, mi100, genoa, genoa-m, r340]
@@ -11,7 +11,7 @@ groups:
   - name: Intel GPU
     partitions: [qc-pvc, next-pvc]
 
-# Partitions that run on the same nodes as another one are shown as a single chip.
+# Partitions that run on the same nodes as another one are shown as a single row.
 merge:
   ai-h100l-pu: ai-h100l
   ai-h200-brc-pu: ai-h200-brc
