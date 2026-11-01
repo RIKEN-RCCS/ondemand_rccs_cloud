@@ -75,13 +75,13 @@
       </table>
 
       <p>
-        計算ノードの環境変数は、下表の<code>module</code>コマンドを用いて設定してください。記載がないパーティションについては、特に設定は必要ありません。
+        計算ノードの環境変数は、下表の<code>module</code>コマンドを用いて設定してください。記載がないパーティションについては、設定は必要ありません。
       </p>
 
       <table class="table table-sm fs-6 align-middle">
         <tr><th>コマンド</th><th>Partition</th></tr>
-        <tr><td><code>module load FJSVstclanga</code> or <code>mpi/mpich-aarch64</code></td><td class="text-nowrap">fx700</td></tr>
-        <tr><td rowspan="5"><code>module load cuda</code> or <code>module load nvhpc</code></td><td>a100, b300</td></tr>
+        <tr><td><code>module load FJSVstclanga</code><br><code>module load mpi/mpich-aarch64</code></td><td class="text-nowrap">fx700</td></tr>
+        <tr><td rowspan="5"><code>module load cuda</code><br><code>module load nvhpc</code></td><td>a100, b300</td></tr>
         <tr><td>ai-h100l, ai-h100l-pu, ai-h200-brc, ai-h200-brc-pu, ai-l40, ai-pro6000</td></tr>
         <tr><td>qc-a100, qc-gh200, qc-pro6000</td></tr>
         <tr><td>fs-h100</td></tr>
