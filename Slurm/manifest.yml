@@ -1,0 +1,7 @@
+---
+name: Slurm
+category: Jobs
+url: https://ondemand.cloud.r-ccs.riken.jp/pun/sys/OpenComposer/Slurm
+new_window: true
+tile:
+  sub_caption: |
