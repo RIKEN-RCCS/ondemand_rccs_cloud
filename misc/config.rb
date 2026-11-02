@@ -144,7 +144,7 @@ def job_script_yaml(name, queue, hours, gpus = "", email = "")
   gpus_option = gpus.to_s.strip.empty? ? "--gpus=1" : "--gpus=#{gpus}"
 
   case queue
-  when "b300", "qc-a100", "ai-l40s", "ai-h200-brc" "ai-pro6000"
+  when "b300", "qc-a100", "ai-l40s", "ai-h200-brc", "ai-pro6000"
     yaml << "      - \"#{gpus_option} -t #{hours}:00:00\"\n"
   when "ai-h200-brc-pu"
     yaml << "      - \"#{gpus_option} -t 1:00:00\"\n"
