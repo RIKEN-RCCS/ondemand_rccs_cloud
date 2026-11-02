@@ -5,3 +5,5 @@ en:
     shell_app_title: "Shell Access"
     # Keep only the "Pinned Apps" title; the "A featured subset of all available apps" caption is dropped
     pinned_apps_caption_html: ""
+    # Every app here is system-installed, so the per-tile "System Installed App" caption carries no information
+    system_apps_caption: ""
