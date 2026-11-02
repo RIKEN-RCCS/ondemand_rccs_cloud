@@ -11,8 +11,8 @@
 <body>
 
   <div class="container-fluid">
-    <nav class="sidebar bg-body-secondary">
-      <h5 class="ps-3 pe-1 d-inline">目次</h5><a href="ood.html" style="font-size: 0.75rem;" class="text-decoration-none ms-0">[English]</a>
+    <nav class="sidebar bg-body-secondary" aria-label="目次">
+      <span class="h5 ps-3 pe-1">目次</span><a href="ood.html" style="font-size: 0.75rem;" class="text-decoration-none ms-0">[English]</a>
       <ul class="nav flex-column ps-3 pe-1 py-2">
         <li class="nav-item"><a href="index_ja.html" class="nav-link">1. ポリシー</a></li>
         <li class="nav-item ms-3"><a href="index_ja.html#usage" class="nav-link">1.1. 利用ポリシー</a></li>
@@ -45,7 +45,7 @@
       <h3 id="overview">5.1. 概要</h3>
       <img width="600" alt="Open OnDemand" src="img/ood.png">
       <p>
-        上図はR-CCSクラウドのOpen OnDemandのダッシュボードです。R-CCSクラウドのロゴの右側にある表は、各パーティションにおける利用可能なノード数を示しています。ロゴの上側にあるメニューバーの意味は下記の通りです（ブラウザの幅が狭くなると、アイコン表示に変わるものもあります）。
+        上図はR-CCSクラウドのOpen OnDemandのダッシュボードです。上部にあるメニューバーの意味は下記の通りです（ブラウザの幅が狭くなると、アイコン表示に変わるものもあります）。
       </p>
       <table class="table">
         <tr><th>項目</th><th>意味</th></tr>
@@ -59,6 +59,24 @@
         <tr><td>Log Out</td><td>ログアウトする</td></tr>
       </table>
 
+      <p>
+        「Partition Availability」は、各パーティションの利用状況を示しています。その右側には「ホームディレクトリ」と「グループディレクトリ」のストレージの利用状況を示しています。「Links」はOpen OnDemandに関するリンク集を、「Pinned Apps」はよく利用されるアプリケーションを示しています。
+      </p>
+
+      <p>
+        「Links」のリンク先は下記の通りです。
+      </p>
+      <ul>
+        <li>「R-CCS Cloud User Guide」は本マニュアルです。</li>
+        <li>「Cluster Monitoring」では各パーティションの利用状況の時間推移を閲覧できます。<br>
+          <img width="600" alt="Grafana" src="img/grafana.png" style="margin: 7px;">
+        </li>
+        <li>
+          「Sign-in Settings」では、パスワードの設定やパスキーの削除などを行えます。<br>
+          <img width="600" alt="Delete Passkey" src="img/passkey.png" style="margin: 7px;">
+        </li>
+      </ul>
+      
       <h3 id="files">5.2. Filesアプリケーション</h3>
       <p>
         Filesアプリケーションとは、ファイルの操作を行うアプリケーションです。下記のアプリケーションを提供しています。
@@ -159,29 +177,17 @@
       </p>
       <table class="table">
         <tr><th>名前</th><th>説明</th></tr>
-        <tr><td><a href="#passkey">Delete Passkey</a></td><td>パスキーの削除</td></tr>
         <tr><td><a href="#login">Shell Access</a></td><td>ターミナル</td></tr>
         <tr><td><a href="#ssh">SSH Public Key</a></td><td>SSH公開鍵の登録</td></tr>
-        <tr><td><a href="#system">System Status</a></td><td>クラスタの利用状況の確認</td></tr>
       </table>
 
-      <h4 id="passkey">5.4.1. Delete Passkey</h4>
-      <p>
-        登録済のPasskeyを削除することができます。「Delete」ボタンをクリックしてください。
-      </p>
-      <img width="600" alt="Delete Passkey" src="img/passkey.png">
-
-      <h4 id="login">5.4.2. Shell Access</h4>
+      <h4 id="login">5.4.1. Shell Access</h4>
       <p>WebブラウザからログインノードにSSHアクセスし、コマンドラインインタフェースを用いた操作を行うことができます。</p>
       <img width="600" alt="Terminal for Login Node" src="img/shell_access.png">
 
-      <h4 id="ssh">5.4.3. SSH Public Key</h4>
+      <h4 id="ssh">5.4.2. SSH Public Key</h4>
       <p><a target="_blank" rel="noopener noreferrer" href="index_ja.html#ssh">1.2. ターミナルソフトウェアの利用</a>を参照ください。</p>
 
-      <h4 id="system">5.4.4. System Status</h4>
-      <p>各パーティションの利用状況を閲覧できます。</p>
-      <img width="600" alt="Grafana" src="img/grafana.png">
-      
       <h3 id="interactive">5.5. 対話アプリケーション</h3>
       <p>
         対話アプリケーションとは、計算ノード上で実行するアプリケーションをユーザが対話的に操作できるアプリケーションです。下記の「開発アプリケーション」と「可視化アプリケーション」に分類して提供しています。

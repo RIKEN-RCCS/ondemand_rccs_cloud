@@ -11,8 +11,8 @@
 <body>
 
   <div class="container-fluid">
-    <nav class="sidebar bg-body-secondary">
-      <h5 class="ps-3 pe-1 d-inline">Contents</h5><a href="ood_ja.html" style="font-size: 0.75rem;" class="text-decoration-none ms-0">[Japanese]</a>
+    <nav class="sidebar bg-body-secondary" aria-label="Contents">
+      <span class="h5 ps-3 pe-1">Contents</span><a href="ood_ja.html" style="font-size: 0.75rem;" class="text-decoration-none ms-0">[Japanese]</a>
       <ul class="nav flex-column ps-3 pe-1 py-2">
         <li class="nav-item"><a href="index.html" class="nav-link">1. Policy</a></li>
         <li class="nav-item ms-3"><a href="index.html#usage" class="nav-link">1.1. Usage Policy</a></li>
@@ -46,8 +46,7 @@
       <img width="600" alt="Open OnDemand" src="img/ood.png">
       <p>
         The above image shows the Open OnDemand dashboard of the R-CCS Cloud.  
-        The table on the right of the R-CCS Cloud logo shows the number of available nodes for each partition.  
-        The menu bar above the logo has the following meanings (depending on the browser width, some may appear as icons).
+        The menu bar at the top has the following meanings (depending on the browser width, some may appear as icons).
       </p>
       <table class="table">
         <tr><th>Item</th><th>Description</th></tr>
@@ -61,6 +60,24 @@
         <tr><td>Log Out</td><td>Log out</td></tr>
       </table>
 
+      <p>
+        "Partition Availability" shows the usage status of each partition. To its right, the storage usage of the "Home Directory" and "Group Directory" is shown. "Links" is a collection of links related to Open OnDemand, and "Pinned Apps" shows frequently used applications.
+      </p>
+
+      <p>
+        The links in "Links" are as follows.
+      </p>
+      <ul>
+        <li>"R-CCS Cloud User Guide" is this manual.</li>
+        <li>"Cluster Monitoring" lets you view how the usage of each partition changes over time.<br>
+          <img width="600" alt="Grafana" src="img/grafana.png" style="margin: 7px;">
+        </li>
+        <li>
+          "Sign-in Settings" lets you set your password, delete passkeys, and so on.<br>
+          <img width="600" alt="Delete Passkey" src="img/passkey.png" style="margin: 7px;">
+        </li>
+      </ul>
+      
       <h3 id="files">5.2. Files Application</h3>
       <p>
         Files applications are applications for file operations. We provide the following application.
@@ -176,28 +193,16 @@
       </p>
       <table class="table">
         <tr><th>Name</th><th>Description</th></tr>
-        <tr><td><a href="#passkey">Delete Passkey</a></td><td>Delete a passkey</td></tr>
         <tr><td><a href="#login">Shell Access</a></td><td>Terminal</td></tr>
         <tr><td><a href="#ssh">SSH Public Key</a></td><td>Registering an SSH public key</td></tr>
-        <tr><td><a href="#system">System Status</a></td><td>Check usage status</td></tr>
       </table>
 
-      <h4 id="passkey">5.4.1. Delete Passkey</h4>
-      <p>
-        You can delete your registered Passkey. Click the "Delete" button.
-      </p>
-      <img width="600" alt="Delete Passkey" src="img/passkey.png">
-
-      <h4 id="login">5.4.2. Shell Access</h4>
+      <h4 id="login">5.4.1. Shell Access</h4>
       <p>You can SSH into the login node via browser and operate with a command-line interface.</p>
       <img width="600" alt="Terminal for Login Node" src="img/shell_access.png">
 
-      <h4 id="ssh">5.4.3. SSH Public Key</h4>
+      <h4 id="ssh">5.4.2. SSH Public Key</h4>
       <p>See <a target="_blank" rel="noopener noreferrer" href="index.html#ssh">1.2. Using Terminal Software</a>.</p>
-
-      <h4 id="system">5.4.4. System Status</h4>
-      <p>You can view the usage status of each partition.</p>
-      <img width="600" alt="Grafana" src="img/grafana.png">
 
       <h3 id="interactive">5.5. Interactive Application</h3>
       <p>
