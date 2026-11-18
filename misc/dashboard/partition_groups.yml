@@ -4,8 +4,8 @@ groups:
   - name: CPU
     partitions: [fx700, mi100, genoa, genoa-m, r340]
   - name: NVIDIA GPU
-    partitions: [a100, b300, ai-h100l, ai-h200-brc, ai-l40s, ai-pro6000, qc-a100, qc-gh200,
-                 qc-pro6000, fs-h100, ng-dgx-s, ng-dgx-m0, ng-dgx-m1, ng-dgx-m2, ng-dgx-m3]
+    partitions: [a100, b300, ai-h100l, ai-h200-brc, ai-l40s, qc-a100, qc-gh200, qc-pro6000,
+                 fs-h100, ng-dgx-s, ng-dgx-m0, ng-dgx-m1, ng-dgx-m2, ng-dgx-m3, ng-dgx-l]
   - name: AMD GPU
     partitions: [qc-mi210, qc-mi250, fs-mi300a, fs-mi300x, next-mi210]
   - name: Intel GPU

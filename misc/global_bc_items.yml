@@ -15,7 +15,6 @@ global_bc_form_items:
       - [ "ai-h200-brc"                              ]
       - [ "ai-h200-brc-pu", data-hide-global-hours: true ]
       - [ "ai-l40s"                                  ]
-      - [ "ai-pro6000"                               ]
       - [ "qc-a100"                                  ]
       - [ "qc-gh200",    data-hide-global-gpus: true ]
       - [ "qc-mi210",    data-hide-global-gpus: true ]
@@ -30,6 +29,7 @@ global_bc_form_items:
       - [ "ng-dgx-m1",   data-hide-global-gpus: true ]
       - [ "ng-dgx-m2",   data-hide-global-gpus: true ]
       - [ "ng-dgx-m3",   data-hide-global-gpus: true ]
+      - [ "ng-dgx-l"                                 ]
       - [ "next-pvc",    data-hide-global-gpus: true ]
       - [ "next-pvc",    data-hide-global-gpus: true ]
     help: The run time for the ai-h100l-pu is 30 minutes, ai-h200-brc-pu is 60 minutes.
